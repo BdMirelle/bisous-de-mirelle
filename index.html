@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bisous de Mirelle: Ruined Souls</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:wght@600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0f0c0a;
+      --glass-bg: rgba(28, 21, 18, 0.75);
+      --glass-card: rgba(35, 27, 23, 0.75);
+      --glass-border: rgba(217, 119, 66, 0.18);
+      --glass-border-hover: rgba(217, 119, 66, 0.45);
+      --accent-orange: #d97742;
+      --accent-orange-glow: rgba(217, 119, 66, 0.35);
+      --accent-burgundy: #7a1f2d;
+      --accent-burgundy-glow: rgba(122, 31, 45, 0.4);
+      --text-main: #eae1dc;
+      --text-muted: #a69890;
+      --shadow-3d: 0 12px 32px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(15, 12, 10, 0.8);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(217, 119, 66, 0.3);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-orange);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .bg-glow-1 {
+      position: fixed;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--accent-orange-glow) 0%, rgba(0,0,0,0) 70%);
+      filter: blur(80px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .bg-glow-2 {
+      position: fixed;
+      bottom: -150px;
+      left: 100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--accent-burgundy-glow) 0%, rgba(0,0,0,0) 70%);
+      filter: blur(100px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .mobile-header {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      z-index: 95;
+      padding: 0 20px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mobile-header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      color: var(--accent-orange);
+    }
+
+    .mobile-toggle-btn {
+      background: rgba(217, 119, 66, 0.15);
+      border: 1px solid var(--glass-border);
+      color: var(--accent-orange);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 99;
+    }
+
+    .sidebar-overlay.show {
+      display: block;
+    }
+
+    aside {
+      width: 290px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-right: 1px solid var(--glass-border);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100vh;
+      z-index: 110;
+      box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+      overflow-x: hidden;
+    }
+
+    .brand {
+      padding: 24px 20px;
+      border-bottom: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo-svg {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 10px rgba(122, 31, 45, 0.5));
+      transition: transform 0.3s ease;
+    }
+
+    .brand-logo-svg:hover {
+      transform: scale(1.08) rotate(3deg);
+    }
+
+    .brand h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      color: var(--accent-orange);
+      line-height: 1.2;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 8px rgba(217, 119, 66, 0.2);
+    }
+
+    .brand span {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: 'Roboto', sans-serif;
+    }
+
+    nav {
+      flex: 1;
+      padding: 20px 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(217, 119, 66, 0.3) rgba(15, 12, 10, 0.8);
+    }
+
+    .nav-group-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      padding: 12px 24px 6px;
+      font-weight: 700;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 12px 24px;
+      color: var(--text-main);
+      text-decoration: none;
+      gap: 12px;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      background: rgba(217, 119, 66, 0.12);
+      color: var(--accent-orange);
+      padding-left: 28px;
+    }
+
+    .nav-link.active::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--accent-orange), var(--accent-burgundy));
+      box-shadow: 0 0 10px var(--accent-orange);
+    }
+
+    .nav-link i {
+      width: 20px;
+      text-align: center;
+      color: var(--accent-orange);
+    }
+
+    .dropdown-btn {
+      justify-content: space-between;
+    }
+
+    .dropdown-container {
+      display: none;
+      background: rgba(0, 0, 0, 0.25);
+      padding-left: 8px;
+    }
+
+    .dropdown-container.show {
+      display: block;
+    }
+
+    .sub-link {
+      display: block;
+      padding: 10px 24px 10px 48px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .sub-link:hover {
+      color: var(--accent-orange);
+      transform: translateX(4px);
+    }
+
+    .server-status {
+      padding: 16px 20px;
+      border-top: 1px solid var(--glass-border);
+      background: rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background-color: #4cd964;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #4cd964;
+      flex-shrink: 0;
+    }
+
+    .dot-orange {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent-orange);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-orange);
+      flex-shrink: 0;
+    }
+
+    main {
+      margin-left: 290px;
+      flex: 1;
+      padding: 40px 60px;
+      max-width: 1100px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      padding: 20px 28px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      box-shadow: var(--shadow-3d);
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .header-search-wrapper {
+      position: relative;
+      flex: 1;
+      min-width: 220px;
+      max-width: 320px;
+    }
+
+    .header-search-input {
+      width: 100%;
+      background: rgba(15, 12, 10, 0.6);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 10px 14px 10px 38px;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .header-search-input:focus {
+      border-color: var(--accent-orange);
+      box-shadow: 0 0 10px var(--accent-orange-glow);
+    }
+
+    .header-search-wrapper i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    /* Live Search Results Dropdown */
+    .search-results-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      width: 100%;
+      background: #1c1512;
+      border: 1px solid var(--glass-border-hover);
+      border-radius: 10px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.8);
+      z-index: 110;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+
+    .search-results-dropdown.show {
+      display: block;
+    }
+
+    .search-result-item {
+      display: block;
+      padding: 10px 14px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 0.88rem;
+      border-bottom: 1px solid rgba(217, 119, 66, 0.1);
+      transition: background 0.2s ease;
+      cursor: pointer;
+    }
+
+    .search-result-item:last-child {
+      border-bottom: none;
+    }
+
+    .search-result-item:hover {
+      background: rgba(217, 119, 66, 0.2);
+      color: var(--accent-orange);
+    }
+
+    .search-result-item strong {
+      display: block;
+      color: var(--accent-orange);
+      font-size: 0.9rem;
+    }
+
+    .btn-join {
+      background: linear-gradient(135deg, var(--accent-burgundy), var(--accent-orange));
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px var(--accent-burgundy-glow);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-size: 0.9rem;
+    }
+
+    .btn-join:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 25px var(--accent-orange-glow);
+    }
+
+    .content-section {
+      display: none;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--accent-orange);
+      margin-bottom: 20px;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    .card {
+      background: var(--glass-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-3d);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: var(--glass-border-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent-orange-glow);
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      color: #fff;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .card-title i {
+      color: var(--accent-orange);
+      filter: drop-shadow(0 2px 6px var(--accent-orange-glow));
+    }
+
+    p {
+      margin-bottom: 12px;
+      color: var(--text-main);
+      font-size: 1.02rem;
+    }
+
+    /* Neutral Blockquote Styling for all rules */
+    .rule-quote {
+      border-left: 3px solid rgba(217, 119, 66, 0.6);
+      padding-left: 14px;
+      margin: 10px 0 14px 0;
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      font-style: normal;
+      background: rgba(0, 0, 0, 0.15);
+      padding-top: 6px;
+      padding-bottom: 6px;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      background: rgba(15, 12, 10, 0.5);
+      padding: 16px 20px;
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+      margin-bottom: 20px;
+    }
+
+    .meta-item {
+      font-size: 0.92rem;
+    }
+
+    .meta-item strong {
+      color: var(--accent-orange);
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .article-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+      background: rgba(15, 12, 10, 0.5);
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+    }
+
+    .article-nav a {
+      color: var(--accent-orange);
+      background: rgba(217, 119, 66, 0.1);
+      padding: 6px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      border: 1px solid rgba(217, 119, 66, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    .article-nav a:hover {
+      background: var(--accent-orange);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .rule-warning {
+      background: rgba(122, 31, 45, 0.25);
+      border-left: 4px solid #e25865;
+      padding: 14px 18px;
+      border-radius: 4px;
+      margin: 16px 0;
+      font-size: 0.95rem;
+    }
+
+    .rule-disclaimer {
+      background: rgba(217, 119, 66, 0.12);
+      border: 1px solid var(--glass-border-hover);
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: 0.92rem;
+      color: #f1e5de;
+    }
+
+    .author-credit-box {
+      margin-top: 24px;
+      padding: 14px 18px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      border-left: 3px solid var(--accent-orange);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .copyright-footer {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--glass-border);
+    }
+
+    @media (max-width: 900px) {
+      .mobile-header {
+        display: flex;
+      }
+
+      aside {
+        transform: translateX(-100%);
+        top: 0;
+      }
+
+      aside.mobile-open {
+        transform: translateX(0);
+      }
+
+      main {
+        margin-left: 0;
+        padding: 80px 20px 40px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .header-search-wrapper {
+        max-width: 100%;
+      }
+
+      .btn-join {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+
+  <div class="mobile-header">
+    <h1>Bisous de Mirelle</h1>
+    <button class="mobile-toggle-btn" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i> Меню</button>
+  </div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <aside id="sidebar">
+    <div class="brand">
+      <svg class="brand-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" fill="url(#sealBg)" stroke="url(#goldBorder)" stroke-width="3"/>
+        <circle cx="50" cy="50" r="41" stroke="#d97742" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+        <path d="M 28 45 C 34 38, 43 38, 50 43 C 57 38, 66 38, 72 45 C 65 47, 58 48, 50 46 C 42 48, 35 47, 28 45 Z" fill="#e25865"/>
+        <path d="M 29 51 C 38 48, 44 50, 50 51 C 56 50, 62 48, 71 51 C 64 62, 57 63, 50 63 C 43 63, 36 62, 29 51 Z" fill="#b82d40"/>
+        <path d="M 40 49 C 45 52, 55 52, 60 49 C 55 55, 45 55, 40 49 Z" fill="#5e111b" opacity="0.7"/>
+        <defs>
+          <radialGradient id="sealBg" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(35 30) rotate(50) scale(60)">
+            <stop offset="0%" stop-color="#9e2b3c"/>
+            <stop offset="70%" stop-color="#54121c"/>
+            <stop offset="100%" stop-color="#28070c"/>
+          </radialGradient>
+          <linearGradient id="goldBorder" x1="0" y1="0" x2="100" y2="100">
+            <stop offset="0%" stop-color="#d97742"/>
+            <stop offset="50%" stop-color="#f0aa81"/>
+            <stop offset="100%" stop-color="#7a1f2d"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div>
+        <h1>Bisous de Mirelle</h1>
+        <span>Ruined Souls RP</span>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav-group-title">Навигация</div>
+      <a class="nav-link active" onclick="navigateTo('news')">
+        <i class="fa-solid fa-house"></i> Главная / Краткое содержание
+      </a>
+
+      <a class="nav-link dropdown-btn" onclick="toggleDropdown('rules-drop')">
+        <span><i class="fa-solid fa-scroll"></i> Правила проекта</span>
+        <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+      </a>
+      <div class="dropdown-container" id="rules-drop">
+        <a class="sub-link" onclick="navigateTo('rules-norm')">О норме и рестах</a>
+        <a class="sub-link" onclick="navigateTo('rules-flood')">Правила поведения во флуде</a>
+        <a class="sub-link" onclick="navigateTo('rules-rp')">Правила поведения в ролевой</a>
+        <a class="sub-link" onclick="navigateTo('rules-rating')">О рейтинге ролевой</a>
+      </div>
+
+      <a class="nav-link dropdown-btn" onclick="toggleDropdown('lore-drop')">
+        <span><i class="fa-solid fa-book-open"></i> Сюжетные статьи</span>
+        <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+      </a>
+      <div class="dropdown-container" id="lore-drop">
+        <a class="sub-link" onclick="navigateTo('lore-brief')">Краткое содержание</a>
+        <a class="sub-link" onclick="navigateTo('lore-prologue')">Пролог</a>
+        <a class="sub-link" onclick="navigateTo('lore-present')">Настоящее время</a>
+        <a class="sub-link" onclick="navigateTo('lore-spad')">СПАД, «Некса» и последствия</a>
+        <a class="sub-link" onclick="navigateTo('lore-order')">Орден Серого Рассвета</a>
+        <a class="sub-link" onclick="navigateTo('lore-camps')">Лагеря Соулмейтов</a>
+        <a class="sub-link" onclick="navigateTo('lore-bio')">Биохимия соулмейтов</a>
+        <a class="sub-link" onclick="navigateTo('lore-locations')">Локации проекта</a>
+      </div>
+
+      <a class="nav-link dropdown-btn" onclick="toggleDropdown('extras-drop')">
+        <span><i class="fa-solid fa-folder-open"></i> Дополнительные разделы</span>
+        <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+      </a>
+      <div class="dropdown-container" id="extras-drop">
+        <a class="sub-link" onclick="navigateTo('rules-rating')">О рейтинге ролевой</a>
+        <a class="sub-link" onclick="navigateTo('extra-forms')">Правила оформления анкет</a>
+        <a class="sub-link" onclick="navigateTo('extra-locations')">Правила оформления локаций</a>
+      </div>
+
+      <a class="nav-link" onclick="navigateTo('faq')">
+        <i class="fa-solid fa-circle-question"></i> FAQ
+      </a>
+
+      <a class="nav-link" onclick="navigateTo('rules-joining')">
+        <i class="fa-solid fa-door-open"></i> О вступлении
+      </a>
+    </nav>
+
+    <div class="server-status">
+      <div class="status-badge">
+        <div class="dot"></div>
+        <span>Игроков в проекте: <strong>12 активных</strong></span>
+      </div>
+      <div class="status-badge">
+        <div class="dot-orange"></div>
+        <span>Забронировано мест: <strong>2</strong></span>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <h2 style="font-size: 1.6rem; margin-bottom: 2px;">Bisous de Mirelle</h2>
+        <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;">База знаний и правил текстовой ролевой игры</p>
+      </div>
+      <div class="header-search-wrapper">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="pageSearch" class="header-search-input" placeholder="Поиск статей и правил..." oninput="handleSearch(this.value)" autocomplete="off">
+        <div id="searchResults" class="search-results-dropdown"></div>
+      </div>
+      <a href="https://t.me/InfoMirelle" target="_blank" class="btn-join">Инфо-канал</a>
+    </header>
+
+    <!-- Главная страница -->
+    <section id="news" class="content-section active" data-title="Главная страница">
+      <h2>Главная страница</h2>
+      
+<div class="card">
+        <div class="card-title"><i class="fa-solid fa-bullhorn"></i> Добро пожаловать в Bisous de Mirelle</div>
+        <p>Приветствуем в ролевой <strong>Bisous de Mirelle: Ruined Souls</strong>! Данный сайт создан для более удобного ознакомления с правилами и сюжетом нашего проекта.</p>
+        <p>Вся актуальная информация о событиях, статьях и изменениях публикуется в нашем <a href="https://t.me/InfoMirelle" target="_blank" style="color: var(--accent-orange); text-decoration: underline;">Telegram инфо-канале</a>.</p>
+      </div>
+
+      <div class="card">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px;">PLOT SUMMARY</h3>
+          <p style="color: var(--text-muted);">Кратко о ролевой</p>
+        </div>
+
+        <div class="meta-grid">
+          <div class="meta-item">
+            <strong>Жанры:</strong>
+            Dark Sci-Fi, Антиутопия, Биопанк, Боди-хоррор, Психохоррор, Соулмейты, Выживание
+          </div>
+          <div class="meta-item">
+            <strong>Рейтинг:</strong>
+            NC-17
+          </div>
+          <div class="meta-item">
+            <strong>Норма постов:</strong>
+            от 1000 символов, 3-е лицо, 1 раз в 10–15 дней
+          </div>
+        </div>
+
+        <p>Когда-то Судьба вела всех людей в Миррэль, чего не скажешь об этом городе сейчас…</p>
+        <p>Провозглашённый в 2021 году столицей Франции Миррэль, находящийся в самом центре своей страны, во второй четверти XXI века гордо носил звание «столицы поцелуев». Во вселенной, что якобы даровала людям родство душ, этот город играл огромную роль, сводя множество соулмейтов, предоставляя им все блага для комфортной жизни. Пока всё не начало стремительно меняться.</p>
+        <p>Третья четверть того же века началась с вереницы волнений, превративших город любви в совершенную противоположность: к концу 60-х годов соулмейтам стало безопаснее скрываться, не имея и толики надежды на ту поддержку и ту хорошую жизнь, которые давало им государство в предыдущие годы.</p>
+        <p>Внезапно охватившая мир эпидемия СПАДа, зацепившая людей, что так и не нашли свою родственную душу, повлекла за собой множество событий, в числе которых: объединения в «группы поддержки», выступившие против счастливого меньшинства, нашедшего свою судьбу; борьба с эпидемией, приведшая к появлению сомнительного препарата, что стал крайней мерой и породил сотни, а то и тысячи мутантов среди ни о чём не подозревавших больных; смена власти, ритуалы, доносы и многое другое, ожидающее вас в этой истории.</p>
+        <p>Будьте предельно аккуратны на улицах некогда славного города: несмотря на кажущуюся чистоту, кем бы вы ни были, разного рода опасности поджидают вас за каждым углом. Какую роль вы займете?</p>
+        <ul style="margin-left: 20px; margin-bottom: 16px; color: var(--text-main);">
+          <li style="margin-bottom: 6px;"><strong>«Счастливчика»</strong> — познавшего радость соулмейтства, но вынужденного тщательно скрываться, чтобы не подвергнуться очищению?</li>
+          <li style="margin-bottom: 6px;">Быть может, <strong>учёного</strong> — приложившего руку к созданию кровавого препарата, а теперь замученного собственной совестью и пытающегося искупить свои грехи?</li>
+          <li>Или вы вовсе <strong>Страж Рассвета</strong> — искренне верящий в возможность избавиться от всего, что мешает счастливой жизни, в которой вы сами можете распоряжаться своей судьбой и оказаться в лучшей версии этого мира?</li>
+        </ul>
+        <p>Выбирайте любую из сторон, влияйте на историю и развивайтесь в разнообразных направлениях. Миррэль будет вас ждать.</p>
+      </div>
+    </section>
+
+    <!-- О НОРМЕ И РЕСТАХ -->
+<section id="rules-norm" class="content-section" data-title="О норме и рестах">
+  <h2>О норме и рестах</h2>
+  
+  <div class="card" style="position: relative;">
+    <div style="text-align: center; margin-bottom: 24px;" id="norm-top">
+      <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px;">ACTIVITY RULES</h3>
+      <p style="color: var(--text-muted); margin-top: 4px;">«Bisous de Mirelle: Ruined Souls»</p>
+      <div class="rule-warning" style="display: inline-block; margin-top: 10px;">
+        <strong>Незнание не освобождает от ответственности</strong>
+      </div>
+    </div>
+
+<div style="display: flex; flex-direction: column; gap: 8px; margin: 24px 0 32px 0; padding: 18px; background: rgba(15, 12, 10, 0.7); border: 1px solid var(--glass-border); border-radius: 10px;">
+      <span style="color: var(--text-muted); font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px;">Навигация по разделам:</span>
+      <a href="#norm-flood" onclick="document.getElementById('norm-flood').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">1. Флудовая норма</a>
+      <a href="#norm-rp" onclick="document.getElementById('norm-rp').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">2. Ролевая норма</a>
+      <a href="#norm-rest" onclick="document.getElementById('norm-rest').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">3. О рестах</a>
+      <a href="#norm-return" onclick="document.getElementById('norm-return').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">4. Условия удаления/возвращения</a>
+    </div>
+
+    <div id="norm-flood" style="margin-top: 30px; scroll-margin-top: 30px;">
+      <div class="card-title">1. Учёт нормы во флуде</div>
+      <p><strong>1.1.</strong> Нормы на количество сообщений во флуде нет. Вместо недельной нормы проверяется список неактивных участников:</p>
+      <div class="rule-quote">
+        Количество допустимых дней неактива (без реста) составляет <strong>4 дня</strong>.
+      </div>
+      <div class="rule-quote">
+      Если на момент вызова списка неактивных участников ваш период неактивности превышает четыре дня, <strong>у вас имеется 24 часа</strong>, чтобы появиться в чате и избежать предупреждения. Если же в течение этого времени ответ от вас не поступает – выдается варн. В случае продолжения игнорирования отметок еще через сутки последует удаление из чатов.
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="#rules-norm" onclick="document.getElementById('norm-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="norm-rp" style="scroll-margin-top: 30px;">
+      <div class="card-title">2. Учёт нормы в ролевой</div>
+      <p><strong>2.1.</strong> В нашем проекте действуют личные дедлайны длительностью <strong>10 дней</strong> (15 для саморола) и работают они следующим образом:</p>
+      <div class="rule-quote">
+        <strong>Для тех, у кого есть соролевик:</strong> когда один из пары (тройки/четверки/т.д.) сдает пост, сроки сдачи переходят ко второму человеку. Если пост сдан меньше чем за 10 дней – оставшиеся дни «сгорают», а соролевику назначаются новые 10 дней.
+      </div>
+      <div class="rule-quote">
+        <strong>Для тех, у кого нет соролевика:</strong> назначение сроков происходит тем же образом, что описан выше, только дедлайн в 15 дней повторно назначается тому же участнику.
+      </div>
+      <p><strong>2.2. Нюансы:</strong></p>
+<div class="rule-quote">
+        Отсчет времени начинается на следующий день после вашего вступления, а последующие дедлайны назначаются на следующий день после получения/сдачи поста.
+      </div>
+      <div class="rule-quote">
+        Если ролевик с незакрытым дедлайном уходит в рест, то его соигрок остаётся в «режиме ожидания» и отписывать пост не обязуется. Однако если рестник успел закрыть свой дедлайн, то сроки его соигрока идут в обычном режиме.
+      </div>
+      <div class="rule-quote">
+        В случае несдачи поста в списке сроков вам ставится ролевое предупреждение и 5 дополнительных дней на закрытие дедлайна. В случае повторной несдачи участник также получает предупреждение и еще 5 дополнительных дней. На третьей просрочке последует удаление.
+      </div>
+      <div class="rule-quote">
+        Снять одно ролевое предупреждение можно двумя постами, написанными без пропусков.
+      </div>
+      <div class="rule-quote">
+        При взятии дополнительной роли, норма сдается за каждого персонажа отдельно.
+      </div>
+      <div class="rule-quote">
+        Все дедлайны указываются в специальном канале, ссылка на который расположена в закрепленном сообщении ролевого чата.
+      </div>
+      <p style="margin-top: 16px;"><strong>2.3. При наличии нескольких ролей:</strong></p>
+      <div class="rule-quote">
+        На каждую роль назначается свой дедлайн.
+      </div>
+      <div class="rule-quote">
+        В случае несдачи поста только за одну роль, в списке сроков на неё вам ставится ролевое предупреждение.
+      </div>
+      <div class="rule-quote">
+        Дополнительная роль с вас снимается после получения на ней третьего ролевого предупреждения.
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="#rules-norm" onclick="document.getElementById('norm-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="norm-rest" style="scroll-margin-top: 30px;">
+      <div class="card-title">3. О рестах</div>
+      <p><strong>3.1.</strong> В нашем проекте существует несколько вариантов отдыха:</p>
+      <div class="rule-quote">
+        <strong>Освобождение от активности во флуде:</strong> выдаётся на 5-15 дней, позволяя не получать предупреждение за нахождение в списке неактивных участников.<br><br>
+        <strong>Освобождение от сдачи постов:</strong> выдается на 8-15 дней, позволяя приостановить активность в ролевом чате.<br>
+        • Вместе с вами освобождение получает и ваш соролевик (если не его очередь отписывать пост).<br>
+        • После окончания реста вам заново назначаются 10 дней на сдачу поста (если перед рестом вы не получили предупреждение).<br><br>
+        <strong>Полное освобождение:</strong> выдается максимум на 15 дней, объединяя условия прошлых двух вариантов.
+      </div>
+      <div class="rule-warning">
+        Те, кто пробыл в чате <strong>больше трёх месяцев</strong>, могут договориться с владельцем о возможности получить рест до <strong>30-ти дней</strong> (предупредив соролевика) на определённых условиях.
+      </div>
+      <p><strong>3.2. Нюансы:</strong></p>
+<div class="rule-quote">
+        Первый рест можно взять только при наличии минимум одного поста.
+      </div>
+      <div class="rule-quote">
+        Анкета заполняется у помощницы Авроры согласно требованиям.
+      </div>
+      <div class="rule-quote">
+        Взятие освобождения от ролевой на восьмой-десятый день вашего дедлайна считается уклонением от сдачи поста (если тот не сдан). Рест взять вы сможете, но либо норму за текущий дедлайн придется закрыть, либо вам будет выдано предупреждение, а срок сдачи поста после выхода из реста будет равен 5-ти дням.
+      </div>
+      <div class="rule-quote">
+        Перерыв между рестами должен быть вдвое больше, чем последнее взятое вами освобождение.
+      </div>
+      <div class="rule-quote">
+        Если, находясь в ресте, вы всё равно закрыли дедлайн и не прекратили проявлять активность во флуде, то статус отдыхающего с вас снимается, как и ограничения на перерыв между рестами. Однако просьба не баловаться со взятием рестов «на всякий случай».
+      </div>
+      <div class="rule-quote">
+        Рест на 30 дней не может быть одновременно одобрен более чем двум участникам. При его взятии вы освобождаетесь от напоминаний о ролевых дедлайнах, но все еще обязуетесь появляться в чате флуда хотя бы раз в неделю, сбивая период неактива, чтобы мы понимали, что вы всё еще с нами (может быть обговорено).
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="#rules-norm" onclick="document.getElementById('norm-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="norm-return" style="scroll-margin-top: 30px;">
+      <div class="card-title">4. Правила удаления/возвращения</div>
+<strong>Флудовые варны:</strong> фиксируются в ирис-боте; включают в себя предупреждения за нарушения правил проекта и нахождение в списке неактивных участников.
+      </div>
+      <div class="rule-quote">
+        <strong>Ролевые варны:</strong> проставляются на канале учета постов за просрочку дедлайнов.
+      </div>
+      <p style="margin-top: 16px;"><strong>4.2. Согласно вышеописанному, удаление из чата происходит в следующих случаях:</strong></p>
+      <div class="rule-quote">
+        При наборе <strong>трёх</strong> флуд. варнов <u>ИЛИ</u> <strong>трёх</strong> рол. варнов.
+      </div>
+      <div class="rule-quote">
+        При наборе <strong>двух</strong> флуд. варнов <u>И</u> <strong>двух</strong> рол. варнов в один период.
+      </div>
+      <p><strong>4.3. Нюансы возвращения:</strong></p>
+<div class="rule-quote">
+        Если вы были удалены по причине неактивности (в любом чате) или ушли по собственному желанию, то возможность вернуться появляется уже через две недели при условии открытого набора. Вернуться можно только два раза.
+      </div>
+      <div class="rule-quote">
+        Если вы были удалены по причине нарушения правил, то вы попадаете в банлист проекта и вернуться больше не можете.
+      </div>
+      <div class="rule-quote">
+        При добровольном уходе желательно писать свою роль и причину выхода, чтобы возникало меньше недопониманий. В случае молчаливого выхода назад вы можете больше не вернуться.
+      </div>
+      <div class="rule-quote">
+        Если вы покинули чат в шутку, от обиды или просто так, то это воспримется как молчаливый выход и назад вы тоже уже можете не вернуться.
+      </div>
+      <div class="rule-quote">
+        Если вы желаете вернуться в проект, вам необходимо подать вступительную анкету снова (пример текста необязателен).
+      </div>
+      <div class="rule-quote">
+        Администрация имеет право выдать отказ на своё усмотрение.
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="#rules-norm" onclick="document.getElementById('norm-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <div class="copyright-footer">
+      Все материалы, размещенные в статьях, а также в пределах каналов и чатов, принадлежат ролевой «Bisous de Mirelle». Использование сторонними проектами запрещено.
+    </div>
+  </div>
+</section>
+
+    <!-- ПРАВИЛА ПОВЕДЕНИЯ ВО ФЛУДЕ -->
+<section id="rules-flood" class="content-section" data-title="Правила поведения во флуде">
+  <h2>Правила поведения во флуде</h2>
+
+  <div class="card" style="position: relative;">
+    <div style="text-align: center; margin-bottom: 24px;" id="flood-top">
+      <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px;">FLOOD RULES</h3>
+      <p style="color: var(--text-muted); margin-top: 4px;">«Bisous de Mirelle: Ruined Souls»</p>
+      <div class="rule-warning" style="display: inline-block; margin-top: 10px;">
+        <strong>Незнание не освобождает от ответственности</strong>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-bottom: 24px; padding: 16px 20px; background: rgba(0, 0, 0, 0.2); border-radius: 10px; border: 1px solid var(--glass-border);">
+      <div style="width: 60px; height: 1px; background: var(--text-muted); margin: 0 auto 14px auto; opacity: 0.5;"></div>
+      <strong style="display: block; font-size: 0.95rem; letter-spacing: 0.5px; margin-bottom: 14px; color: var(--text-main);">ДИСКЛЕЙМЕР: ПРОЕКТ НЕ СПОСОБЕН ОПРАВДАТЬ ВСЕ ОЖИДАНИЯ И УДОВЛЕТВОРИТЬ ВСЕ ПОЖЕЛАНИЯ, БУДЬТЕ ГОТОВЫ К ПОИСКУ КОМПРОМИССОВ И НЕОБХОДИМОСТИ ВЗАИМОПОНИМАНИЯ</strong>
+      <div style="width: 60px; height: 1px; background: var(--text-muted); margin: 14px auto 0 auto; opacity: 0.5;"></div>
+    </div>
+
+    <div class="rule-quote">
+      Не забывайте, что общение – это взаимный процесс, требующий активности с обеих сторон. Не игнорируйте других и проигнорированы не будете.
+    </div>
+    <div class="rule-quote">
+      Не забывайте, что соблюдение правил – важная часть комфортного общения, поэтому не относитесь к нижеизложенным пунктам халатно. Всё, что описано ниже, добавлялось не просто так и прошло проверку временем. Если какой-то из пунктов вызывает у вас неприязнь, то, вероятно, находиться в чате вам будет дискомфортно.
+    </div>
+    <div class="rule-quote" style="margin-bottom: 24px;">
+      Имейте в виду, что уважение к людям и взаимность – главные принципы проекта. Не пытайтесь использовать это в недобрых целях.
+    </div>
+
+<div style="display: flex; flex-direction: column; gap: 8px; margin: 24px 0 32px 0; padding: 18px; background: rgba(15, 12, 10, 0.7); border: 1px solid var(--glass-border); border-radius: 10px;">
+      <span style="color: var(--text-muted); font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px;">Навигация по разделам:</span>
+      <a href="#flood-1" onclick="document.getElementById('flood-1').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">1. Нецензурные выражения</a>
+      <a href="#flood-2" onclick="document.getElementById('flood-2').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">2. Триггерные темы</a>
+      <a href="#flood-3" onclick="document.getElementById('flood-3').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">3. Оскорбления и дискриминация</a>
+      <a href="#flood-4" onclick="document.getElementById('flood-4').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">4. Неприемлемый контент, цензура</a>
+      <a href="#flood-5" onclick="document.getElementById('flood-5').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">5. Конфликты</a>
+      <a href="#flood-6" onclick="document.getElementById('flood-6').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">6. Личная информация</a>
+      <a href="#flood-7" onclick="document.getElementById('flood-7').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">7. Спам, реклама, ссылки</a>
+      <a href="#flood-8" onclick="document.getElementById('flood-8').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">8. О некоторых ботах</a>
+      <a href="#flood-9" onclick="document.getElementById('flood-9').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">9. Нюансы общения</a>
+      <a href="#flood-10" onclick="document.getElementById('flood-10').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">10. Чаты и каналы проекта</a>
+    </div>
+
+    <div id="flood-1" style="margin-top: 30px; scroll-margin-top: 30px;">
+      <div class="card-title">1. Нецензурные выражения</div>
+      <p><strong>1.1.</strong> Очень нежелательны – просьба иметь меру и стараться выражать свои мысли как можно чище.</p>
+      <div class="rule-quote">
+        Излишнее употребление матерной речи создает не самые приятные впечатления и так или иначе нарушает комфорт общения.
+      </div>
+      <div class="rule-quote">
+        Избегайте некультурных выражений: на каждое слово можно найти адекватную замену.
+      </div>
+      <p style="margin-top: 16px;"><strong>1.2.</strong> В случае использования подобной лексики, администрация (или кто-либо из участников) напомнит вам о данном правиле с просьбой быть осторожными в выражениях.</p>
+      <div class="rule-quote">
+        Грубые маты и слюры* запрещены – могут повлечь предупреждение.
+      </div>
+      <div class="rule-quote">
+        *<strong>Грубыми матами</strong> в нашем проекте являются слова, содержащие выраженные сексуальные или анатомические образы.<br>
+        *<strong>Слюры</strong> – унизительные слова по отношению к какой-либо группе людей.<br>
+        Проще говоря, оскорбления (даже если вы не имели цели оскорбить и даже если это мем/шутка/песня/прочее).
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="#rules-flood" onclick="document.getElementById('flood-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="flood-2" style="scroll-margin-top: 30px;">
+      <div class="card-title">2. Триггерные темы</div>
+      <p><strong>2.1.</strong> В чате абсолютно не приветствуются темы, способные вызвать неприятные ассоциации/воспоминания или испортить атмосферу чата.</p>
+      <p>Следующие темы не пропускаются даже под цензурой:</p>
+      <div class="rule-quote">
+        • Самоповреждение и суицид (шутки в том числе, фразы «я вешаюсь» и т.п.);<br>
+        • Домогательства (проявление в чате, рассказы о случаях);<br>
+        • Сексизм (агрессивный в первую очередь);<br>
+        • Педо-/зоо- и прочие аморальные/нездоровые филии;<br>
+        • Инцест;<br>
+        • Треш описания (изуродование тел);<br>
+        • Темы о смерти;<br>
+        • Насилие любого характера (действия через бот в т.ч.);<br>
+        • Наркотические вещества;<br>
+        • Расстройство пищевого поведения;<br>
+        • Политика, затрагивание военных действий;<br>
+        • Физиологические выделения (в особенности юмор).
+      </div>
+      <p style="margin-top: 16px;"><strong>2.2.</strong> Заводить разговоры на вышеперечисленные темы запрещено: флуд должен оставаться нейтрально-приятным местом, а не средой для разведения триггеров.</p>
+      <div class="rule-quote">
+        В случае несоблюдения правила будет выдано предупреждение, сообщение – удалено. При игнорировании администрации удален будет и нарушивший правило участник.
+      </div>
+      <p style="margin-top: 16px;"><strong>2.3.</strong> Если вдруг всё же поднимается тема, которая доставляет вам дискомфорт, вы имеете полное право попросить о том, чтобы её закрыли или сокрыли спойлером. Просьба не доводить тему триггеров до абсурда во всех смыслах.</p>
+      <p style="margin-top: 16px;"><strong>2.4.</strong> Настойчивые попытки привлечь внимание к личным проблемам через жалость, обиды и прочее также не приветствуются.</p>
+      <div class="rule-quote">
+        Если у вашей жалобы нет цели найти положительные стороны в ситуации и/или прийти к какому-то пониманию, то для высказываний однозначно существуют места получше данного флуда. «Мир ужасен, жизнь – тлен, нет больше мне счастья, и никто не сможет мне помочь» – не сюда.
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="#rules-flood" onclick="document.getElementById('flood-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="flood-3" style="scroll-margin-top: 30px;">
+      <div class="card-title">3. Оскорбления и дискриминация</div>
+      <p><strong>3.1.</strong> Оскорбления в чате также не приветствуются, в том числе шуточные и дружеские.</p>
+      <div class="rule-quote">
+        Допускаемый максимум – мягкие безобидные формы слов для тех, кто не против (не раскидывайтесь на кого попало и не злоупотребляйте).<br>
+        • «Дурнушка, силлик» – возможно; «Лох, конч» – нет.<br>
+        Очень часто даже те оскорбления, что были сказаны в шутку, задевают или портят атмосферу, поэтому настаиваем на сдерживании.
+      </div>
+      <p style="margin-top: 16px;"><strong>3.2.</strong> Запрещено осуждение и тем более дискриминация людей как находящихся в чате, так и располагающихся за его пределами, по следующим признакам:</p>
+      <div class="rule-quote">
+        Расовая или национальная принадлежность, ориентация, половые признаки, возраст, вес, чужие вкусы (пейринги в т.ч.), работы и прочее.
+      </div>
+      <p style="margin-top: 16px;"><strong>3.3.</strong> Агрессивная неконструктивная и непрошенная критика не приветствуется.</p>
+      <div class="rule-quote">
+        Своё мнение высказывайте так, чтобы не задевать других, старайтесь придерживаться нейтральной стороны.
+      </div>
+      <p style="margin-top: 16px;"><strong>3.4.</strong> Если вы хотите осудить человека потому, что его вкусы считаются неприемлемыми, исходя из наших правил, то также не советуем разводить конфликт – напишите о смущающем моменте владельцу для принятия мер.</p>
+      <p style="margin-top: 16px;"><strong>3.5.</strong> Если всё же случилось так, что вы задели кого-то из участников, – искренне извинитесь. Если это была неудачная шутка – объясните тому, кто воспринял ее близко.</p>
+      <div class="rule-quote">
+        Позиция «я просто пошутил и не виноват, что кто-то не понял» наказуема предупреждением. Лучше лишний раз извиниться и объяснить.
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="#rules-flood" onclick="document.getElementById('flood-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="flood-4" style="scroll-margin-top: 30px;">
+      <div class="card-title">4. Неприемлемый контент, цензура</div>
+      <p><strong>4.1.</strong> В чате абсолютно неприемлемы материалы «18+/21+» (текстовые, голосовые, фото, видео, gif, телеграм-каналы, сайты и прочее), содержащие:</p>
+      <div class="rule-quote">
+        Обнаженные и/или изуродованные тела, большое количество крови, кадры приема наркотических веществ, любые потенциально травмирующие содержания.
+      </div>
+      <div class="rule-quote">
+        Отправлять вышеперечисленное запрещено даже с цензурой, в противном случае последует бан.
+      </div>
+      <p style="margin-top: 16px;"><strong>4.2.</strong> Материалы «16+» допускаются под цензурой и подписью «CW» (чувствительный, но не триггерный контент), «TW» (триггерный, более впечатляющий контент). К ним относятся:</p>
+      <div class="rule-quote">
+        Обнаженные нарисованные взрослые тела без демонстрации интимных зон и постельных сцен (легкая эротика), небольшое количество крови, видео со вспышками и громкими звуками (голосовые сообщения тоже старайтесь помечать), спойлеры к фильмам/книгам/играм и прочему.
+      </div>
+      <div class="rule-warning">
+        <strong>!!! ОБЯЗАТЕЛЬНО</strong> подписывайте причину наложенной цензуры на медиа и текстовый материал. В случае несоблюдения просьбы после двух замечаний последует предупреждение.
+      </div>
+      <div class="rule-quote">
+        Не нужно ставить «спойлер» телеграма на каждое фото, цензурьте то, чего требуют правила.
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="#rules-flood" onclick="document.getElementById('flood-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="flood-5" style="scroll-margin-top: 30px;">
+      <div class="card-title">5. Конфликты</div>
+      <p><strong>5.1.</strong> Просим стараться придерживаться в любой ситуации нейтральной стороны, либо выяснять всё спокойно без перехода на личности и без обвинений. В противном случае переносите обсуждение в личные сообщения.</p>
+      <div class="rule-quote">
+        При игнорировании администрации участники конфликта получат предупреждение.
+      </div>
+      <p style="margin-top: 16px;"><strong>5.2.</strong> Предупреждение или полноценный бан вы также можете получить за провокационное поведение, к которому относятся:</p>
+      <div class="rule-quote">
+        • Обвинения (прямые, агрессивные, ложные, шуточные);<br>
+        • Шуточные, якобы безобидные обзывательства/прозвища, когда вас просят прекратить;<br>
+        • Шуточные «наезды»;<br>
+        • Вызывание ревности, игры с чужими чувствами и прочее;<br>
+        • Пассивная агрессия и токсичная манера общения.
+      </div>
+      <p style="margin-top: 16px;"><strong>5.3.</strong> За пожелание смерти кому-либо вы получаете бан (за шуточное – предупреждение).</p>
+      <p style="margin-top: 16px;"><strong>5.4.</strong> Если поднялась тема, которая раньше не была указана в правилах как запрещенная или сомнительная, но кто-то из участников просит вас ее закрыть, то лучше закройте. В противном случае вы можете получить предупреждение.</p>
+      <div style="margin-top: 10px;">
+        <a href="#rules-flood" onclick="document.getElementById('flood-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="flood-6" style="scroll-margin-top: 30px;">
+      <div class="card-title">6. Личная информация</div>
+      <p><strong>6.1.</strong> Запрещено разглашение чужой личной информации без согласия того человека, о котором вы говорите.</p>
+      <div class="rule-quote">
+        За распространение чужого имени, возраста, места проживания и прочего вы получите предупреждение.
+      </div>
+      <div class="rule-quote">
+        Пересылка и отправка скриншотов из личных сообщений также может посчитаться за нарушение, если поступит жалоба. Уважайте других.
+      </div>
+      <div class="rule-quote">
+        Если слив был слишком серьезным, по словам пострадавшего, то в наказание может пойти бан.
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="#rules-flood" onclick="document.getElementById('flood-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="flood-7" style="scroll-margin-top: 30px;">
+      <div class="card-title">7. Спам, реклама, ссылки</div>
+      <p><strong>7.1.</strong> За спам принимается повторение одинаковых сообщений (текстовых, гиф, фото, видео и др.) более двух раз. Сюда же относятся сообщения, не содержащие в себе никакого смысла, секундные голосовые/видеосообщения и частое использование команд ботов.</p>
+      <p style="margin-top: 16px;"><strong>7.2.</strong> Запрещена реклама других ролевых (ссылки, видео, «переманивания») в чате, а также реклама платформ, занимающихся распространением аморального контента, сливом личных данных, разжиганием ненависти к кому-/чему-либо, и прочего. Ссылки на сомнительные сайты не по теме запрещены.</p>
+      <p style="margin-top: 16px;"><strong>7.3.</strong> Ссылки на личные тгк участников в чате разрешены без давления насчет подписки и если они не базируются на триггерном контенте.</p>
+      <div class="rule-quote">
+        За нарушение данного пункта следует предупреждение, однако может быть выдан и бан.
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="#rules-flood" onclick="document.getElementById('flood-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="flood-8" style="scroll-margin-top: 30px;">
+      <div class="card-title">8. О некоторых ботах</div>
+      <p><strong>8.1.</strong> Пользоваться <strong>зазывалой</strong> разрешено только администрации после одобрения владельца.</p>
+      <div class="rule-quote">
+        За намеренное использование бота выдается предупреждение.<br>
+        Во избежание случайной активации созыва участников не начинайте свои сообщения с комбинации букв «калл» (напр., «каллиграфия – одно из моих хобби»).
+      </div>
+      <p style="margin-top: 16px;"><strong>8.2.</strong> Боты, позволяющие <strong>«шептать»</strong> сообщения, запрещены к использованию.</p>
+      <div class="rule-quote">
+        <strong>О попытках таким способом обойти ограничения:</strong> правила нашего проекта прописаны с учетом личных границ большинства участников. Предавая кому-либо скрытое от глаз администрации послание, вероятность доставить получателю дискомфорт никуда не исчезает. В случае жалобы вы можете получить предупреждение.
+      </div>
+      <div class="rule-quote">
+        <strong>О личном общении через шепот:</strong> как бы то банально не звучало, но групповой чат создан для открытых коммуникаций внутри группы. «Перешептывание» между двумя участниками выходит отчасти бессмысленным при наличии возможности перейти в личные сообщения, а также создает почву для появления подозрений касательно целей такого разговора.
+      </div>
+      <p style="margin-top: 16px;"><strong>8.3.</strong> Использование <strong>HowYourBot'а</strong>, а также команды <strong>«Моя статья»</strong> в Ирис-боте запрещено из-за содержания в их ответах оскорбительных, триггерных и других неприятных текстов.</p>
+      <div style="margin-top: 10px;">
+        <a href="#rules-flood" onclick="document.getElementById('flood-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="flood-9" style="scroll-margin-top: 30px;">
+      <div class="card-title">9. Нюансы общения</div>
+      <p><strong>9.1.</strong> Основной принцип, которого мы рекомендуем придерживаться, – взаимность:</p>
+      <div class="rule-quote">
+        Заходя в чат флуда, не поленитесь ответить хотя бы на последнюю пару сообщений от участников, если видите, что те остались без внимания.
+      </div>
+      <div class="rule-quote">
+        Заглядывая в чат ролевой или анкетницу, не поленитесь поставить реакцию на чужой материал.
+      </div>
+      <div class="rule-quote">
+        Такие «мелочи» выступают хорошим мотиватором для других, создавая приятную атмосферу. Поставьте себя на место этого «другого» человека.
+      </div>
+      <p style="margin-top: 16px;"><strong>9.2.</strong> Не забывайте об уважении к другим и тактичности при общении.</p>
+      <p style="margin-top: 16px;"><strong>9.3.</strong> Полурол/ролевое общение в чате флуда нашего проекта не практикуется.</p>
+      <div style="margin-top: 10px;">
+        <a href="#rules-flood" onclick="document.getElementById('flood-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="flood-10" style="scroll-margin-top: 30px;">
+      <div class="card-title">10. Чаты и каналы проекта</div>
+      <p><strong>10.1.</strong> Подписка на каналы:</p>
+      <div class="rule-quote">
+        Информационный канал ролевой обязателен к подписке.
+      </div>
+      <div class="rule-quote">
+        Подписка на лайф-канал, канал с дедлайнами и канал с локациями осуществляется только по вашему желанию.
+      </div>
+      <p style="margin-top: 16px;"><strong>10.2.</strong> Вступление в чаты:</p>
+      <div class="rule-quote">
+        После захождения в чат флуда постарайтесь присоединиться к ролевому чату в тот же день.<br>
+      </div>
+      <div class="rule-quote">
+        Нахождение в анкетнице проекта также обязательно.<br>
+        • Огромная просьба не ставить реакции в темах, служащих для хранения информации проекта (списки, навигация, шаблон).<br>
+      </div>
+      <div class="rule-quote">
+        Вступление в Side-Рlay чат (дополнительный рп-чат со свободной темой) осуществляется по вашему желанию.
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="#rules-flood" onclick="document.getElementById('flood-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <div class="copyright-footer">
+      Все материалы, размещенные в статьях, а также в пределах каналов и чатов, принадлежат ролевой «Bisous de Mirelle». Использование сторонними проектами запрещено.
+    </div>
+  </div>
+</section>
+
+    <!-- ПРАВИЛА ПОВЕДЕНИЯ В РОЛЕВОЙ -->
+<section id="rules-rp" class="content-section" data-title="Правила поведения в ролевой">
+  <h2>Правила поведения в ролевой</h2>
+
+  <div class="card" style="position: relative;">
+    <div style="text-align: center; margin-bottom: 24px;" id="rp-top">
+      <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px;">ROLEPLAY RULES</h3>
+      <p style="color: var(--text-muted); margin-top: 4px;">«Bisous de Mirelle: Ruined Souls»</p>
+      <div class="rule-warning" style="display: inline-block; margin-top: 10px;">
+        <strong>Незнание не освобождает от ответственности</strong>
+      </div>
+    </div>
+
+    <div class="rule-quote">
+      Процесс ведения ролевой игры – основа продвижения сюжета, над которым проделано много работы, так что в ролевой мы ожидаем видеть ответственных и внимательных ролевиков. Поэтому просим и к следующим правилам отнестись серьезно.
+    </div>
+
+<div style="display: flex; flex-direction: column; gap: 8px; margin: 24px 0 32px 0; padding: 18px; background: rgba(15, 12, 10, 0.7); border: 1px solid var(--glass-border); border-radius: 10px;">
+      <span style="color: var(--text-muted); font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px;">Навигация по разделам:</span>
+      <a href="#rp-1" onclick="document.getElementById('rp-1').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">1. Анкеты</a>
+      <a href="#rp-2" onclick="document.getElementById('rp-2').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">2. Требования к постам</a>
+      <a href="#rp-3" onclick="document.getElementById('rp-3').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">3. Ограничения к содержанию</a>
+      <a href="#rp-4" onclick="document.getElementById('rp-4').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">4. Спам, флуд</a>
+      <a href="#rp-5" onclick="document.getElementById('rp-5').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">5. Количество ролей</a>
+      <a href="#rp-6" onclick="document.getElementById('rp-6').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">6. ОС и NPC</a>
+      <a href="#rp-7" onclick="document.getElementById('rp-7').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">7. Смена роли</a>
+    </div>
+
+    <div id="rp-1" style="margin-top: 30px; scroll-margin-top: 30px;">
+      <div class="card-title">1. Анкеты</div>
+      <p><strong>1.1.</strong> Ролевые анкеты обязательны и пишутся до захода в чат.</p>
+      <div class="rule-quote">
+        Срок написания анкеты – 3 дня с момента одобрения брони.<br>
+        *Имеется возможность взять один дополнительный день.
+      </div>
+      <div class="rule-quote">
+        Бронь на роль осуществляется только через бота после заполнения вступительной анкеты.
+      </div>
+      <p style="margin-top: 16px;"><strong>1.2.</strong> Ролевые анкеты должны быть написаны в соответствии с предъявляемыми требованиями.</p>
+      <div class="rule-quote">
+        Вся необходимая информация находится по ссылке ниже (продублировано в разделе анкетницы «Form template»)<br>
+        <a onclick="navigateTo('extra-forms')" style="color: var(--accent-orange); text-decoration: underline; cursor: pointer; font-size: 0.95rem;">Правила оформления анкет</a>
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="#rules-rp" onclick="document.getElementById('rp-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="rp-2" style="scroll-margin-top: 30px;">
+      <div class="card-title">2. Требования к постам</div>
+      <p><strong>2.1.</strong> Постом считается текст, написанный в литературном стиле (без вспомогательных знаков «* /» и прочего), размером от 1000 символов (с учетом пробелов) от третьего лица.</p>
+      <div class="rule-quote">
+        В самом начале пост подписывается хэштегом с именем вашего персонажа на русском языке.
+      </div>
+      <div class="rule-quote">
+        Перепроверяйте посты перед отправкой. Приветствуется вдумчивая проверка с помощью сторонних сайтов или нейросетей (языковых моделей по типу чата GPT).
+      </div>
+      <p style="margin-top: 16px; color: #e25865; font-weight: 500;">
+        Отправлять посты, полностью написанные нейросетями, запрещено.
+      </p>
+      <p style="margin-top: 16px;"><strong>2.2.</strong> Подписи в конце постов могут быть оставлены после разделительных знаков «//».</p>
+      <div class="rule-quote">
+        Также в ролевом чате допускается прикрепление материалов (фото/аудио/арты), которые помогают лучше передать атмосферу, подобрать уточнения.<br>
+        Однако просьба этим не увлекаться и не отправлять за раз слишком много вложений (не больше 3-х фото/аудио, разрешены коллажи), старайтесь всё же описывать вещи словесно.
+      </div>
+      <p style="margin-top: 16px;"><strong>2.3.</strong> Что касается авторских пояснений:</p>
+      <div class="rule-quote">
+        Перевод иностранных слов и фраз обязателен.<br>
+        Перевод песен прикрепляется по желанию автора.<br>
+        Пояснения значений слов и отсылок, которые могут быть незнакомы читателям, также прикрепляются по собственному усмотрению.
+      </div>
+<p style="margin-top: 16px;">Сноска выполняется аналогично правилам их оформления в книгах.</p>
+      <div class="rule-quote">
+        Оформление может меняться по желанию автора, однако суть сноски должна сохраняться в соответствии с установленной правилами.<br>
+        Разрешено оформлять сноски прямо в тексте сразу после абзаца, в котором присутствует то, что нуждается в пояснении.
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="#rules-rp" onclick="document.getElementById('rp-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="rp-3" style="scroll-margin-top: 30px;">
+      <div class="card-title">3. Ограничения в содержании постов</div>
+      <p><strong>3.1.</strong> В нашей ролевой установлен рейтинг NC-17, подразумевающий четкие ограничения.</p>
+      <div class="rule-quote">
+        Неприятные, потенциально травмирующие описания и описания эротического характера разрешены с обязательным предупреждением (TW/CW) и сокрытием под спойлер, а также должны быть сюжетно обоснованы. При этом имеются исключения.
+      </div>
+      <div class="rule-quote">
+        Ознакомиться с полной информацией можно в отдельной статье, обязательной к прочтению.<br>
+        <a onclick="navigateTo('rules-rating')" style="color: var(--accent-orange); text-decoration: underline; cursor: pointer;">Подробнее о рейтинге...</a>
+      </div>
+      <p style="margin-top: 16px;"><strong>3.2. Общие ограничения:</strong></p>
+      <div class="rule-quote">
+        Запрещено вписывать чужих персонажей в свои посты (и анкеты) без их согласия.
+      </div>
+      <div class="rule-quote">
+        Убийство основных персонажей в ролевой является бессмысленным действием, так как от постов всё равно не освобождает.
+      </div>
+      <p style="margin-top: 16px;"><strong>3.3.</strong> Не забывайте об уважении к своим соигрокам и обязательно договаривайтесь с ними перед добавлением впечатляющих сцен.</p>
+      <div style="margin-top: 10px;">
+        <a href="#rules-rp" onclick="document.getElementById('rp-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="rp-4" style="scroll-margin-top: 30px;">
+      <div class="card-title">4. Спам в ролевой</div>
+      <p><strong>4.1.</strong> Спам в ролевом чате запрещен, как и в чате флуда. За несоблюдением правила последует предупреждение, но может дойти и до бана.</p>
+      <div class="rule-quote">
+        Обсуждение постов переносите в чат флуда. Мы очень приветствуем публичные комментарии к постам ролевиков через использование функции телеграма <strong>«цитировать» → «ответить в другом чате»</strong> или через другие способы (напр., частичными скриншотами). Однако в ролевом чате остаются только посты.
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="#rules-rp" onclick="document.getElementById('rp-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="rp-5" style="scroll-margin-top: 30px;">
+      <div class="card-title">5. Количество игровых ролей</div>
+      <p><strong>5.1.</strong> В нашем проекте есть возможность взять сразу две роли, но при некоторых условиях:</p>
+      <div class="rule-quote">
+        • У вас не должно быть задолженностей по постам как минимум за два последних дедлайна либо ваше участие (желание участвовать) в ролевом процессе должно превышать норму, и вы должны быть уверены в том, что дополнительная роль вас не отяготит.
+      </div>
+      <div class="rule-quote">
+        • На момент взятия второй роли вы должны либо быть готовы к саморолу (временному или постоянному), либо уже иметь соролевика. При отсутствии постов по причине неимения соролевика на второй роли последует ролевое предупреждение.
+      </div>
+      <div class="rule-quote">
+        • Учитывайте, что дополнительную роль вы берете на себя и администрация не обязана вас заставлять отписывать за нее посты.
+      </div>
+      <p style="margin-top: 16px;"><strong>5.2.</strong> Для взятия второй роли вам необходимо запросить бронь у владельца через личные сообщения и в течение пяти дней составить ролевую анкету, отправив ее также владельцу.</p>
+      <div class="rule-quote">
+        <strong>Максимум игровых ролей – 4.</strong><br>
+        Большее их количество вызывает некоторые путаницы при учете дедлайнов, а также усложняет вопросы, касающиеся сорольства.
+      </div>
+      <div class="rule-quote">
+        Выдаются на усмотрение владельца.
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="#rules-rp" onclick="document.getElementById('rp-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="rp-6" style="scroll-margin-top: 30px;">
+      <div class="card-title">6. Оригинальные и фоновые персонажи</div>
+      <p><strong>6.1.</strong> Наш проект предоставляет возможность вводить собственных персонажей в ролевую игру, но с некоторыми условиями:</p>
+      <div class="rule-quote">
+        • Вступить за ОС (Original Character) вы можете в том же порядке, что и за фандомного персонажа, подав заявку через администратора. В строке с ролью на вступительной анкете обязательно указывайте, что вступаете за ОС.
+      </div>
+      <div class="rule-quote">
+        • Исключены Мэри/Марти Сью, дисбалансные персонажи и те, кто нарушает ограничения вселенной.
+      </div>
+      <div class="rule-quote">
+        • Учет ролевой нормы происходит по тем же правилам, что и для фандомных ролей.
+      </div>
+      <p style="margin-top: 16px;"><strong>6.2.</strong> Персонажи, которые появляются в постах ваших основных персонажей (фандомных/оригинальных) – NPC или «фоновые» в анкетах не нуждаются, но также имейте в виду, что они не должны нарушать правил игровой вселенной.</p>
+      <div class="rule-quote">
+        NPC в ваших постах могут быть кем угодно, кроме истинных соулмейтов.
+      </div>
+      <div class="rule-quote">
+        Учитывайте, что все персонажи находятся в одном мире, поэтому при планировании чего-либо «глобального», что может повлиять на отыгрыш других участников, необходимо обсудить детали с владельцем.
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="#rules-rp" onclick="document.getElementById('rp-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+    <div id="rp-7" style="scroll-margin-top: 30px;">
+      <div class="card-title">7. Смена роли</div>
+      <p><strong>7.1.</strong> Первая смена будет доступна уже через день после вступления, если оказалось, что по каким-то причинам ваша нынешняя роль вам не подходит или освободилась желаемая. При этом новая роль ставится на бронь, а смена происходит только после написания анкеты.</p>
+      <div class="rule-quote">
+        Срок брони составляет уже пять дней.
+      </div>
+      <p style="margin-top: 16px;"><strong>7.2.</strong> Последующая смена становится доступной примерно через месяц, в зависимости от причин, по которым вы вновь желаете сменить роль.</p>
+      <div style="margin-top: 10px;">
+        <a href="#rules-rp" onclick="document.getElementById('rp-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <div class="copyright-footer">
+      Все материалы, размещенные в статьях, а также в пределах каналов и чатов, принадлежат ролевой «Bisous de Mirelle». Использование сторонними проектами запрещено.
+    </div>
+  </div>
+</section>
+
+<!-- О РЕЙТИНГЕ РОЛЕВОЙ -->
+    <section id="rules-rating" class="content-section" data-title="О рейтинге ролевой">
+      <h2>О рейтинге ролевой</h2>
+
+      <div class="card">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px;">ROLEPLAY RATING — NC-17</h3>
+          <p style="color: var(--text-muted); margin-top: 4px;">«Bisous de Mirelle: Ruined Souls»</p>
+          <div class="rule-warning" style="display: inline-block; margin-top: 10px;">
+            <strong>Незнание не освобождает от ответственности</strong>
+          </div>
+        </div>
+
+        <p style="margin-bottom: 16px; font-size: 1rem;">
+          Рейтинг <strong>NC-17</strong> допускает более откровенные сцены, нежели рейтинг R, однако менее графичные (натуралистичные/реалистичные) и жестокие, нежели рейтинг NC-21.
+        </p>
+        <p style="margin-bottom: 16px; font-size: 0.98rem; color: var(--text-muted);">
+          Если описания в рейтинге R находятся как бы за ширмой, оставляя взору лишь силуэты, то в NC-17 ширма приоткрывается, показывая больше, но не крупным планом. Тяжелые для восприятия описания рекомендуется сюжетно обосновывать (историей вашего персонажа), а не превращать отыгрыш в марафон по шокированию читателей.
+        </p>
+
+        <div class="rule-disclaimer" style="border-color: #e25865; background: rgba(122, 31, 45, 0.3);">
+          <strong>TW:</strong> Далее в статье присутствуют прямые названия триггерных тем.
+        </div>
+
+        <div style="margin-top: 24px;">
+          <div class="card-title" style="color: #e25865;">Запрещено к упоминанию и описанию</div>
+          <p>Следующие темы <strong>категорически запрещены в любом виде</strong>:</p>
+          <div class="rule-quote">
+            Педо-/зоо- и прочие аморальные филии;<br>
+            Расчленение тел и гуро;<br>
+            Живодерство;<br>
+            Каннибализм;<br>
+            Сексуальное насилие и извращения;<br>
+            Инцест.
+          </div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+        <div>
+          <div class="card-title" style="color: var(--accent-orange);">Обязательны к сокрытию спойлером и прописыванию TW</div>
+          <p>Следующие темы разрешены к отыгрышу, но <strong>без чрезмерной детализации</strong>, которая может вызвать отчетливую травмирующую картинку у читателя:</p>
+          <div class="rule-quote">
+            Смерть (описание процесса или описание умерщвленных);<br>
+            Самоубийства и самоповреждение;<br>
+            Несексуальное насилие, травмы;<br>
+            Описание ранений, кровь;<br>
+            Употребление наркотических веществ;<br>
+            Военные действия (любые упоминания);<br>
+            Обнаженные тела и сексуальные сцены, безвредные фетиши.
+          </div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+        <div>
+          <div class="card-title">Разрешено к описанию</div>
+          <p>TW/CW и спойлер на следующие темы ставится по желанию автора:</p>
+          <div class="rule-quote">
+            Тяжелые переживания;<br>
+            Нецензурная лексика;<br>
+            Алкоголь, персонажи в состоянии алкогольного опьянения;<br>
+            Курение (сильный акцент).
+          </div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+        <div>
+          <div class="card-title">Другие нюансы</div>
+          <p>Также следует избегать использования табуированной или чересчур грубой ненормативной лексики, особенно включающей:</p>
+          <div class="rule-quote">
+            • Оскорбления на почве дискриминации (слюрные выражения);<br>
+            • Грубые (нецензурные/не литературные) названия половых органов или физиологических выделений и прочего, что может сильно «резать слух».
+          </div>
+          <p style="margin-top: 16px;">Мат в репликах персонажей допускается, но полностью заменять речь им, конечно, не следует.</p>
+
+          <div class="rule-warning" style="margin-top: 16px;">
+            Если вы сомневаетесь насчет вписывания определенной сцены, то лучше обратитесь к владельцу. Выход за рамки ведет за собой удаление поста и словесное предупреждение, которое при частых нарушениях может вылиться во флудовой варн.
+          </div>
+        </div>
+
+        <div class="copyright-footer" style="margin-top: 24px; font-size: 0.85rem; color: var(--text-muted); text-align: center; border-top: 1px solid var(--glass-border); padding-top: 16px;">
+          Все материалы, размещенные в статьях, а также в пределах каналов и чатов, принадлежат ролевой «Bisous de Mirelle». Использование сторонними проектами запрещено.
+        </div>
+      </div>
+    </section>
+
+    <!-- ПРАВИЛА ОФОРМЛЕНИЯ АНКЕТ -->
+    <section id="extra-forms" class="content-section" data-title="Правила оформления анкет">
+      <h2>Правила оформления анкет</h2>
+      <div class="card">
+        <div class="card-title"><i class="fa-solid fa-id-card"></i> Правила оформления анкет</div>
+        <p style="color: var(--text-muted);">[Раздел наполняется]</p>
+      </div>
+    </section>
+
+    <!-- ПРАВИЛА ОФОРМЛЕНИЯ ЛОКАЦИЙ -->
+    <section id="extra-locations" class="content-section" data-title="Правила оформления локаций">
+      <h2>Правила оформления локаций</h2>
+      <div class="card">
+        <div class="card-title"><i class="fa-solid fa-map"></i> Правила оформления локаций</div>
+        <p style="color: var(--text-muted);">[Раздел наполняется]</p>
+      </div>
+    </section>
+
+    <!-- СЮЖЕТНЫЕ СТАТЬИ -->
+    <section id="lore-brief" class="content-section" data-title="Краткое содержание сюжета">
+      <h2>Краткое содержание</h2>
+      
+      <div class="card">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px;">PLOT SUMMARY</h3>
+          <p style="color: var(--text-muted);">Кратко о ролевой</p>
+        </div>
+
+        <div class="meta-grid">
+          <div class="meta-item">
+            <strong>Жанры:</strong>
+            Dark Sci-Fi, Антиутопия, Биопанк, Боди-хоррор, Психохоррор, Соулмейты, Выживание
+          </div>
+          <div class="meta-item">
+            <strong>Рейтинг:</strong>
+            NC-17
+          </div>
+          <div class="meta-item">
+            <strong>Норма постов:</strong>
+            от 1000 символов, в 3-ем лице, 1 раз в 10–15 дней (см. правила)
+          </div>
+        </div>
+
+        <p>Когда-то Судьба вела всех людей в Миррэль, чего не скажешь об этом городе сейчас…</p>
+        <p>Провозглашённый в 2021 году столицей Франции Миррэль, находящийся в самом центре своей страны, во второй четверти XXI века гордо носил звание «столицы поцелуев». Во вселенной, что якобы даровала людям родство душ, этот город играл огромную роль, сводя множество соулмейтов, предоставляя им все блага для комфортной жизни. Пока всё не начало стремительно меняться.</p>
+        <p>Третья четверть того же века началась с вереницы волнений, превративших город любви в совершенную противоположность: к концу 60-х годов соулмейтам стало безопаснее скрываться, не имея и толики надежды на ту поддержку и ту хорошую жизнь, которые давало им государство в предыдущие годы.</p>
+        <p>Внезапно охватившая мир эпидемия СПАДа, зацепившая людей, что так и не нашли свою родственную душу, повлекла за собой множество событий, в числе которых: объединения в «группы поддержки», выступившие против счастливого меньшинства, нашедшего свою судьбу; борьба с эпидемией, приведшая к появлению сомнительного препарата, что стал крайней мерой и породил сотни, а то и тысячи мутантов среди ни о чём не подозревавших больных; смена власти, ритуалы, доносы и многое другое, ожидающее вас в этой истории.</p>
+        <p>Будьте предельно аккуратны на улицах некогда славного города: несмотря на кажущуюся чистоту, кем бы вы ни были, разного рода опасности поджидают вас за каждым углом. Какую роль вы займете?</p>
+        
+        <ul style="margin-left: 20px; margin-bottom: 16px; color: var(--text-main);">
+          <li style="margin-bottom: 6px;"><strong>«Счастливчика»</strong> — познавшего радость соулмейтства, но вынужденного тщательно скрываться, чтобы не подвергнуться очищению?</li>
+          <li style="margin-bottom: 6px;">Быть может, <strong>учёного</strong> — приложившего руку к созданию кровавого препарата, а теперь замученного собственной совестью и пытающегося искупить свои грехи?</li>
+          <li>Или вы вовсе <strong>Страж Рассвета</strong> — искренне верящий в возможность избавиться от всего, что мешает счастливой жизни, в которой вы сами можете распоряжаться своей судьбой и оказаться в лучшей версии этого мира?</li>
+        </ul>
+
+        <p>Выбирайте любую из сторон, влияйте на историю и развивайтесь в разнообразных направлениях. Миррэль будет вас ждать.</p>
+
+        <div class="author-credit-box">
+          <div><strong style="color: var(--text-main);">Автор:</strong> @snaillanum (Владелец BdM:RS)</div>
+          <div style="margin-top: 4px;"><strong style="color: var(--text-main);">Редактор:</strong> @K1W1T0 (Администратор BdM:RS)</div>
+        </div>
+
+        <div class="copyright-footer">
+          Все материалы, размещенные в статьях, а также в пределах каналов и чатов, принадлежат ролевой «Bisous de Mirelle». Использование сторонними проектами запрещено.
+        </div>
+      </div>
+    </section>
+
+    <!-- ПРОЛОГ -->
+    <section id="lore-prologue" class="content-section" data-title="Пролог: Соулмейты, СПАД и Некса">
+      <h2>Пролог</h2>
+      <div class="card">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px;">PROLOGUE</h3>
+          <p style="color: var(--text-muted); margin-top: 4px;">«Bisous de Mirelle: Ruined Souls»</p>
+        </div>
+
+        <h3 class="card-title" style="margin-top: 10px; justify-content: center;">Соулмейты</h3>
+        
+        <div style="margin: 20px 0; text-align: center;">
+          <img src="https://img1.teletype.media/files/00/a6/00a6d60b-5490-4f1c-bc65-d8217d619c1a.jpeg" alt="Соулмейты" style="max-width: 100%; border-radius: 10px; border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
+        </div>
+
+        <p>На протяжении веков люди сталкивались с необходимостью разделить свой жизненный путь с ближайшим человеком — соулмейтом, родственной душой, связь с которой была заложена природой ещё до рождения и до разлуки в материальном мире. На теле каждого человека проявляется пять пятен в виде четырёхконечных звёзд, сплетённых в созвездие Судьбы, и с наступлением совершеннолетия каждый неверный поцелуй — проверка родства душ — забирает с собой звезду, приближая к смерти от истраченных попыток.</p>
+        
+        <p>Воссоединение родственных душ — ощутимое как чувство полноценности и самодостаточности, возвращение потерянной части себя — способствует процветанию, долголетию пары, точно сама Судьба дарует их дуэту защиту от Чумы, Войны, Голода и Смерти.</p>
+        
+        <p>Но какова цена этого благополучия? Так ли это необходимо в наши дни, и оправдывает ли пресловутое счастье серьёзные риски скоропостижной смерти?</p>
+        
+        <p>Соулмейты могут жить на разных концах света и даже не подозревать друг о друге, но за бесприютную душу всегда будет тянуть нужда в другом человеке. Сердце, в юном возрасте безустанно трепещущее от любви, не способно уберечь от мимолётных влечений и совершённых ошибок — и если в клишированных романах и в выдумках такое явление ещё уместно, то в современном мире — ко второй половине XXI-го века — общество табуировало эту тему, попыталось прервать, а затем и вовсе демонизировало родственность душ.</p>
+
+        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 30px 0;">
+
+        <h3 class="card-title" style="justify-content: center;">Болезнь «серых камней»</h3>
+        
+        <div style="margin: 20px 0; text-align: center;">
+          <img src="https://img4.teletype.media/files/be/08/be08b1fc-0594-4cd9-a530-606b6e4c3e8b.jpeg" alt="Болезнь серых камней" style="max-width: 100%; border-radius: 10px; border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
+        </div>
+
+        <p>В простонародье данное название быстро закрепилось из-за ясной ассоциации и удачной аналогии с камнями, хотя ранее подразумевало жестокую иронию. Научное название этого диагноза появилось куда позже: синдром прогрессирующей аффективной дисфункции (СПАД).</p>
+        
+        <p>Недомогающий человек, как правило, был склонен к утрате здорового румянца на лице: его кожа постепенно бледнела, за исключением пятен соулмейта, а сам больной всё реже находил в себе силы на общение с окружающими. Ухудшенное психическое состояние, как объясняли учёные, было связано с кардинальным понижением восприимчивости к гормону счастья.</p>
+
+        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 30px 0;">
+
+        <h3 class="card-title" style="justify-content: center;">Некса</h3>
+        
+        <div style="margin: 20px 0; text-align: center;">
+          <img src="https://img4.teletype.media/files/be/59/be59ce0e-d347-4155-943a-80114dbf1a48.jpeg" alt="Некса" style="max-width: 100%; border-radius: 10px; border: 1px solid var(--glass-border); box-shadow: 0 8px 24px rgba(0,0,0,0.5);">
+        </div>
+
+        <p>При столь сжатых сроках задача казалась невыполнимой: создать препарат, который смог бы излечить болезнь, чей очаг толком не нашли. Проблема, стало быть, заключалась в пятнах соулмейтов, но раз их отсутствие убивало людей, нужен был особый, комплексный подход, что компенсировал бы каждый симптом из этого разнообразия.</p>
+
+        <div class="author-credit-box">
+          <div><strong style="color: var(--text-main);">Автор:</strong> @K1W1T0 (Администратор BdM:RS)</div>
+        </div>
+
+        <div class="copyright-footer">
+          Все материалы, размещенные в статьях, а также в пределах каналов и чатов, принадлежат ролевой «Bisous de Mirelle». Использование сторонними проектами запрещено.
+        </div>
+      </div>
+    </section>
+
+    <!-- НАСТОЯЩЕЕ ВРЕМЯ -->
+    <section id="lore-present" class="content-section" data-title="Настоящее время">
+      <h2>Настоящее время</h2>
+      <div class="card">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px;">PRESENT DAY</h3>
+          <p style="color: var(--text-muted); margin-top: 4px;">2067 год, Миррэль</p>
+        </div>
+        <p>Текст статьи «Настоящее время»...</p>
+      </div>
+    </section>
+
+    <!-- СПАД, НЕКСА И ПОСЛЕДСТВИЯ -->
+    <section id="lore-spad" class="content-section" data-title="СПАД, «Некса» и последствия">
+      <h2>СПАД, «Некса» и последствия</h2>
+      <div class="card">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px;">ABOUT SPAD & "NEXA"</h3>
+          <p style="color: var(--text-muted); margin-top: 4px;">«Bisous de Mirelle: Ruined Souls»</p>
+        </div>
+        <p>Содержимое статьи про СПАД и Нексу...</p>
+      </div>
+    </section>
+
+    <!-- ОРДЕН СЕРОГО РАССВЕТА -->
+    <section id="lore-order" class="content-section" data-title="Орден Серого Рассвета (Уложение и иерархия)">
+      <h2>Орден Серого Рассвета</h2>
+      <div class="card">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px;">THE ORDER OF THE GREY DAWN</h3>
+          <p style="color: var(--text-muted); margin-top: 4px;">Орден Серого Рассвета</p>
+        </div>
+
+        <p><strong>Содержание:</strong></p>
+        <ul style="margin-left: 20px; margin-bottom: 24px; color: var(--accent-orange);">
+          <li><a href="#order-ulozhenie" style="color: var(--accent-orange);">Уложение Ясности</a></li>
+          <li><a href="#order-triumvirat" style="color: var(--accent-orange);">Триумвират Освободителей</a></li>
+          <li><a href="#order-ierarchy" style="color: var(--accent-orange);">Иерархия</a></li>
+          <li><a href="#order-rituals" style="color: var(--accent-orange);">Ритуалы и практики</a></li>
+          <li><a href="#order-punishments" style="color: var(--accent-orange);">Наказания</a></li>
+          <li><a href="#order-symbols" style="color: var(--accent-orange);">Символика</a></li>
+        </ul>
+
+        <div id="order-ulozhenie" style="margin-top: 30px;">
+          <h3 class="card-title"><i class="fa-solid fa-scroll"></i> Уложение Ясности</h3>
+          <p>Основной закон новой власти Триумвирата, доктрина идеологического культа, выделяющая фундаментальные аспекты крайне доходчиво. Чем больше людей запомнит главные строки и чем чаще эти слова будут всплывать в рутине людей, тем твёрже закрепится идея, избавленная от малейших сомнений и всяких задних мыслей. Главные пять пунктов Уложения строго регулировали жизнь человека, не заявляя об этом напрямую:</p>
+          
+          <div class="rule-quote">
+            1. «Серые камни» есть освобождение от навязанных природой иллюзий счастья. Да, все люди неизбежно запятнаны, но никто не является рабом так называемой Судьбы.<br>
+            2. Иллюзия счастья — это разбавление Ясности и самообман, вызываемый или кровавым лекарством, или созвездником-обнулителем, кто есть угроза пустой смерти и розни с коллективом. Разбавление Ясности является преступлением.<br>
+            3. «Серые камни» приближают человека к очищению, избавляя от оков материального счастья и мирских удовольствий. Это естественно, что уход от телесных увлечений сопровождается телесным дискомфортом, и тем ближе возвышение, чем он сильнее.<br>
+            4. Триумвират Освободителей — пример тех, кто прошёл через каждую стадию боли и, достигнув истинного знания, избавил мир от лжи.<br>
+            5. Настоящее бессмертие обретается, когда новые поколения, взращённые в Ясности, пронесут веру сквозь века.
+          </div>
+
+          <p>Помимо Доктрины действуют прочие законы, дополняющие основной. Ими руководствуются инквизиторы и патрульные для выявления нарушителей. В числе таких законов есть запрет на поцелуи и на несанкционированные собрания — неподчинение будет разумным поводом для задержания, в первую очередь для устранения сообществ соулмейтов. В связи с тем, что у родственных душ, в отличие от больных «серыми камнями», нет аллергии на солнце и они могут свободно перемещаться днём, в Миррэле установлен комендантский час, подстраивающийся под часы рассвета и заката. Членам Ордена разрешено выходить в дневное время лишь в плащах с отличительной эмблемой.</p>
+          <p>Иные законы регламентируют трудовой долг каждого и деторождение как гражданскую обязанность, а также установлена необходимость каждого сообщать о нарушениях (система доносов в нормативно-правовом акте называется «Заботой»).</p>
+
+          <p style="margin-top: 16px;"><a href="#lore-order" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem;">[Вернуться к содержанию]</a></p>
+        </div>
+
+        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 30px 0;">
+
+        <div id="order-triumvirat">
+          <h3 class="card-title"><i class="fa-solid fa-users"></i> Триумвират Освободителей</h3>
+          <p>Лидеры Ордена Серого Рассвета, объединённые общим делом — их биографии обросли мифами. Двое бывших психологов и один некогда социальный работник в период эпидемии «серых камней» увидели в болезни способ управлять массами, ведь люди так или иначе нуждались в тех, кто успокоит, всё решит и заверит в лучшее. Когда новое лекарство стало отбирать людей у коммуникативных групп, будущий Триумвират Освободителей собрал все силы на то, чтобы уничтожить репутацию «Нексы». Помимо её страшных побочных эффектов, которые разрушили благоговейный образ панацеи, Триумвирату очень сыграли на руку СМИ, молчащие до последнего, ведь это направило народ к новым лидерам. Кульминация власти Ордена Серого Рассвета наступила с завоеванием морального права на управление Миррэлем и последующим взятием мэрии.</p>
+          <p>Не один мессия, а идеальное трио собственноручно создало полноценный культ: каждый вложил свою душу в этот культ и взял под контроль одну из ветвей власти.</p>
+
+          <div class="rule-quote">
+            <strong>Харизматичный оратор Люсьен Арто</strong>, бывший социальный работник, стал лицом и голосом Ордена. Его голос, впервые прозвучавший на взломанных городских радиочастотах, люди узнавали мгновенно. Простые лозунги Арто — «Лживое лекарство в прошлом», «Берегись пустой смерти!», «Долой обнулителей!» — повторяли даже те, кто ещё вчера верил в панацею.<br><br>
+            <strong>Доктор Северин Бланше</strong>, клинический психолог и специалист по травмам, стала архитектором души. Она создала систему ритуалов Ордена: в частности, ввела практики «Бдения» — ежедневных медитаций на боль и холод. Ей также принадлежит система внутреннего контроля — доносов «Забота».<br><br>
+            <strong>Марсель Дюваль</strong>, нейропсихолог, взял на себя роль организатора внешнего контроля. Он превратил разрозненных добровольцев с УФ-фонарями в дисциплинированных «Стражей Рассвета», ведал ресурсами и распределял продовольствие да оружие, а также организовал тайное хранение Нексы для верхушки.
+          </div>
+
+          <p style="margin-top: 16px;"><a href="#lore-order" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem;">[Вернуться к содержанию]</a></p>
+        </div>
+
+        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 30px 0;">
+
+        <div id="order-ierarchy">
+          <h3 class="card-title"><i class="fa-solid fa-layer-group"></i> Иерархия</h3>
+          <p>В рамках целого города и большой численности людей не каждый станет интересоваться Орденом — но этого он и не требует, покуда соблюдается закон. В целом Орден — это не столько про «странное поведение» и локальные ритуалы, сколько про коллектив, совместную деятельность и сплочённость на пути к отказу от «Нексы» и от поиска соулмейта. Всего в иерархии восемь ступеней:</p>
+
+          <div class="rule-quote">
+            <strong>1. Пробуждённые</strong><br>
+            Первая и самая многочисленная ступень. Новоприбывшие, кто только вступил в Орден или присматривается. У большинства Пробуждённых только начинается первая стадия «серых камней». Выполняют простейшую работу, участвуют в Бдениях.<br><br>
+            <strong>2. Ясные</strong><br>
+            Те, чьё тело перешло во вторую стадию «серых камней»: пропало ощущение сладкого, краски поблекли до серого. Составляют основу повседневной жизни, обучают Пробуждённых, следят за порядком.<br><br>
+            <strong>3. Стражи Рассвета</strong><br>
+            Боевое крыло Ордена. Патрулируют опасные зоны, охотятся на Нексатов, вооружены УФ-осветителями и оружием против хрусталя. Подчиняются Марселю Дювалю.<br><br>
+            <strong>4. Вершители Истины</strong><br>
+            Инквизиторы. Проводят трибуналы над лжецами и обнулителями, разыскивают искателей родственных душ, ведут расследования.<br><br>
+            <strong>5. Старшие (Мудрейшие)</strong><br>
+            Достигшие третьей стадии «серых камней» (падение температуры тела, жажда уединения). Живут в отдельных покоях, к ним ходят за советом. Их тела почти не принадлежат этому миру.<br><br>
+            <strong>6. Служители Благоденствия</strong><br>
+            Административный слой. Обеспечивают работу Ордена и города (учёт продовольствия, архивы, школы). Не носят оружия, подчиняются Северин Бланше.<br><br>
+            <strong>7. Хранители Прозрения</strong><br>
+            Высшая ступень (командующие Стражами, советники). Единственные, кто знает о материальной причине долголетия верхушки и пользуется очищенной Нексой.<br><br>
+            <strong>8. Триумвират Освободителей</strong><br>
+            Вершина Ордена (Арто, Бланше, Дюваль).
+          </div>
+
+          <p style="margin-top: 16px;"><a href="#lore-order" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem;">[Вернуться к содержанию]</a></p>
+        </div>
+
+        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 30px 0;">
+
+        <div id="order-rituals">
+          <h3 class="card-title"><i class="fa-solid fa-hands-praying"></i> Ритуалы и практики</h3>
+          <p>Внутренние ритуалы Ордена направлены на укрепление коллективного духа и принятие телесных изменений как части пути к Истине.</p>
+          <div class="rule-quote">
+            • <strong>Бдения:</strong> Ежедневные медитативные практики на боль и холодовые ощущения в кругу братьев и сестер.<br>
+            • <strong>Собрания Рассвета:</strong> Общие встречи с песнопениями и прослушиванием речей Люсьена Арто.
+          </div>
+          <p style="margin-top: 16px;"><a href="#lore-order" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem;">[Вернуться к содержанию]</a></p>
+        </div>
+
+        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 30px 0;">
+
+        <div id="order-punishments">
+          <h3 class="card-title"><i class="fa-solid fa-gavel"></i> Наказания</h3>
+          <p>За нарушение Уложения Ясности и попытки утаить связи с соулмейтами нарушителей ждет трибунал Вершителей Истины.</p>
+          <div class="rule-quote">
+            • Публичное порицание и исправительные работы в опасных зонах.<br>
+            • Изгнание из общины или передача в руки правосудия Ордена как «обнулителей».
+          </div>
+          <p style="margin-top: 16px;"><a href="#lore-order" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem;">[Вернуться к содержанию]</a></p>
+        </div>
+
+        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 30px 0;">
+
+        <div id="order-symbols">
+          <h3 class="card-title"><i class="fa-solid fa-certificate"></i> Символика</h3>
+          <p>Символом Ордена является восходящее солнце серого оттенка, пробивающееся сквозь покровы лжи. Обязательный элемент одежды Стражей — длинные плащи-мантии, защищающие от дневного света.</p>
+          <p style="margin-top: 16px;"><a href="#lore-order" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem;">[Вернуться к содержанию]</a></p>
+        </div>
+
+        <div class="author-credit-box" style="margin-top: 30px;">
+          <div><strong style="color: var(--text-main);">Автор:</strong> @K1W1T0 (Администратор BdM:RS)</div>
+          <div style="margin-top: 4px;"><strong style="color: var(--text-main);">Редактор:</strong> @snaillanum (Владелец BdM:RS)</div>
+        </div>
+
+        <div class="copyright-footer">
+          Все материалы, размещенные в статьях, а также в пределах каналов и чатов, принадлежат ролевой «Bisous de Mirelle». Использование сторонними проектами запрещено.
+        </div>
+      </div>
+    </section>
+
+    <!-- ОСТАЛЬНЫЕ СТАТЬИ -->
+    <section id="lore-camps" class="content-section" data-title="Лагеря Соулмейтов">
+      <h2>Лагеря Соулмейтов</h2>
+      <div class="card">
+        <div class="card-title"><i class="fa-solid fa-campground"></i> Лагеря Соулмейтов</div>
+        <p style="color: var(--text-muted);">[Текст статьи будет добавлен]</p>
+      </div>
+    </section>
+
+    <section id="lore-bio" class="content-section" data-title="Биохимия соулмейтов">
+      <h2>Биохимия соулмейтов</h2>
+      <div class="card">
+        <div class="card-title"><i class="fa-solid fa-dna"></i> Биохимия соулмейтов</div>
+        <p style="color: var(--text-muted);">[Текст статьи будет добавлен]</p>
+      </div>
+    </section>
+
+    <section id="lore-locations" class="content-section" data-title="Локации проекта">
+      <h2>Локации проекта</h2>
+      <div class="card">
+        <div class="card-title"><i class="fa-solid fa-map-location-dot"></i> Локации и карты мира</div>
+        <p>Все актуальные локации, описания мест и карты нашего мира собраны в специализированном Telegram-канале.</p>
+        <div class="rule-disclaimer" style="margin-top: 20px; text-align: center;">
+          <p style="margin-bottom: 14px;">Нажав на кнопку ниже, вы будете перенаправлены в наш Telegram-канал с локациями:</p>
+          <a href="https://t.me/LocationMirelle" target="_blank" class="btn-join">
+            <i class="fa-brands fa-telegram"> &nbsp; Перейти в канал локаций (ТГК)</i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="content-section" data-title="Часто задаваемые вопросы (FAQ)">
+      <h2>Часто задаваемые вопросы (FAQ)</h2>
+      <div class="card">
+        <div class="card-title"><i class="fa-solid fa-circle-info"></i> Часто задаваемые вопросы</div>
+        <p>Здесь будут размещены ключевые ответы на вопросы игроков по проекту и механикам.</p>
+      </div>
+    </section>
+
+    <section id="rules-joining" class="content-section" data-title="О вступлении в ролевую">
+      <h2>О вступлении</h2>
+      <div class="card">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px;">ABOUT JOINING</h3>
+          <p style="color: var(--text-muted); margin-top: 4px;">«Bisous de Mirelle: Ruined Souls»</p>
+        </div>
+        <p>Информация о вступлении в проект...</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Navigation with Browser History support (Back/Forward buttons)
+    function navigateTo(id, pushHistory = true) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-link, .sub-link').forEach(el => el.classList.remove('active'));
+      
+      const target = document.getElementById(id);
+      if (target) {
+        target.classList.add('active');
+      }
+
+      if (pushHistory) {
+        history.pushState({ sectionId: id }, "", "#" + id);
+      }
+
+      if (window.innerWidth <= 900) {
+        document.getElementById('sidebar').classList.remove('mobile-open');
+        document.getElementById('sidebarOverlay').classList.remove('show');
+      }
+
+      // Close search dropdown
+      document.getElementById('searchResults').classList.remove('show');
+    }
+
+    window.addEventListener('popstate', (event) => {
+      if (event.state && event.state.sectionId) {
+        navigateTo(event.state.sectionId, false);
+      } else {
+        navigateTo('news', false);
+      }
+    });
+
+    function toggleDropdown(id) {
+      document.getElementById(id).classList.toggle('show');
+    }
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      sidebar.classList.toggle('mobile-open');
+      overlay.classList.toggle('show');
+    }
+
+    // Interactive Search with clickable article links
+    const searchIndex = [
+      { id: 'news', title: 'Главная / Краткое содержание', text: 'главная сюжет миррэль соулмейты счастливчики ученые страж рассвета' },
+      { id: 'rules-norm', title: 'Правила: О норме и рестах', text: 'норма рест дедлайн флуд ролевая варн удаление возвращение 4 дня' },
+      { id: 'rules-flood', title: 'Правила поведения во флуде', text: 'флуд мат триггерные темы цензура конфликт конфиденциальность спам боты' },
+      { id: 'rules-rp', title: 'Правила поведения в ролевой', text: 'ролевая анкеты посты 1000 символов nс-17 роли ос npc' },
+      { id: 'rules-rating', title: 'О рейтинге ролевой (NC-17)', text: 'рейтинг nc-17 tw cw запрещено эротика насилие' },
+      { id: 'extra-forms', title: 'Правила оформления анкет', text: 'анкеты шаблон оформление' },
+      { id: 'extra-locations', title: 'Правила оформления локаций', text: 'локации карты мира' },
+      { id: 'lore-brief', title: 'Сюжет: Краткое содержание', text: 'сюжет кратко миррэль соулмейты' },
+      { id: 'lore-prologue', title: 'Пролог: Соулмейты и СПАД', text: 'пролог соулмейты серые камни спад некса побочные эффекты' },
+      { id: 'lore-present', title: 'Настоящее время', text: 'настоящее время 2067 миррэль' },
+      { id: 'lore-spad', title: 'СПАД, «Некса» и последствия', text: 'спад некса побочные эффекты мутанты' },
+      { id: 'lore-order', title: 'Орден Серого Рассвета', text: 'орден серого рассвета уложение ясности триумвират иерархия ритуалы наказания символика' },
+      { id: 'lore-camps', title: 'Лагеря Соулмейтов', text: 'лагеря соулмейтов' },
+      { id: 'lore-bio', title: 'Биохимия соулмейтов', text: 'биохимия соулмейтов' },
+      { id: 'lore-locations', title: 'Локации проекта', text: 'локации тгк канал' },
+      { id: 'faq', title: 'FAQ (Часто задаваемые вопросы)', text: 'faq вопросы ответы' },
+      { id: 'rules-joining', title: 'О вступлении', text: 'вступление подать анкету' }
+    ];
+
+    function handleSearch(query) {
+      const q = query.trim().toLowerCase();
+      const resultsContainer = document.getElementById('searchResults');
+      
+      if (!q) {
+        resultsContainer.innerHTML = '';
+        resultsContainer.classList.remove('show');
+        return;
+      }
+
+      const matches = searchIndex.filter(item => 
+        item.title.toLowerCase().includes(q) || item.text.includes(q)
+      );
+
+      if (matches.length === 0) {
+        resultsContainer.innerHTML = '<div class="search-result-item" style="color: var(--text-muted);">Ничего не найдено</div>';
+        resultsContainer.classList.add('show');
+        return;
+      }
+
+      let html = '';
+      matches.forEach(m => {
+        html += `<div class="search-result-item" onclick="navigateTo('${m.id}'); document.getElementById('pageSearch').value=''; document.getElementById('searchResults').classList.remove('show');">
+          <strong>${m.title}</strong>
+          <span style="font-size: 0.78rem; color: var(--text-muted);">Нажмите, чтобы перейти к статье</span>
+        </div>`;
+      });
+
+      resultsContainer.innerHTML = html;
+      resultsContainer.classList.add('show');
+    }
+
+    // Close search dropdown when clicking outside
+    window.addEventListener('click', (e) => {
+      if (!e.target.closest('.header-search-wrapper')) {
+        document.getElementById('searchResults').classList.remove('show');
+      }
+    });
+
+    // Initial load check hash
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && document.getElementById(hash)) {
+        navigateTo(hash, false);
+      }
+    });
+  </script>
+</body>
+</html>
