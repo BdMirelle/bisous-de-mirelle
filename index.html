@@ -244,15 +244,22 @@
       justify-content: space-between;
     }
 
-    .dropdown-container {
-      display: none;
-      background: rgba(0, 0, 0, 0.25);
-      padding-left: 8px;
-    }
+.dropdown-container {
+  display: none;
+  background: rgba(0, 0, 0, 0.25);
+  padding-left: 8px;
+  visibility: hidden; /* Жестко прячем от глаз и курсора */
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
 
-    .dropdown-container.show {
-      display: block;
-    }
+.dropdown-container.show {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  height: auto;
+}
 
     .sub-link {
       display: block;
@@ -502,28 +509,34 @@
       border-radius: 0 6px 6px 0;
     }
 
-    .meta-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      background: rgba(15, 12, 10, 0.5);
-      padding: 16px 20px;
-      border-radius: 10px;
-      border: 1px solid var(--glass-border);
-      margin-bottom: 20px;
-    }
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  background: rgba(15, 12, 10, 0.5);
+  padding: 16px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  margin-bottom: 20px;
+}
 
-    .meta-item {
-      font-size: 0.92rem;
-    }
+.meta-item {
+  font-size: 0.92rem;
+  text-align: left;
+}
 
-    .meta-item strong {
-      color: var(--accent-orange);
-      display: block;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+.meta-item strong {
+  color: var(--accent-orange, #ff8c00); /* возвращаем оранжевый цвет заголовкам */
+  display: block;
+  margin-bottom: 2px;
+}
+
+@media (max-width: 768px) {
+  .meta-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 14px 16px;
+  }
 
     .article-nav {
       display: flex;
@@ -664,7 +677,7 @@
       </div>
     </div>
 
-    <nav>
+<nav>
       <div class="nav-group-title">Навигация</div>
       <a class="nav-link active" onclick="navigateTo('news')">
         <i class="fa-solid fa-house"></i> Главная / Краткое содержание
@@ -693,7 +706,7 @@
         <a class="sub-link" onclick="navigateTo('lore-order')">Орден Серого Рассвета</a>
         <a class="sub-link" onclick="navigateTo('lore-camps')">Лагеря соулмейтов</a>
         <a class="sub-link" onclick="navigateTo('lore-bio')">Биохимия соулмейтов</a>
-        <a class="sub-link" onclick="navigateTo('lore-locations')">Локации Миррэля
+        <a class="sub-link" onclick="navigateTo('lore-locations')">Локации Миррэля</a>
       </div>
 
       <a class="nav-link dropdown-btn" onclick="toggleDropdown('extras-drop')">
