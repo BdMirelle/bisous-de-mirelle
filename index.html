@@ -6,637 +6,649 @@
   <title>Bisous de Mirelle: Ruined Souls</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:wght@600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-dark: #0f0c0a;
-      --glass-bg: rgba(28, 21, 18, 0.75);
-      --glass-card: rgba(35, 27, 23, 0.75);
-      --glass-border: rgba(217, 119, 66, 0.18);
-      --glass-border-hover: rgba(217, 119, 66, 0.45);
-      --accent-orange: #d97742;
-      --accent-orange-glow: rgba(217, 119, 66, 0.35);
-      --accent-burgundy: #7a1f2d;
-      --accent-burgundy-glow: rgba(122, 31, 45, 0.4);
-      --text-main: #eae1dc;
-      --text-muted: #a69890;
-      --shadow-3d: 0 12px 32px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
-    }
+<style>
+  :root {
+    --bg-dark: #0f0c0a;
+    --glass-bg: rgba(28, 21, 18, 0.75);
+    --glass-card: rgba(35, 27, 23, 0.75);
+    --glass-border: rgba(217, 119, 66, 0.18);
+    --glass-border-hover: rgba(217, 119, 66, 0.45);
+    --accent-orange: #d97742;
+    --accent-orange-glow: rgba(217, 119, 66, 0.35);
+    --accent-burgundy: #7a1f2d;
+    --accent-burgundy-glow: rgba(122, 31, 45, 0.4);
+    --text-main: #eae1dc;
+    --text-muted: #a69890;
+    --shadow-3d: 0 12px 32px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
 
-    ::-webkit-scrollbar-track {
-      background: rgba(15, 12, 10, 0.8);
-    }
+  ::-webkit-scrollbar-track {
+    background: rgba(15, 12, 10, 0.8);
+  }
 
-    ::-webkit-scrollbar-thumb {
-      background: rgba(217, 119, 66, 0.3);
-      border-radius: 4px;
-    }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(217, 119, 66, 0.3);
+    border-radius: 4px;
+  }
 
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--accent-orange);
-    }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-orange);
+  }
 
-    html {
-      scroll-behavior: smooth;
-    }
+  html {
+    scroll-behavior: smooth;
+  }
 
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: 'Roboto', sans-serif;
-      line-height: 1.6;
-      display: flex;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
 
-    .bg-glow-1 {
-      position: fixed;
-      top: -100px;
-      right: -100px;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, var(--accent-orange-glow) 0%, rgba(0,0,0,0) 70%);
-      filter: blur(80px);
-      z-index: 0;
-      pointer-events: none;
-    }
+  .bg-glow-1 {
+    position: fixed;
+    top: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--accent-orange-glow) 0%, rgba(0,0,0,0) 70%);
+    filter: blur(80px);
+    z-index: 0;
+    pointer-events: none;
+  }
 
-    .bg-glow-2 {
-      position: fixed;
-      bottom: -150px;
-      left: 100px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, var(--accent-burgundy-glow) 0%, rgba(0,0,0,0) 70%);
-      filter: blur(100px);
-      z-index: 0;
-      pointer-events: none;
-    }
+  .bg-glow-2 {
+    position: fixed;
+    bottom: -150px;
+    left: 100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent-burgundy-glow) 0%, rgba(0,0,0,0) 70%);
+    filter: blur(100px);
+    z-index: 0;
+    pointer-events: none;
+  }
 
+  .mobile-header {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 95;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mobile-header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--accent-orange);
+  }
+
+  .mobile-toggle-btn {
+    background: rgba(217, 119, 66, 0.15);
+    border: 1px solid var(--glass-border);
+    color: var(--accent-orange);
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 99;
+  }
+
+  .sidebar-overlay.show {
+    display: block;
+  }
+
+  aside {
+    width: 290px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    z-index: 110;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+    overflow-x: hidden;
+  }
+
+  .brand {
+    padding: 24px 20px;
+    border-bottom: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-logo-svg {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 4px 10px rgba(122, 31, 45, 0.5));
+    transition: transform 0.3s ease;
+  }
+
+  .brand-logo-svg:hover {
+    transform: scale(1.08) rotate(3deg);
+  }
+
+  .brand h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem;
+    color: var(--accent-orange);
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px rgba(217, 119, 66, 0.2);
+  }
+
+  .brand span {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: 'Roboto', sans-serif;
+  }
+
+  nav {
+    flex: 1;
+    padding: 20px 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(217, 119, 66, 0.3) rgba(15, 12, 10, 0.8);
+  }
+
+  .nav-group-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    padding: 12px 24px 6px;
+    font-weight: 700;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    color: var(--text-main);
+    text-decoration: none;
+    gap: 12px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    background: rgba(217, 119, 66, 0.12);
+    color: var(--accent-orange);
+    padding-left: 28px;
+  }
+
+  .nav-link.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--accent-orange), var(--accent-burgundy));
+    box-shadow: 0 0 10px var(--accent-orange);
+  }
+
+  .nav-link i {
+    width: 20px;
+    text-align: center;
+    color: var(--accent-orange);
+  }
+
+  .dropdown-btn {
+    justify-content: space-between;
+  }
+
+  .dropdown-container {
+    display: none;
+    background: rgba(0, 0, 0, 0.25);
+    padding-left: 8px;
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .dropdown-container.show {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+  }
+
+  .sub-link {
+    display: block;
+    padding: 10px 24px 10px 48px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .sub-link:hover {
+    color: var(--accent-orange);
+    transform: translateX(4px);
+  }
+
+  .server-status {
+    padding: 16px 20px;
+    border-top: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .status-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background-color: #4cd964;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #4cd964;
+    flex-shrink: 0;
+  }
+
+  .dot-orange {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-orange);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-orange);
+    flex-shrink: 0;
+  }
+
+  main {
+    margin-left: 290px;
+    flex: 1;
+    padding: 40px 60px;
+    max-width: 1100px;
+    position: relative;
+    z-index: 1;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 20px 28px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-3d);
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .header-search-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+    max-width: 320px;
+  }
+
+  .header-search-input {
+    width: 100%;
+    background: rgba(15, 12, 10, 0.6);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 10px 14px 10px 38px;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+
+  .header-search-input:focus {
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 10px var(--accent-orange-glow);
+  }
+
+  .header-search-wrapper i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+  }
+
+  .search-results-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 100%;
+    background: #1c1512;
+    border: 1px solid var(--glass-border-hover);
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.8);
+    z-index: 110;
+    max-height: 320px;
+    overflow-y: auto;
+  }
+
+  .search-results-dropdown.show {
+    display: block;
+  }
+
+  .search-result-item {
+    display: block;
+    padding: 10px 14px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.88rem;
+    border-bottom: 1px solid rgba(217, 119, 66, 0.1);
+    transition: background 0.2s ease;
+    cursor: pointer;
+  }
+
+  .search-result-item:last-child {
+    border-bottom: none;
+  }
+
+  .search-result-item:hover {
+    background: rgba(217, 119, 66, 0.2);
+    color: var(--accent-orange);
+  }
+
+  .search-result-item strong {
+    display: block;
+    color: var(--accent-orange);
+    font-size: 0.9rem;
+  }
+
+  .btn-join {
+    background: linear-gradient(135deg, var(--accent-burgundy), var(--accent-orange));
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px var(--accent-burgundy-glow);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: 0.9rem;
+  }
+
+  .btn-join:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 25px var(--accent-orange-glow);
+  }
+
+  .content-section {
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+  }
+
+  .content-section.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--accent-orange);
+    margin-bottom: 20px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  }
+
+  .card {
+    background: var(--glass-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow-3d);
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    border-color: var(--glass-border-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent-orange-glow);
+  }
+
+  .card-title {
+    font-size: 1.35rem;
+    color: #fff;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .card-title i {
+    color: var(--accent-orange);
+    filter: drop-shadow(0 2px 6px var(--accent-orange-glow));
+  }
+
+  p {
+    margin-bottom: 12px;
+    color: var(--text-main);
+    font-size: 1.02rem;
+  }
+
+  .rule-quote {
+    border-left: 3px solid rgba(217, 119, 66, 0.6);
+    padding-left: 14px;
+    margin: 10px 0 14px 0;
+    color: var(--text-muted);
+    font-size: 0.96rem;
+    font-style: normal;
+    background: rgba(0, 0, 0, 0.15);
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  /* Сетка мета-информации */
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    background: rgba(15, 12, 10, 0.5);
+    padding: 16px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+    margin-bottom: 20px;
+  }
+
+  .meta-item {
+    font-size: 0.92rem;
+    text-align: left;
+  }
+
+  .meta-item strong {
+    color: var(--accent-orange, #ff8c00);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* По умолчанию для ПК: центрируем блок рейтинга */
+  .meta-grid .rating-item {
+    text-align: center;
+  }
+
+  .article-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+    background: rgba(15, 12, 10, 0.5);
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+  }
+
+  .article-nav a {
+    color: var(--accent-orange);
+    background: rgba(217, 119, 66, 0.1);
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    border: 1px solid rgba(217, 119, 66, 0.2);
+    transition: all 0.2s ease;
+  }
+
+  .article-nav a:hover {
+    background: var(--accent-orange);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  .rule-warning {
+    background: rgba(122, 31, 45, 0.25);
+    border-left: 4px solid #e25865;
+    padding: 14px 18px;
+    border-radius: 4px;
+    margin: 16px 0;
+    font-size: 0.95rem;
+  }
+
+  .rule-disclaimer {
+    background: rgba(217, 119, 66, 0.12);
+    border: 1px solid var(--glass-border-hover);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 0.92rem;
+    color: #f1e5de;
+  }
+
+  .author-credit-box {
+    margin-top: 24px;
+    padding: 14px 18px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-orange);
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+
+  .copyright-footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--glass-border);
+  }
+
+  /* Адаптивность для экранов до 900px (мобильное меню) */
+  @media (max-width: 900px) {
     .mobile-header {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--glass-border);
-      z-index: 95;
-      padding: 0 20px;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .mobile-header h1 {
-      font-family: 'Cinzel', serif;
-      font-size: 1rem;
-      color: var(--accent-orange);
-    }
-
-    .mobile-toggle-btn {
-      background: rgba(217, 119, 66, 0.15);
-      border: 1px solid var(--glass-border);
-      color: var(--accent-orange);
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-size: 1.1rem;
-      cursor: pointer;
-    }
-
-    .sidebar-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(4px);
-      z-index: 99;
-    }
-
-    .sidebar-overlay.show {
-      display: block;
+      display: flex;
     }
 
     aside {
-      width: 290px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-right: 1px solid var(--glass-border);
-      display: flex;
-      flex-direction: column;
-      position: fixed;
-      height: 100vh;
-      z-index: 110;
-      box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
-      transition: transform 0.3s ease;
-      overflow-x: hidden;
-    }
-
-    .brand {
-      padding: 24px 20px;
-      border-bottom: 1px solid var(--glass-border);
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .brand-logo-svg {
-      width: 48px;
-      height: 48px;
-      flex-shrink: 0;
-      filter: drop-shadow(0 4px 10px rgba(122, 31, 45, 0.5));
-      transition: transform 0.3s ease;
-    }
-
-    .brand-logo-svg:hover {
-      transform: scale(1.08) rotate(3deg);
-    }
-
-    .brand h1 {
-      font-family: 'Cinzel', serif;
-      font-size: 1.05rem;
-      color: var(--accent-orange);
-      line-height: 1.2;
-      letter-spacing: 0.5px;
-      text-shadow: 0 2px 8px rgba(217, 119, 66, 0.2);
-    }
-
-    .brand span {
-      display: block;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-family: 'Roboto', sans-serif;
-    }
-
-    nav {
-      flex: 1;
-      padding: 20px 0;
-      overflow-y: auto;
-      overflow-x: hidden;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(217, 119, 66, 0.3) rgba(15, 12, 10, 0.8);
-    }
-
-    .nav-group-title {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-muted);
-      padding: 12px 24px 6px;
-      font-weight: 700;
-    }
-
-    .nav-link {
-      display: flex;
-      align-items: center;
-      padding: 12px 24px;
-      color: var(--text-main);
-      text-decoration: none;
-      gap: 12px;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .nav-link:hover, .nav-link.active {
-      background: rgba(217, 119, 66, 0.12);
-      color: var(--accent-orange);
-      padding-left: 28px;
-    }
-
-    .nav-link.active::before {
-      content: '';
-      position: absolute;
-      left: 0;
+      transform: translateX(-100%);
       top: 0;
-      height: 100%;
-      width: 4px;
-      background: linear-gradient(to bottom, var(--accent-orange), var(--accent-burgundy));
-      box-shadow: 0 0 10px var(--accent-orange);
     }
 
-    .nav-link i {
-      width: 20px;
-      text-align: center;
-      color: var(--accent-orange);
-    }
-
-    .dropdown-btn {
-      justify-content: space-between;
-    }
-
-.dropdown-container {
-  display: none;
-  background: rgba(0, 0, 0, 0.25);
-  padding-left: 8px;
-  visibility: hidden; /* Жестко прячем от глаз и курсора */
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.dropdown-container.show {
-  display: block;
-  visibility: visible;
-  opacity: 1;
-  height: auto;
-}
-
-    .sub-link {
-      display: block;
-      padding: 10px 24px 10px 48px;
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
-
-    .sub-link:hover {
-      color: var(--accent-orange);
-      transform: translateX(4px);
-    }
-
-    .server-status {
-      padding: 16px 20px;
-      border-top: 1px solid var(--glass-border);
-      background: rgba(0, 0, 0, 0.3);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .status-badge {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      background-color: #4cd964;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #4cd964;
-      flex-shrink: 0;
-    }
-
-    .dot-orange {
-      width: 8px;
-      height: 8px;
-      background-color: var(--accent-orange);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--accent-orange);
-      flex-shrink: 0;
+    aside.mobile-open {
+      transform: translateX(0);
     }
 
     main {
-      margin-left: 290px;
-      flex: 1;
-      padding: 40px 60px;
-      max-width: 1100px;
-      position: relative;
-      z-index: 1;
+      margin-left: 0;
+      padding: 80px 20px 40px;
     }
 
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 40px;
-      padding: 20px 28px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      box-shadow: var(--shadow-3d);
-      gap: 20px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: stretch;
     }
 
     .header-search-wrapper {
-      position: relative;
-      flex: 1;
-      min-width: 220px;
-      max-width: 320px;
-    }
-
-    .header-search-input {
-      width: 100%;
-      background: rgba(15, 12, 10, 0.6);
-      border: 1px solid var(--glass-border);
-      border-radius: 8px;
-      padding: 10px 14px 10px 38px;
-      color: var(--text-main);
-      font-size: 0.9rem;
-      outline: none;
-      transition: all 0.3s ease;
-    }
-
-    .header-search-input:focus {
-      border-color: var(--accent-orange);
-      box-shadow: 0 0 10px var(--accent-orange-glow);
-    }
-
-    .header-search-wrapper i {
-      position: absolute;
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-    }
-
-    /* Live Search Results Dropdown */
-    .search-results-dropdown {
-      display: none;
-      position: absolute;
-      top: calc(100% + 6px);
-      left: 0;
-      width: 100%;
-      background: #1c1512;
-      border: 1px solid var(--glass-border-hover);
-      border-radius: 10px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.8);
-      z-index: 110;
-      max-height: 320px;
-      overflow-y: auto;
-    }
-
-    .search-results-dropdown.show {
-      display: block;
-    }
-
-    .search-result-item {
-      display: block;
-      padding: 10px 14px;
-      color: var(--text-main);
-      text-decoration: none;
-      font-size: 0.88rem;
-      border-bottom: 1px solid rgba(217, 119, 66, 0.1);
-      transition: background 0.2s ease;
-      cursor: pointer;
-    }
-
-    .search-result-item:last-child {
-      border-bottom: none;
-    }
-
-    .search-result-item:hover {
-      background: rgba(217, 119, 66, 0.2);
-      color: var(--accent-orange);
-    }
-
-    .search-result-item strong {
-      display: block;
-      color: var(--accent-orange);
-      font-size: 0.9rem;
+      max-width: 100%;
     }
 
     .btn-join {
-      background: linear-gradient(135deg, var(--accent-burgundy), var(--accent-orange));
-      color: #fff;
-      padding: 10px 22px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 6px 20px var(--accent-burgundy-glow);
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      font-size: 0.9rem;
+      width: 100%;
     }
-
-    .btn-join:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 10px 25px var(--accent-orange-glow);
-    }
-
-    .content-section {
-      display: none;
-      animation: fadeIn 0.4s ease-in-out;
-    }
-
-    .content-section.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      color: var(--accent-orange);
-      margin-bottom: 20px;
-      text-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    }
-
-    .card {
-      background: var(--glass-card);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border);
-      border-radius: 14px;
-      padding: 28px;
-      margin-bottom: 28px;
-      box-shadow: var(--shadow-3d);
-      transition: all 0.3s ease;
-    }
-
-    .card:hover {
-      border-color: var(--glass-border-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent-orange-glow);
-    }
-
-    .card-title {
-      font-size: 1.35rem;
-      color: #fff;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: 'Playfair Display', serif;
-    }
-
-    .card-title i {
-      color: var(--accent-orange);
-      filter: drop-shadow(0 2px 6px var(--accent-orange-glow));
-    }
-
-    p {
-      margin-bottom: 12px;
-      color: var(--text-main);
-      font-size: 1.02rem;
-    }
-
-    /* Neutral Blockquote Styling for all rules */
-    .rule-quote {
-      border-left: 3px solid rgba(217, 119, 66, 0.6);
-      padding-left: 14px;
-      margin: 10px 0 14px 0;
-      color: var(--text-muted);
-      font-size: 0.96rem;
-      font-style: normal;
-      background: rgba(0, 0, 0, 0.15);
-      padding-top: 6px;
-      padding-bottom: 6px;
-      border-radius: 0 6px 6px 0;
-    }
-
-.meta-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
-  background: rgba(15, 12, 10, 0.5);
-  padding: 16px 20px;
-  border-radius: 10px;
-  border: 1px solid var(--glass-border);
-  margin-bottom: 20px;
-}
-
-.meta-item {
-  font-size: 0.92rem;
-  text-align: left;
-}
-
-.meta-item strong {
-  color: var(--accent-orange, #ff8c00); /* возвращаем оранжевый цвет заголовкам */
-  display: block;
-  margin-bottom: 2px;
-}
-
-@media (max-width: 768px) {
-  .meta-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
-    padding: 14px 16px;
   }
 
-    .article-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-      background: rgba(15, 12, 10, 0.5);
-      padding: 16px;
-      border-radius: 10px;
-      border: 1px solid var(--glass-border);
+  /* Адаптивность для экранов до 768px (мобильная сетка и выравнивание рейтинга) */
+  @media (max-width: 768px) {
+    .meta-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 14px 16px;
     }
 
-    .article-nav a {
-      color: var(--accent-orange);
-      background: rgba(217, 119, 66, 0.1);
-      padding: 6px 14px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 0.85rem;
-      border: 1px solid rgba(217, 119, 66, 0.2);
-      transition: all 0.2s ease;
+    /* На мобильных устройствах возвращаем рейтинг по левому краю */
+    .meta-grid .rating-item {
+      text-align: left;
     }
-
-    .article-nav a:hover {
-      background: var(--accent-orange);
-      color: #fff;
-      transform: translateY(-2px);
-    }
-
-    .rule-warning {
-      background: rgba(122, 31, 45, 0.25);
-      border-left: 4px solid #e25865;
-      padding: 14px 18px;
-      border-radius: 4px;
-      margin: 16px 0;
-      font-size: 0.95rem;
-    }
-
-    .rule-disclaimer {
-      background: rgba(217, 119, 66, 0.12);
-      border: 1px solid var(--glass-border-hover);
-      padding: 16px 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      font-size: 0.92rem;
-      color: #f1e5de;
-    }
-
-    .author-credit-box {
-      margin-top: 24px;
-      padding: 14px 18px;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 8px;
-      border-left: 3px solid var(--accent-orange);
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
-
-    .copyright-footer {
-      margin-top: 40px;
-      padding: 20px;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      border-top: 1px solid var(--glass-border);
-    }
-
-    @media (max-width: 900px) {
-      .mobile-header {
-        display: flex;
-      }
-
-      aside {
-        transform: translateX(-100%);
-        top: 0;
-      }
-
-      aside.mobile-open {
-        transform: translateX(0);
-      }
-
-      main {
-        margin-left: 0;
-        padding: 80px 20px 40px;
-      }
-
-      header {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .header-search-wrapper {
-        max-width: 100%;
-      }
-
-      .btn-join {
-        width: 100%;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
@@ -731,11 +743,11 @@
     <div class="server-status">
       <div class="status-badge">
         <div class="dot"></div>
-        <span>Игроков в проекте: <strong>13 активных</strong></span>
+        <span>Игроков в проекте: <strong>14</strong></span>
       </div>
       <div class="status-badge">
         <div class="dot-orange"></div>
-        <span>Забронировано мест: <strong>2</strong></span>
+        <span>Забронировано мест: <strong>3</strong></span>
       </div>
     </div>
   </aside>
@@ -771,19 +783,19 @@
         </div>
 
 <div class="meta-grid">
-          <div class="meta-item">
-            <strong>Жанры:</strong>
-            Dark Sci-Fi, Антиутопия, Биопанк, Боди-хоррор, Психохоррор, Соулмейты, Выживание
-          </div>
-          <div class="meta-item" style="text-align: center !important;">
-            <strong>Рейтинг:</strong>
-            NC-17
-          </div>
-          <div class="meta-item">
-            <strong>Норма постов:</strong>
-            от 1000 символов, 3-е лицо, 1 раз в 10–15 дней
-          </div>
-        </div>
+  <div class="meta-item">
+    <strong>Жанры:</strong>
+    Dark Sci-Fi, Антиутопия, Биопанк, Боди-хоррор, Психохоррор, Соулмейты, Выживание
+  </div>
+  <div class="meta-item rating-item">
+    <strong>Рейтинг:</strong>
+    NC-17
+  </div>
+  <div class="meta-item">
+    <strong>Норма постов:</strong>
+    от 1000 символов, 3-е лицо, 1 раз в 10–15 дней
+  </div>
+</div>
 
         <p>Когда-то Судьба вела всех людей в Миррэль, чего не скажешь об этом городе сейчас…</p>
         <p>Провозглашённый в 2021 году столицей Франции Миррэль, находящийся в самом центре своей страны, во второй четверти XXI века гордо носил звание «столицы поцелуев». Во вселенной, что якобы даровала людям родство душ, этот город играл огромную роль, сводя множество соулмейтов, предоставляя им все блага для комфортной жизни. Пока всё не начало стремительно меняться.</p>
@@ -1578,19 +1590,19 @@
         </div>
 
 <div class="meta-grid">
-          <div class="meta-item">
-            <strong>Жанры:</strong>
-            Dark Sci-Fi, Антиутопия, Биопанк, Боди-хоррор, Психохоррор, Соулмейты, Выживание
-          </div>
-          <div class="meta-item" style="text-align: center !important;">
-            <strong>Рейтинг:</strong>
-            NC-17
-          </div>
-          <div class="meta-item">
-            <strong>Норма постов:</strong>
-            от 1000 символов, 3-е лицо, 1 раз в 10–15 дней
-          </div>
-        </div>
+  <div class="meta-item">
+    <strong>Жанры:</strong>
+    Dark Sci-Fi, Антиутопия, Биопанк, Боди-хоррор, Психохоррор, Соулмейты, Выживание
+  </div>
+  <div class="meta-item rating-item">
+    <strong>Рейтинг:</strong>
+    NC-17
+  </div>
+  <div class="meta-item">
+    <strong>Норма постов:</strong>
+    от 1000 символов, 3-е лицо, 1 раз в 10–15 дней
+  </div>
+</div>
 
         <p>Когда-то Судьба вела всех людей в Миррэль, чего не скажешь об этом городе сейчас…</p>
         <p>Провозглашённый в 2021 году столицей Франции Миррэль, находящийся в самом центре своей страны, во второй четверти XXI века гордо носил звание «столицы поцелуев». Во вселенной, что якобы даровала людям родство душ, этот город играл огромную роль, сводя множество соулмейтов, предоставляя им все блага для комфортной жизни. Пока всё не начало стремительно меняться.</p>
@@ -1627,12 +1639,12 @@
 
         <div style="text-align: center; margin-bottom: 24px;">
           <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 8px;">PROLOGUE</h3>
-          <p style="color: var(--text-muted); margin: 0;">Как всё началось</p>
+<p style="color: var(--text-muted); margin: 0; font-weight: bold;">Как всё началось</p>
         </div>
 
         <!-- Соулмейты -->
         <div style="text-align: center; margin-top: 32px; margin-bottom: 20px;">
-          <div style="font-family: 'Cinzel', serif; color: #ffffff; font-size: 1.25rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Соулмейты</div>
+          <div style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.25rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Соулмейты</div>
         </div>
        
         <div style="margin: 16px 0; text-align: center;">
@@ -1664,9 +1676,9 @@
           Таким образом, жёлтая пресса без особых усилий посодействовала общественным волнениям: люди всё меньше и меньше стали слышать о счастье соулмейтов, но всё чаще — об ужасающих последствиях. Сразу после разглашения самой громкой новости — смерти сына президента, предположительно от последнего поцелуя, — закон стал гораздо строже.
         </p>
         
-        <div class="rule-quote">
-          «Введение в заблуждение о жизненных ценностях и безграничном счастье с так называемым единственным спутником жизни» стало преследоваться законом, а народ это поддержал.
-        </div>
+<div style="background: rgba(15, 12, 10, 0.7); border: 1px dashed rgba(217, 119, 66, 0.4); padding: 16px 22px; border-radius: 8px; margin: 16px 0; box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);">
+  <p style="margin: 0; color: #f1e5de; font-size: 0.98rem;">«Введение в заблуждение о жизненных ценностях и безграничном счастье с так называемым единственным спутником жизни» стало преследоваться законом, а народ это поддержал.</p>
+</div>
 
         <p style="margin: 16px 0; font-size: 1rem;">
           Как следствие, в Миррэле исчезли некоммерческие организации с программами помощи в поисках соулмейтов, пропали телешоу, сутью которых были быстрые свидания, а статьи про «пошаговые инструкции» к поиску родственной души были удалены. Усилилась роль морально-этических ценностей: со временем стало совершенно неприемлемым встречать людей с распростёртыми объятиями или даже целовать, признаком эгоизма и хвастовства начало считаться громкое заявление о своём счастье, перестали приветствоваться публичные празднования дня влюблённых, грандиозные свадьбы и всё то, что могло бы развратить или напомнить о некоем счастье соулмейтов.
@@ -1679,7 +1691,7 @@
 
         <!-- Болезнь «серых камней» -->
 <div style="text-align: center; margin-top: 32px; margin-bottom: 20px;">
-  <div style="font-family: 'Cinzel', serif; color: #FFFFFF; font-size: 1.25rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Болезнь «серых камней»</div>
+  <div style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.25rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Болезнь «серых камней»</div>
 </div>
 
         <div style="margin: 16px 0; text-align: center;">
@@ -1721,7 +1733,7 @@
 
         <!-- Некса -->
 <div style="text-align: center; margin-top: 32px; margin-bottom: 20px;">
-  <div style="font-family: 'Cinzel', serif; color: #FFFFFF; font-size: 1.25rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Некса</div>
+  <div style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.25rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Некса</div>
    </div>
 
         <div style="margin: 16px 0; text-align: center;">
@@ -1729,7 +1741,8 @@
         </div>
 
         <p style="margin-bottom: 16px; font-size: 1rem;">
-          При столь сжатых сроках задача казалась невыполнимой: создать препарат, который смог бы излечить болезнь, чей очаг толком не нашли. Проблема, стало быть, заключалась в пятнах соулмейтов, но раз их отсутствие убивало людей, нужен был особый, комплексный подход, что компенсировал бы каждый симптом из этого разнообразия. Шесть ведущих лабораторий страны — три университетских центра, два частных института и одна государственная корпорация — все отчитались о провале. У всех активное вещество деградировало в сыворотке крови. Кроме одной.
+          При столь сжатых сроках задача казалась невыполнимой: создать препарат, который смог бы излечить болезнь, чей очаг толком не нашли. Проблема, стало быть, заключалась в пятнах соулмейтов, но раз их отсутствие убивало людей, нужен был особый, комплексный подход, что компенсировал бы каждый симптом из этого разнообразия.<br>
+          Шесть ведущих лабораторий страны — три университетских центра, два частных института и одна государственная корпорация — все отчитались о провале. У всех активное вещество деградировало в сыворотке крови. Кроме одной.
         </p>
         <p style="margin-bottom: 16px; font-size: 1rem;">
           Семь месяцев спустя без всяких пресс-релизов поступила заявка от небольшой компании «Nexus Biomed» — организации, которая в открытых реестрах числилась легально, однако существовала слишком короткое время и не имела задокументированного опыта в разработке препаратов. Те прислали пакет документов с кратким заглавием: «NEXUS», включавший, как оказалось, готовую формулу и протокол синтеза. Комитет по конкурсу был, впрочем, бессилен, ведь юридически всё было чисто: и лицензия компании была действующей, и патентные права оформлены через зарегистрированное патентное бюро, правда, связанное с тремя малоизвестными фондами.
@@ -1751,7 +1764,7 @@
 
         <!-- Побочные эффекты -->
 <div style="text-align: center; margin-top: 32px; margin-bottom: 20px;">
-  <div style="font-family: 'Cinzel', serif; color: #FFFFFF; font-size: 1.25rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Побочные эффекты</div>
+  <div style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.25rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Побочные эффекты</div>
 
           <img src="https://img4.teletype.media/files/f1/84/f184d998-ce10-4819-9fc9-441cbe929e0d.jpeg" alt="Побочные эффекты" style="max-width: 100%; border-radius: 8px; border: 1px solid var(--glass-border);">
         </div>
@@ -1784,7 +1797,7 @@
 
         <!-- Орден Серого Рассвета -->
 <div style="text-align: center; margin-top: 32px; margin-bottom: 20px;">
-  <div style="font-family: 'Cinzel', serif; color: #FFFFFF; font-size: 1.25rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Орден Серого Рассвета</div>
+  <div style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.25rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Орден Серого Рассвета</div>
 </div>
 
 
@@ -1862,9 +1875,9 @@
 
     <p>После свержения правительства, что молодое поколение лишь знало как Лживый Совет, кровавое лекарство пропало совсем и, во избежание образования чёрных рынков, было конфисковано у каждого человека. Почему зависимые от «Нексы», понимая, какая судьба им была уготована, не проронили ни слова в ответ на подобные меры? Узревшие полный хаос, заставшие времена мародёров и убийц, эти люди во имя счастья своих потомков были обязаны противостоять жизни этого лекарства. Им обещали, что их поколение будет последним пережившим эти муки, что каждый человек, признав свою боль от лживой пилюли, обретёт покой и будет с честью провожён к Истине. Это было единственное исключение из новых правил, в которых употребление «Нексы» пресекалось в самом корне, а пойманные люди сталкивались с публичным наказанием — ровно как и искатели родственных душ.</p>
 
-    <p>По мере рассказа всей истории читатель, возможно, и забыл о соулмейтах, ровно как и сам мир, казалось, мифологизировал этот феномен — уж настолько редко он стал встречаться в этом хаосе. Однажды нашедший родственную душу человек не нуждался ни в «Нексе», ни в коммуникативных группах, где его снова учили улыбаться. Он не боялся короткой жизни и остальных невзгод, но таких счастливчиков было мало — или они просто хорошо скрывались, кто знает?</p>
+    <p>По мере рассказа всей истории читатель, возможно, и забыл о соулмейтах, ровно как и сам мир, казалось, мифологизировал этот феномен — уж настолько редко он стал встречаться в этом хаосе. Однажды нашедший родственную душу человек не нуждался ни в «Нексе», ни в коммуникативных группах, где его снова учили улыбаться. Он не боялся короткой жизни и остальных невзгод, но таких счастливчиков было мало — или они просто хорошо скрывались, кто знает?<br>
 
-    <p>А если в мире такая высокая смертность, такой высокий шанс не найти живую вторую половинку, как вообще ещё остались соулмейты? Стало быть, две обречённые на одиночество души могли сплотиться, того не подозревая, и друзей по несчастью «серые камни» неожиданно обошли бы стороной? Соулмейты, вынужденные скрываться от Вершителей Истины (инквизиции), преследующих всех неверных, могут притворяться больными, вступать в тайные группировки — лагеря и объединения, куда не каждый страж доберётся, или, наоборот, стать последователем Ордена, чтобы очистить себя от вспышки мимолетного счастья и отвлечения от Истины.</p>
+    А если в мире такая высокая смертность, такой высокий шанс не найти живую вторую половинку, как вообще ещё остались соулмейты? Стало быть, две обречённые на одиночество души могли сплотиться, того не подозревая, и друзей по несчастью «серые камни» неожиданно обошли бы стороной? Соулмейты, вынужденные скрываться от Вершителей Истины (инквизиции), преследующих всех неверных, могут притворяться больными, вступать в тайные группировки — лагеря и объединения, куда не каждый страж доберётся, или, наоборот, стать последователем Ордена, чтобы очистить себя от вспышки мимолетного счастья и отвлечения от Истины.</p>
 
     <p>В глазах Ордена, «серые камни» есть самое ясное и самое честное признание своей сущности — это бесконечная правда и в целом благородная вещь, утратившая статус болезни. Это нормальное, самое трезвое состояние, с каждой стадией Очищения приближающее душу к Истине, возвышающее человека вместе с коллективом. Люди принимают друг друга и обращаются как к брату или сестре лишь потому, что их объединяет один недуг, который стал звучать гордо и дарить новые силы на укрепление общества. Незаметно для всех в Миррэле день стал начинаться с заходом солнца — с серым рассветом, который не слепит лучами, а направляет из тьмы, как звезда.</p>
 
@@ -1898,26 +1911,25 @@
       <p style="color: var(--text-muted); font-weight: 600;">О СПАДе и «НЕКСЕ»</p>
     </div>
 
-    <!-- Содержание -->
-    <div class="rule-quote" style="margin-bottom: 32px;">
-      <p style="margin-bottom: 8px;"><strong>Содержание:</strong></p>
-      <ul style="margin: 0; padding-left: 20px; color: var(--text-muted); line-height: 1.6;">
-        <li>Инструкция по применению «Нексы»</li>
-        <li>Стадии развития СПАД и механика лечения</li>
-        <li>Стадии развития побочных эффектов «Нексы»</li>
-        <li>Способы борьбы с Нексатами</li>
-      </ul>
-    </div>
+<!-- НАВИГАЦИЯ ПО РАЗДЕЛАМ -->
+<div id="lore-nav"; style="display: flex; flex-direction: column; gap: 8px; margin: 24px 0 32px 0; padding: 18px; background: rgba(15, 12, 10, 0.7); border: 1px solid var(--glass-border); border-radius: 10px; scroll-margin-top: 90px;">
+  <span style="color: var(--text-muted); font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px;">Навигация по разделам:</span>
+  <a href="#lore-1" onclick="document.getElementById('lore-1').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">1. Инструкция к препарату «НЕКСА® PR»</a>
+  <a href="#lore-2" onclick="document.getElementById('lore-2').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">2. Стадии развития СПАДа и механика лечения</a>
+  <a href="#lore-3" onclick="document.getElementById('lore-3').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">3. Стадии развития побочных эффектов «Нексы»</a>
+  <a href="#lore-4" onclick="document.getElementById('lore-4').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">4. Способы борьбы с Нексатами</a>
+</div>
 
     <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 24px auto; opacity: 0.3;">
 
-    <!-- ИНСТРУКЦИЯ (ОФОРМЛЕНА КАК ОТДЕЛЬНОЕ ОКОШКО ВНУТРИ КАРТОЧКИ) -->
-    <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid var(--glass-border); border-radius: 8px; padding: 24px; margin-bottom: 32px;">
-      <div style="text-align: center; margin-bottom: 20px;">
-        <p style="font-size: 0.85rem; color: var(--accent-orange); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px;">Инструкция по медицинскому применению препарата</p>
-        <h4 style="font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--text-main); margin-bottom: 2px;">НЕКСА® PR</h4>
-        <p style="font-size: 0.85rem; color: var(--text-muted); font-style: italic;">(NEXA Prolonged Release)</p>
-      </div>
+<div id="lore-1" style="background: rgba(12, 10, 9, 0.85); border: 2px solid rgba(217, 119, 66, 0.3); border-top: 4px solid var(--accent-orange); border-radius: 4px; padding: 28px; margin-bottom: 32px; box-shadow: 0 8px 24px rgba(0,0,0,0.6); position: relative; scroll-margin-top: 90px;">
+  
+  <!-- Шапка бланка -->
+  <div style="border-bottom: 1px dashed rgba(217, 119, 66, 0.3); padding-bottom: 16px; margin-bottom: 20px; text-align: center;">
+<span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--accent-orange); text-transform: uppercase; display: block; margin-bottom: 6px;">[ ФАРМАЦЕВТИЧЕСКИЙ РЕЕСТР ]</span>
+    <h4 style="font-family: 'Cinzel', serif; font-size: 1.3rem; color: var(--text-main); margin-bottom: 2px; letter-spacing: 1px;">ИНСТРУКЦИЯ ПО ПРИМЕНЕНИЮ</h4>
+    <p style="font-size: 0.85rem; color: var(--text-muted); font-style: italic; margin: 0;">Лекарственный препарат: <strong>НЕКСА® PR</strong> (NEXA Prolonged Release)</p>
+  </div>
 
       <p><strong>Международное непатентованное наименование:</strong> Диметилэндолин</p>
       <p><strong>Химическое название:</strong> 3-(2-диметиламиноэтил)-1H-индол-5-ол сукцинат</p>
@@ -1940,7 +1952,9 @@
 
       <h5 style="color: var(--accent-orange); margin-top: 20px; margin-bottom: 8px;">СПОСОБ ПРИМЕНЕНИЯ И ДОЗЫ</h5>
       <p>Перорально, по 1 капсуле строго каждые 24 часа в одно и то же время, запивая водой.</p>
-      <p style="color: var(--accent-orange);"><strong>ОСОБОЕ УКАЗАНИЕ:</strong> Для поддержания стабильного профиля безопасности не допускается отклонение от графика приема более чем на 4 часа.</p>
+<div style="border-left: 2px solid var(--accent-orange); padding-left: 10px; margin-top: 8px; font-size: 0.85rem; color: var(--text-muted);">
+  <strong style="color: var(--text-main);">ОСОБОЕ УКАЗАНИЕ:</strong> Для поддержания стабильного профиля безопасности не допускается отклонение от графика приема более чем на 4 часа.
+</div>
 
       <h5 style="color: var(--accent-orange); margin-top: 20px; margin-bottom: 8px;">ПОБОЧНОЕ ДЕЙСТВИЕ</h5>
       <p>При соблюдении рекомендованного режима дозирования препарат переносится удовлетворительно. В редких случаях возможны:</p>
@@ -1953,7 +1967,9 @@
       <h5 style="color: var(--accent-orange); margin-top: 20px; margin-bottom: 8px;">МЕРЫ ПРЕДОСТОРОЖНОСТИ И РИСКИ НАРУШЕНИЯ ТЕРАПИИ</h5>
       <p><strong>Синдром резкой отмены:</strong> Внезапное прекращение поступления диметилэндолина приводит к острой декомпенсации кальциевого обмена. Возможно отложение неорганических солей в периферических тканях («патологический силикатно-кальциевый гиперостоз»). Характеризуется необратимой потерей эластичности мышц, затвердеванием мягких тканей и острой дезориентацией.</p>
       <p><strong>Превышение суточной дозировки:</strong> Прием доз сверх назначенных (более 100 мг/сутки) может сопровождаться усилением побочных реакций, включая нарушения регуляции клеточного роста, очаговую гиперплазию тканей и изменения хрящевой структуры. При выраженной передозировке возможны нарушения функций ЦНС.</p>
-      <p style="color: var(--accent-orange); margin-top: 8px;">При нарушении графика приема препарата немедленно обратитесь в ближайший пункт помощи.</p>
+<div style="border-left: 2px solid var(--accent-orange); padding-left: 10px; margin-top: 8px; font-size: 0.85rem; color: var(--text-muted);">
+<p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">При нарушении графика приема препарата немедленно обратитесь в ближайший пункт помощи.</p>
+</div>
 
       <h5 style="color: var(--accent-orange); margin-top: 20px; margin-bottom: 8px;">ВЗАИМОДЕЙСТВИЕ С ДРУГИМИ ВЕЩЕСТВАМИ</h5>
       <p>Категорически несовместим с алкоголем, кустарными психоактивными веществами и необследованными биологическими препаратами (высокий риск вызова искусственного синдрома отмены).</p>
@@ -1963,99 +1979,281 @@
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 12px; margin-bottom: 0;"><strong>Производитель:</strong> Фарм-холдинг Nexus Biomed Corp.</p>
     </div>
 
-    <!-- КОНЕЦ ИНСТРУКЦИИ -->
+<div style="text-align: left; margin-top: 32px;">
+  <a href="#lore-nav" onclick="document.getElementById('lore-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+</div>
 
-    <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.3rem; margin-top: 32px; margin-bottom: 16px;">Стадии развития СПАД и механика лечения</h3>
+    <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 32px auto; opacity: 0.3;">
+
+<h3 id="lore-2" style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.4rem; text-align: center; margin-top: 32px; margin-bottom: 16px; scroll-margin-top: 90px;">
+  Стадии развития СПАД и механика лечения
+</h3>
     
     <div style="text-align: center; margin-bottom: 20px;">
       <img src="https://img3.teletype.in/files/a0/a0/a0a0d394-b742-4533-94ea-ad3e0840dbd8.jpeg" alt="СПАД стадии" style="max-width: 100%; border-radius: 6px; border: 1px solid var(--glass-border);">
     </div>
 
-    <p><strong>1. Начальная стадия: Эмоциональный вакуум и депигментация</strong><br>
-    <strong>Клиническая картина:</strong> Кардинальное понижение восприимчивости к гормонам счастья. Постоянная апатия, периодические трудности со считыванием чужих эмоций, интонации и мимики. Лицо теряет здоровый румянец, кожа стремительно бледнеет (созвездие Судьбы не подвергается изменению). Больной уходит в себя и стремится к затворничеству.<br>
-    <strong>Действие «Нексы»:</strong> Эффективность 100%. Препарат мгновенно замещает отсутствующие нейромедиаторы, искусственно активирует рецепторы и полностью купирует симптомы. Человек снова может радоваться и вести нормальную жизнь, но становится зависимым от препарата.<br>
-    <strong>Шанс на естественное исцеление (Поцелуй соулмейта):</strong> 100%. Поцелуй естественным образом восстанавливает работу эндокринной системы, возвращает румянец и эмпатию. Организм полностью восстанавливается без каких-либо побочных эффектов.</p>
+<!-- 1. Начальная стадия -->
+<p style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-top: 20px; margin-bottom: 8px;">
+  1. Начальная стадия: Эмоциональный вакуум и депигментация
+</p>
+<ul style="padding-left: 20px; margin-bottom: 16px;">
+  <li style="margin-bottom: 8px;">
+    <strong>Клиническая картина:</strong> Кардинальное понижение восприимчивости к гормонам счастья. Постоянная апатия, периодические трудности со считыванием чужих эмоций, интонации и мимики. Лицо теряет здоровый румянец, кожа стремительно бледнеет (созвездие Судьбы не подвергается изменению). Больной уходит в себя и стремится к затворничеству.
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong> Действие «Нексы»: </strong> Эффективность 100%. Препарат мгновенно замещает отсутствующие нейромедиаторы, искусственно активирует рецепторы и полностью купирует симптомы. Человек снова может радоваться и вести нормальную жизнь, но становится зависимым от препарата.
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong> Шанс на естественное исцеление (Поцелуй соулмейта): </strong> 100%. Поцелуй естественным образом восстанавливает работу эндокринной системы, возвращает румянец и эмпатию. Организм полностью восстанавливается без каких-либо побочных эффектов.
+  </li>
+</ul>
 
-    <p><strong>2. Промежуточная стадия: Сенсорный коллапс и эктопическая кальцификация</strong><br>
-    <strong>Клиническая картина:</strong> Отключаются органы чувств: вкусовые рецепторы, осязание. Развивается ахроматопсия (черно-белое зрение), а также алекситимия (эмоциональная слепота). Из-за падения болевой чувствительности больные безразличны к травмам и ожогам от солнца. Из-за сбоя регуляции кальций начинает вымываться из костей, что делает их хрупкими, и хаотично откладывается в мышцах и связках, из-за чего они коченеют и окостеневают.<br>
-    <strong>Действие «Нексы»:</strong> Эффективность 70–80%. Диметилэндолин все еще способен пробить онемевшие рецепторы и временно остановить кальцификацию, возвращая эластичность мышцам и частично возвращая вкусы и цвета. Но требуются уже повышенные дозировки, что лавинообразно увеличивает риск передозировки.<br>
-    <strong>Шанс на естественное исцеление:</strong> 100% (с полным откатом). Поцелуй запускает тотальный обратный процесс: накопленные в мягких тканях известняковые соли растворяются и выводятся из организма, кости вновь обретают прочность, а к органам чувств за короткий временной промежуток возвращаются цвета, вкусы и чувствительность.</p>
+<!-- 2. Промежуточная стадия -->
+<p style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px;">
+  2. Промежуточная стадия: Сенсорный коллапс и эктопическая кальцификация
+</p>
+<ul style="padding-left: 20px; margin-bottom: 16px;">
+  <li style="margin-bottom: 8px;">
+    <strong> Клиническая картина: </strong> Отключаются органы чувств: вкусовые рецепторы, осязание. Развивается ахроматопсия (черно-белое зрение), а также алекситимия (эмоциональная слепота). Из-за падения болевой чувствительности больные безразличны к травмам и ожогам от солнца. Из-за сбоя регуляции кальций начинает вымываться из костей, что делает их хрупкими, и хаотично откладывается в мышцах и связках, из-за чего они коченеют и окостеневают.
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong> Действие «Нексы»: </strong> Эффективность 70–80%. Диметилэндолин все еще способен пробить онемевшие рецепторы и временно остановить кальцификацию, возвращая эластичность мышцам и частично возвращая вкусы и цвета. Но требуются уже повышенные дозировки, что лавинообразно увеличивает риск передозировки.
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong> Шанс на естественное исцеление: </strong> 100% (с полным откатом). Поцелуй запускает тотальный обратный процесс: накопленные в мягких тканях известняковые соли растворяются и выводятся из организма, кости вновь обретают прочность, а к органам чувств за короткий временной промежуток возвращаются цвета, вкусы и чувствительность.
+  </li>
+</ul>
 
-    <p><strong>3. Тяжелая стадия: Каменный экзоскелет и критическая гипотермия</strong><br>
-    <strong>Клиническая картина:</strong> Кожа покрывается плотным, серым, похожим на камень наростом, защищающим разрушающийся эпителий от солнечного света. Температура тела стремительно падает, человек буквально промерзает изнутри. Движения становятся скованы, большая часть мышечной ткани окаменевает.<br>
-    <strong>Действие «Нексы»:</strong> Эффективность 20–30%. Способен сработать лишь как дефибриллятор для мозга. Он может на пару часов «отогреть» промерзшее тело изнутри и вернуть подобие рассудка, чтобы человек мог попрощаться с близкими. Однако попытка лечить СПАД «Нексой» на этой стадии почти со 100% вероятностью вызовет либо хрустальный рикошет, либо сильный саркомогенез, так как метаболизм человека разрушен.<br>
-    <strong>Шанс на естественное исцеление:</strong> 70% (с полным откатом). Некое чудо все еще возможно: поцелуй соулмейта растапливает внутренний холод, заставляет серый камень трескаться и осыпаться с кожи, возвращая здоровую человеческую плоть. Главное — успеть до того, как больной испустит последний вздох.</p>
+<!-- 3. Тяжелая стадия -->
+<p style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px;">
+  3. Тяжелая стадия: Каменный экзоскелет и критическая гипотермия
+</p>
+<ul style="padding-left: 20px; margin-bottom: 16px;">
+  <li style="margin-bottom: 8px;">
+    <strong> Клиническая картина: </strong> Кожа покрывается плотным, серым, похожим на камень наростом, защищающим разрушающийся эпителий от солнечного света. Температура тела стремительно падает, человек буквально промерзает изнутри. Движения становятся скованы, большая часть мышечной ткани окаменевает.
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong> Действие «Нексы»: </strong> Эффективность 20–30%. Способен сработать лишь как дефибриллятор для мозга. Он может на пару часов «отогреть» промерзшее тело изнутри и вернуть подобие рассудка, чтобы человек мог попрощаться с близкими. Однако попытка лечить СПАД «Нексой» на этой стадии почти со 100% вероятностью вызовет либо хрустальный рикошет, либо сильный саркомогенез, так как метаболизм человека разрушен.
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong> Шанс на естественное исцеление: </strong> 70% (с полным откатом). Некое чудо все еще возможно: поцелуй соулмейта растапливает внутренний холод, заставляет серый камень трескаться и осыпаться с кожи, возвращая здоровую человеческую плоть. Главное — успеть до того, как больной испустит последний вздох.
+  </li>
+</ul>
 
-    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 16px;">
-    Скорость развития и продолжительность стадий варьируется в зависимости от индивидуальных особенностей человека. Первая стадия обычно самая продолжительная — развитие «серых камней» может задерживаться на ней десятилетиями, в то время как вторая и третья стадии развиваются гораздо быстрее (недели, месяцы).<br>
-    Максимальная продолжительность жизни при отсутствии лечения — 55 лет. Обычно люди со СПАДом умирают в возрасте 45-50 лет.<br>
+<div class="rule-quote" style="margin-top: 24px; margin-bottom: 24px;">
+  <p style="font-style: normal; font-size: 0.88rem; color: var(--text-muted); margin-bottom: 10px;">
+    Скорость развития и продолжительность стадий варьируются в зависимости от индивидуальных особенностей человека. Первая стадия обычно самая продолжительная — развитие «серых камней» может задерживаться на ней десятилетиями, в то время как вторая и третья стадии развиваются гораздо быстрее (недели, месяцы).
+  </p>
+  <p style="font-style: normal; font-size: 0.88rem; color: var(--text-muted); margin-bottom: 10px;">
+    Максимальная продолжительность жизни при отсутствии лечения — 55 лет. Обычно люди со СПАДом умирают в возрасте 45-50 лет.
+  </p>
+  <p style="font-style: normal; font-size: 0.88rem; color: var(--text-muted); margin: 0;">
     Минимальный возраст больных, зафиксированный в базе, — 19 лет. Чаще симптомы первой стадии «серых камней» замечаются у девушек и юношей в возрасте 23-25 лет.
-    </p>
+  </p>
+</div>
+
+<div style="text-align: left; margin-top: 32px;">
+  <a href="#lore-nav" onclick="document.getElementById('lore-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+</div>
 
     <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 32px auto; opacity: 0.3;">
 
-    <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.3rem; margin-bottom: 16px;">Стадии развития побочных эффектов «Нексы»</h3>
+<h3 id="lore-3" style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.4rem; text-align: center; margin-top: 32px; margin-bottom: 4px; scroll-margin-top: 90px;">
+  Стадии развития побочных эффектов «Нексы»
+</h3>
     
-    <h4 style="color: var(--text-main); margin-top: 20px; margin-bottom: 10px;">А. «Хрустализация» (Отказ/нехватка препарата)</h4>
+<h4 style="color: #fff; text-align: center; font-size: 1.15rem;">
+  А. «Хрустализация» (Отказ/нехватка препарата)
+</h4>
     <div style="text-align: center; margin-bottom: 16px;">
       <img src="https://img2.teletype.in/files/59/6b/596b0e4b-4860-44ef-8e51-593f5d3334bc.png" alt="Хрустализация" style="max-width: 100%; border-radius: 6px; border: 1px solid var(--glass-border);">
     </div>
 
-    <p><strong>Стадия 1: Психоз и жажда</strong><br>
-    <strong>Состояние:</strong> Дофаминовый голод буквально выжигает мозг человека, отчего тот становится невменяем, опасен и одержим поиском препарата.<br>
-    <strong>Условия отката (Вероятность 100%):</strong> Поцелуй соулмейта мгновенно перезапускает выработку собственных гормонов счастья, полностью гася психоз и возвращая разум в норму.<br>
-    <strong>Главная сложность:</strong> Пациент чересчур нестабилен — он не понимает, кто перед ним, и может нанести физический вред своему соулмейту до того, как тот успеет его поцеловать.</p>
+<!-- Стадия 1 -->
+<p style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-top: 20px; margin-bottom: 8px;">
+  Стадия 1: Психоз и жажда
+</p>
+<ul style="padding-left: 20px; margin-bottom: 16px;">
+  <li style="margin-bottom: 8px;">
+    <strong>Состояние:</strong> Дофаминовый голод буквально выжигает мозг человека, отчего тот становится невменяем, опасен и одержим поиском препарата.
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong>Условия отката (Вероятность 100%):</strong> Поцелуй соулмейта мгновенно перезапускает выработку собственных гормонов счастья, полностью гася психоз и возвращая разум в норму.
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong>Главная сложность:</strong> Пациент чересчур нестабилен — он не понимает, кто перед ним, и может нанести физический вред своему соулмейту до того, как тот успеет его поцеловать.
+  </li>
+</ul>
 
-    <p><strong>Стадия 2: Прорастание хрусталя</strong><br>
-    <strong>Состояние:</strong> Прочный, не поддающийся воздействию тепла хрусталь начинает замещать мягкие ткани конечностей. Разум помутнен.<br>
-    <strong>Условия отката (Вероятность 60%):</strong> Поцелуй запускает обратный биохимический процесс: хрустальная решетка словно оттаивает, поврежденные ткани, в свою очередь, восстанавливаются.<br>
-    <strong>Главная сложность:</strong> Из-за частичного разрушения нервных окончаний в конечностях откат происходит очень болезненно — человек испытывает болевой шок, пока ткани регенерируют. К тому же, пробиться сквозь хрустальные наросты для поцелуя может быть физически тяжело.</p>
+<!-- Стадия 2 -->
+<p style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px;">
+  Стадия 2: Прорастание хрусталя
+</p>
+<ul style="padding-left: 20px; margin-bottom: 16px;">
+  <li style="margin-bottom: 8px;">
+    <strong>Состояние:</strong> Прочный, не поддающийся воздействию тепла хрусталь начинает замещать мягкие ткани конечностей. Разум помутнен.
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong>Условия отката (Вероятность 60%):</strong> Поцелуй запускает обратный биохимический процесс: хрустальная решетка словно оттаивает, поврежденные ткани, в свою очередь, восстанавливаются.
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong>Главная сложность:</strong> Из-за частичного разрушения нервных окончаний в конечностях откат происходит очень болезненно — человек испытывает болевой шок, пока ткани регенерируют. К тому же, пробиться сквозь хрустальные наросты для поцелуя может быть физически тяжело.
+  </li>
+</ul>
 
-    <p><strong>Стадия 3: Финальный «Хрустальный зомби»</strong><br>
-    <strong>Состояние:</strong> Человек практически полностью покрыт сверхтвердым хрусталем и может использовать его в качестве оружия при нападении. Человеческого разума на данном этапе вовсе не остается.<br>
-    <strong>Условия отката (Вероятность менее 1%):</strong> Поцелуй по-прежнему имеет силу тотального исцеления, но это чудо на грани невозможного.<br>
-    <strong>Главная сложность:</strong> Монстр агрессивен и способен убить любого приблизившегося. Справиться с таким в одиночку не представляется возможным, что является основным препятствием. Однако если поцелуй все же удастся совершить, хрусталь болезненно осыплется, вернув человека, но психике потребуется долгая реабилитация после пережитого кошмара.</p>
+<!-- Стадия 3 -->
+<p style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px;">
+  Стадия 3: Финальный «Хрустальный зомби»
+</p>
+<ul style="padding-left: 20px; margin-bottom: 16px;">
+  <li style="margin-bottom: 8px;">
+    <strong>Состояние:</strong> Человек практически полностью покрыт сверхтвердым хрусталем и может использовать его в качестве оружия при нападении. Человеческого разума на данном этапе вовсе не остается.
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong>Условия отката (Вероятность менее 1%):</strong> Поцелуй по-прежнему имеет силу тотального исцеления, но это чудо на грани невозможного.
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong>Главная сложность:</strong> Монстр агрессивен и способен убить любого приблизившегося. Справиться с таким в одиночку не представляется возможным, что является основным препятствием. Однако если поцелуй все же удастся совершить, хрусталь болезненно осыплется, вернув человека, но психике потребуется долгая реабилитация после пережитого кошмара.
+  </li>
+</ul><br>
 
-    <h4 style="color: var(--text-main); margin-top: 24px; margin-bottom: 10px;">Б. «Саркоматоз» (Передозировка / избыток)</h4>
+<h4 style="color: #fff; text-align: center; font-size: 1.15rem;">
+  Б. «Саркоматоз» (Передозировка / избыток)
+</h4>
     <div style="text-align: center; margin-bottom: 16px;">
       <img src="https://img3.teletype.in/files/e8/8e/e88ea094-8564-4ea9-b939-7ce0d742028d.jpeg" alt="Саркоматоз" style="max-width: 100%; border-radius: 6px; border: 1px solid var(--glass-border);">
     </div>
 
-    <p><strong>Стадия 1: Скелетная деформация</strong><br>
-    <strong>Состояние:</strong> Хрящи и кости аномально разрастаются внутри тела, но внешне изменения почти незаметны. Разум человека полностью чист.<br>
-    <strong>Условия отката (Вероятность 100%):</strong> Поцелуй исправляет программу чтения ДНК, вследствие чего аномальные костные наплывы и хрящи рассасываются организмом в ближайшие часы без каких-либо последствий.</p>
+<!-- Стадия 1 -->
+<p style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-top: 20px; margin-bottom: 8px;">
+  Стадия 1: Скелетная деформация
+</p>
+<ul style="padding-left: 20px; margin-bottom: 16px;">
+  <li style="margin-bottom: 8px;">
+    <strong>Состояние:</strong> Хрящи и кости аномально разрастаются внутри тела, но внешне изменения почти незаметны. Разум человека полностью чист.
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong>Условия отката (Вероятность 100%):</strong> Поцелуй исправляет программу чтения ДНК, вследствие чего аномальные костные наплывы и хрящи рассасываются организмом в ближайшие часы без каких-либо последствий.
+  </li>
+</ul>
 
-    <p><strong>Стадия 2: Тканевая гиперплазия</strong><br>
-    <strong>Состояние:</strong> Наружу прорываются жуткие наросты плоти, мерзкие опухоли, уродливые лишние конечности. Человек медленно теряет рассудок, но еще понимает, кто он есть.<br>
-    <strong>Условия отката (Вероятность 50%):</strong> После поцелуя лишняя биомасса стремительно отмирает, усыхает и отторгается организмом.<br>
-    <strong>Главная сложность:</strong> Сильнейший психологический и эстетический барьер. Родственной душе придется переступить через животный ужас и отвращение, чтобы искренне поцеловать мутировавшее чудовище.</p>
+<!-- Стадия 2 -->
+<p style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px;">
+  Стадия 2: Тканевая гиперплазия
+</p>
+<ul style="padding-left: 20px; margin-bottom: 16px;">
+  <li style="margin-bottom: 8px;">
+    <strong>Состояние:</strong> Наружу прорываются жуткие наросты плоти, мерзкие опухоли, уродливые лишние конечности. Человек медленно теряет рассудок, но еще понимает, кто он есть.
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong>Условия отката (Вероятность 50%):</strong> После поцелуя лишняя биомасса стремительно отмирает, усыхает и отторгается организмом.
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong>Главная сложность:</strong> Сильнейший психологический и эстетический барьер. Родственной душе придется переступить через животный ужас и отвращение, чтобы искренне поцеловать мутировавшее чудовище.
+  </li>
+</ul>
 
-    <p><strong>Стадия 3: Финальный саркоматический психоз</strong><br>
-    <strong>Состояние:</strong> Абсолютная потеря человеческого облика, гигантские размеры, агрессия и конечный распад личности.<br>
-    <strong>Условия отката (Вероятность менее 0,5%):</strong> Теоретически поцелуй способен совершить невозможное — заставить всю эту чужеродную гору мышц и костей сдуться, сбросить лишнюю плоть и вернуть человеку его первоначальный скелет.<br>
-    <strong>Главная сложность:</strong> Тварь невероятно сильна и агрессивна, к тому же, найти нечто, похожее на лицо человека, может быть крайне затруднительно. Кроме того, после отката человек с высокой вероятностью впадет в глубокую кому от сильнейшей интоксикации продуктами распада собственных мутировавших клеток.</p>
+<!-- Стадия 3 -->
+<p style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px;">
+  Стадия 3: Финальный саркоматический психоз
+</p>
+<ul style="padding-left: 20px; margin-bottom: 16px;">
+  <li style="margin-bottom: 8px;">
+    <strong>Состояние:</strong> Абсолютная потеря человеческого облика, гигантские размеры, агрессия и конечный распад личности.
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong>Условия отката (Вероятность менее 0,5%):</strong> Теоретически поцелуй способен совершить невозможное — заставить всю эту чужеродную гору мышц и костей сдуться, сбросить лишнюю плоть и вернуть человеку его первоначальный скелет.
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong>Главная сложность:</strong> Тварь невероятно сильна и агрессивна, к тому же, найти нечто, похожее на лицо человека, может быть крайне затруднительно. Кроме того, после отката человек с высокой вероятностью впадет в глубокую кому от сильнейшей интоксикации продуктами распада собственных мутировавших клеток.
+  </li>
+</ul>
+
+<div style="text-align: left; margin-top: 32px;">
+  <a href="#lore-nav" onclick="document.getElementById('lore-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+</div>
 
     <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 32px auto; opacity: 0.3;">
 
-    <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.3rem; margin-bottom: 16px;">Способы борьбы с Нексатами</h3>
-    <p style="color: var(--text-muted); font-style: italic; margin-bottom: 16px;">Нексаты — чудовища, в которых превратились люди, употреблявшие «Нексу» с нарушением графика.</p>
+<h3 id="lore-4" style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.4rem; text-align: center; margin-top: 32px; margin-bottom: 4px; scroll-margin-top: 90px;">
+  Способы борьбы с Нексатами
+</h3>
+<div style="border-right: 3px solid var(--accent-orange); padding-right: 14px; margin-top: 16px; margin-bottom: 24px; text-align: right;">
+  <p style="font-style: normal; font-size: 0.88rem; color: var(--text-muted); margin: 0;">
+    Нексаты — чудовища, в которых превратились люди, употреблявшие «Нексу» с нарушением графика.
+  </p>
+</div>
 
-    <p><strong>1. Хрустальные Нексаты</strong><br>
-    <strong>Характеристика:</strong> Рост: 1,8-2,5 метров; Вес: 150-250 килограмм. Имеют твёрдую хрустальную броню, которая практически не поддается тепловому и физическому воздействию, обладают высокой выживаемостью при падении с высоты до трёх метров. Являются медлительными, но способны развивать не слишком высокую скорость с помощью выпадов кристаллизованными конечностями на противника. При этом имеют проблемы с равновесием из-за неоднородности распределения хрустальных наростов.<br>
-    <strong>Слабые места*:</strong><br>
-    - Суставы, сохранившие свою подвижность, остаются незащищенными: на функционирующих сгибах локтей, коленей, шеи и других мест выявляются тонкие зазоры, точные удары по которым ранят существо.<br>
-    - Нанесение ударов нетяжеловесным оружием не причиняет хрустальному монстру никакого вреда, пули мелкокалиберного оружия рикошетят от поверхности. Однако хрусталь демонстрирует хрупкость при изгибе, сила которого должна быть достаточно высокой.<br>
-    - Если монстр не ослеп вследствие зарастания глазниц кристаллом — те остаются его слабым местом. При поражении глаз монстр оказывается на некоторое время оглушен, так как способен испытывать боль в целом как и на других открытых участках. Повреждение головного мозга через глазницы является главным способом уничтожения данных Нексатов.<br>
-    - В лабораторных условиях выявлена чувствительность к высокому перепаду температур: при сильном нагреве одного места и последующем резком охлаждении хрусталь теряет свою стабильность, отчего удар даже нетяжелым оружием способен заставить хрусталь потрескаться и рассыпаться.</p>
+<!-- 1. Хрустальные Нексаты -->
+<p style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px;">
+  1. Хрустальные Нексаты
+</p>
+<ul style="padding-left: 20px; margin-bottom: 16px;">
+  <li style="margin-bottom: 8px;">
+    <strong>Характеристика</strong>
+    <ul style="padding-left: 20px; margin-top: 4px;">
+      <li style="margin-bottom: 6px;">
+        <strong>Рост: 1,8-2,5 метров; Вес: 150-250 килограмм.</strong> Имеют твёрдую хрустальную броню, которая практически не поддается тепловому и физическому воздействию, обладают высокой выживаемостью при падении с высоты до трёх метров. Являются медлительными, но способны развивать не слишком высокую скорость с помощью выпадов кристаллизованными конечностями на противника. При этом имеют проблемы с равновесием из-за неоднородности распределения хрустальных наростов.
+      </li>
+    </ul>
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong>Слабые места*</strong>
+    <ul style="padding-left: 20px; margin-top: 4px;">
+      <li style="margin-bottom: 6px;">
+        Суставы, сохранившие свою подвижность, остаются незащищенными: на функционирующих сгибах локтей, коленей, шеи и других мест выявляются тонкие зазоры, точные удары по которым ранят существо.
+      </li>
+      <li style="margin-bottom: 6px;">
+        Нанесение ударов нетяжеловесным оружием не причиняет хрустальному монстру никакого вреда, пули мелкокалиберного оружия рикошетят от поверхности. Однако хрусталь демонстрирует хрупкость при изгибе, сила которого должна быть достаточно высокой.
+      </li>
+      <li style="margin-bottom: 6px;">
+        Если монстр не ослеп вследствие зарастания глазниц кристаллом — те остаются его слабым местом. При поражении глаз монстр оказывается на некоторое время оглушен, так как способен испытывать боль в целом как и на других открытых участках. Повреждение головного мозга через глазницы является главным способом уничтожения данных Нексатов.
+      </li>
+      <li style="margin-bottom: 6px;">
+        В лабораторных условиях выявлена чувствительность к высокому перепаду температур: при сильном нагреве одного места и последующем резком охлаждении хрусталь теряет свою стабильность, отчего удар даже нетяжелым оружием способен заставить хрусталь потрескаться и рассыпаться.
+      </li>
+    </ul>
+  </li>
+</ul>
 
-    <p><strong>2. Саркоматозные Нексаты</strong><br>
-    <strong>Характеристика:</strong> Рост: 2,2-2,9 метров; Вес: 300-600 килограмм. Представляют собой огромные, хаотично разросшиеся массы плоти и костей, не всегда покрыты кожей. Обладают повышенной способностью к регенерации (чем крупнее особь, тем лучше восстановление), из-за чего мелкие повреждения им не страшны. В качестве оружия используют либо отросшие конечности, либо извергающуюся из их пасти токсичную жидкость, которая имеет кислотную среду, но безвредна для самих монстров.<br>
-    <strong>Слабые места*:</strong><br>
-    - Уничтожение головного мозга и сердца является смертельным, однако первый найти гораздо проще из-за частого смещения остальных внутренних органов.<br>
-    - Особенно большие саркоматозники значительно обрастают защитным слоем плоти, однако при этом страдает их поворотливость. Зачастую глаза и уши полностью или частично зарастают, отчего данному типу Нексатов приходится подключать другие органы чувств.<br>
-    - Остаются уязвимы к химическому и термическому воздействию: огонь способен обуглить чудовище и замедлить его регенерацию, а вещества, вызывающие денатурацию (разрушение) белка (такие как щелочи, кислоты, некоторые соли, спирт и прочее), способны в той или иной степени растворить облитые части плоти. Однако не все вещества способны действовать на участки, покрытые кожей.</p>
+<!-- 2. Саркоматозные Нексаты -->
+<p style="font-weight: 700; color: #fff; font-size: 1.1rem; margin-top: 24px; margin-bottom: 8px;">
+  2. Саркоматозные Нексаты
+</p>
+<ul style="padding-left: 20px; margin-bottom: 16px;">
+  <li style="margin-bottom: 8px;">
+    <strong>Характеристика</strong>
+    <ul style="padding-left: 20px; margin-top: 4px;">
+      <li style="margin-bottom: 6px;">
+        <strong>Рост: 2,2-2,9 метров; Вес: 300-600 килограмм.</strong> Представляют собой огромные, хаотично разросшиеся массы плоти и костей, не всегда покрыты кожей. Обладают повышенной способностью к регенерации (чем крупнее особь, тем лучше восстановление), из-за чего мелкие повреждения им не страшны. В качестве оружия используют либо отросшие конечности, либо извергающуюся из их пасти токсичную жидкость, которая имеет кислотную среду, но безвредна для самих монстров.
+      </li>
+    </ul>
+  </li>
+  <li style="margin-bottom: 8px;">
+    <strong>Слабые места*</strong>
+    <ul style="padding-left: 20px; margin-top: 4px;">
+      <li style="margin-bottom: 6px;">
+        Уничтожение головного мозга и сердца является смертельным, однако первый найти гораздо проще из-за частого смещения остальных внутренних органов.
+      </li>
+      <li style="margin-bottom: 6px;">
+        Особенно большие саркоматозники значительно обрастают защитным слоем плоти, однако при этом страдает их поворотливость. Зачастую глаза и уши полностью или частично зарастают, отчего данному типу Нексатов приходится подключать другие органы чувств.
+      </li>
+      <li style="margin-bottom: 6px;">
+        Остаются уязвимы к химическому и термическому воздействию: огонь способен обуглить чудовище и замедлить его регенерацию, а вещества, вызывающие денатурацию (разрушение) белка (такие как щелочи, кислоты, некоторые соли, спирт и прочее), способны в той или иной степени растворить облитые части плоти. Однако не все вещества способны действовать на участки, покрытые кожей.
+      </li>
+    </ul>
+  </li>
+</ul>
 
-    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 12px;">*Все Нексаты имеют кожную аллергию на солнечный свет, но выражается она в разной степени.</p>
+<!-- Общая сноска -->
+<p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 16px; margin-bottom: 8px;">
+  *Все Нексаты имеют кожную аллергию на солнечный свет, но выражается она в разной степени.
+</p>
+
+<div style="text-align: left; margin-top: 32px;">
+  <a href="#lore-nav" onclick="document.getElementById('lore-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+</div>
 
     <!-- Авторы -->
     <div class="rule-quote" style="margin-top: 32px;">
@@ -2073,146 +2271,916 @@
   </div>
 </section>
 
-    <!-- ОРДЕН СЕРОГО РАССВЕТА -->
-    <section id="lore-order" class="content-section" data-title="Орден Серого Рассвета (Уложение и иерархия)">
-      <h2>Орден Серого Рассвета</h2>
-      <div class="card">
-        <div style="text-align: center; margin-bottom: 24px;">
-          <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px;">THE ORDER OF THE GREY DAWN</h3>
-          <p style="color: var(--text-muted); margin-top: 4px;">Орден Серого Рассвета</p>
-        </div>
+<!-- ОРДЕН СЕРОГО РАССВЕТА -->
+<section id="lore-order" class="content-section" data-title="Орден Серого Рассвета">
+  <h2>Орден Серого Рассвета</h2>
+  
+  <div class="card">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 4px;">THE ORDER OF THE GREY DAWN</h3>
+      <p style="color: var(--text-muted); font-weight: 600;">Информация об Ордене</p>
+    </div>
 
-        <p><strong>Содержание:</strong></p>
-        <ul style="margin-left: 20px; margin-bottom: 24px; color: var(--accent-orange);">
-          <li><a href="#order-ulozhenie" style="color: var(--accent-orange);">Уложение Ясности</a></li>
-          <li><a href="#order-triumvirat" style="color: var(--accent-orange);">Триумвират Освободителей</a></li>
-          <li><a href="#order-ierarchy" style="color: var(--accent-orange);">Иерархия</a></li>
-          <li><a href="#order-rituals" style="color: var(--accent-orange);">Ритуалы и практики</a></li>
-          <li><a href="#order-punishments" style="color: var(--accent-orange);">Наказания</a></li>
-          <li><a href="#order-symbols" style="color: var(--accent-orange);">Символика</a></li>
-        </ul>
+    <!-- НАВИГАЦИЯ ПО РАЗДЕЛАМ -->
+    <div id="order-nav" style="display: flex; flex-direction: column; gap: 8px; margin: 24px 0 32px 0; padding: 18px; background: rgba(15, 12, 10, 0.7); border: 1px solid var(--glass-border); border-radius: 10px; scroll-margin-top: 90px;">
+      <span style="color: var(--text-muted); font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px;">Навигация по разделам:</span>
+      <a href="#lore-order-1" onclick="document.getElementById('lore-order-1').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">1. Уложение Ясности</a>
+      <a href="#lore-order-2" onclick="document.getElementById('lore-order-2').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">2. Триумвират Освободителей</a>
+      <a href="#lore-order-3" onclick="document.getElementById('lore-order-3').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">3. Иерархия</a>
+      <a href="#lore-order-4" onclick="document.getElementById('lore-order-4').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">4. Ритуалы и практики</a>
+      <a href="#lore-order-5" onclick="document.getElementById('lore-order-5').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">5. Наказания</a>
+      <a href="#lore-order-6" onclick="document.getElementById('lore-order-6').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">6. Символика</a>
+    </div>
 
-        <div id="order-ulozhenie" style="margin-top: 30px;">
-          <h3 class="card-title"><i class="fa-solid fa-scroll"></i> Уложение Ясности</h3>
-          <p>Основной закон новой власти Триумвирата, доктрина идеологического культа, выделяющая фундаментальные аспекты крайне доходчиво. Чем больше людей запомнит главные строки и чем чаще эти слова будут всплывать в рутине людей, тем твёрже закрепится идея, избавленная от малейших сомнений и всяких задних мыслей. Главные пять пунктов Уложения строго регулировали жизнь человека, не заявляя об этом напрямую:</p>
-          
-          <div class="rule-quote">
-            1. «Серые камни» есть освобождение от навязанных природой иллюзий счастья. Да, все люди неизбежно запятнаны, но никто не является рабом так называемой Судьбы.<br>
-            2. Иллюзия счастья — это разбавление Ясности и самообман, вызываемый или кровавым лекарством, или созвездником-обнулителем, кто есть угроза пустой смерти и розни с коллективом. Разбавление Ясности является преступлением.<br>
-            3. «Серые камни» приближают человека к очищению, избавляя от оков материального счастья и мирских удовольствий. Это естественно, что уход от телесных увлечений сопровождается телесным дискомфортом, и тем ближе возвышение, чем он сильнее.<br>
-            4. Триумвират Освободителей — пример тех, кто прошёл через каждую стадию боли и, достигнув истинного знания, избавил мир от лжи.<br>
-            5. Настоящее бессмертие обретается, когда новые поколения, взращённые в Ясности, пронесут веру сквозь века.
-          </div>
+    <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 24px auto; opacity: 0.3;">
 
-          <p>Помимо Доктрины действуют прочие законы, дополняющие основной. Ими руководствуются инквизиторы и патрульные для выявления нарушителей. В числе таких законов есть запрет на поцелуи и на несанкционированные собрания — неподчинение будет разумным поводом для задержания, в первую очередь для устранения сообществ соулмейтов. В связи с тем, что у родственных душ, в отличие от больных «серыми камнями», нет аллергии на солнце и они могут свободно перемещаться днём, в Миррэле установлен комендантский час, подстраивающийся под часы рассвета и заката. Членам Ордена разрешено выходить в дневное время лишь в плащах с отличительной эмблемой.</p>
-          <p>Иные законы регламентируют трудовой долг каждого и деторождение как гражданскую обязанность, а также установлена необходимость каждого сообщать о нарушениях (система доносов в нормативно-правовом акте называется «Заботой»).</p>
+<!-- === РАЗДЕЛ 1: УЛОЖЕНИЕ ЯСНОСТИ === -->
+<div id="lore-order-1" style="scroll-margin-top: 90px; margin-bottom: 32px;">
+  
+  <div style="text-align: center; margin-bottom: 20px;">
+    <div style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.25rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Уложение Ясности</div>
+  </div>
 
-          <p style="margin-top: 16px;"><a href="#lore-order" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem;">[Вернуться к содержанию]</a></p>
-        </div>
+  <p style="margin-bottom: 16px; font-size: 1rem;">
+    Основной закон новой власти Триумвирата, доктрина идеологического культа, выделяющая фундаментальные аспекты крайне доходчиво. Чем больше людей запомнит главные строки и чем чаще эти слова будут всплывать в рутине людей, тем твёрже закрепится идея, избавленная от малейших сомнений и всяких задних мыслей. Главные пять пунктов Уложения строго регулировали жизнь человека, не заявляя об этом напрямую:
+  </p>
 
-        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 30px 0;">
+<div style="background: rgba(15, 12, 10, 0.7); border: 1px dashed rgba(217, 119, 66, 0.4); padding: 24px; border-radius: 8px; margin: 20px 0; box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5); text-align: center;">
+    
+    <!-- Пункт 1 -->
+    <p style="margin: 0; color: #f1e5de; font-size: 0.98rem; line-height: 1.5;">
+      1. <strong>«Серые камни»</strong> есть освобождение от навязанных природой иллюзий счастья. Да, все люди неизбежно запятнаны, но никто не является рабом так называемой Судьбы.
+    </p>
+    <div style="width: 40px; height: 1px; background: rgba(217, 119, 66, 0.4); margin: 16px auto;"></div>
 
-        <div id="order-triumvirat">
-          <h3 class="card-title"><i class="fa-solid fa-users"></i> Триумвират Освободителей</h3>
-          <p>Лидеры Ордена Серого Рассвета, объединённые общим делом — их биографии обросли мифами. Двое бывших психологов и один некогда социальный работник в период эпидемии «серых камней» увидели в болезни способ управлять массами, ведь люди так или иначе нуждались в тех, кто успокоит, всё решит и заверит в лучшее. Когда новое лекарство стало отбирать людей у коммуникативных групп, будущий Триумвират Освободителей собрал все силы на то, чтобы уничтожить репутацию «Нексы». Помимо её страшных побочных эффектов, которые разрушили благоговейный образ панацеи, Триумвирату очень сыграли на руку СМИ, молчащие до последнего, ведь это направило народ к новым лидерам. Кульминация власти Ордена Серого Рассвета наступила с завоеванием морального права на управление Миррэлем и последующим взятием мэрии.</p>
-          <p>Не один мессия, а идеальное трио собственноручно создало полноценный культ: каждый вложил свою душу в этот культ и взял под контроль одну из ветвей власти.</p>
+    <!-- Пункт 2 -->
+    <p style="margin: 0; color: #f1e5de; font-size: 0.98rem; line-height: 1.5;">
+      2. <strong>Иллюзия счастья</strong> — это разбавление Ясности и самообман, вызываемый или кровавым лекарством, или созвездником-обнулителем, кто есть угроза пустой смерти и розни с коллективом. Разбавление Ясности является преступлением.
+    </p>
+    <div style="width: 40px; height: 1px; background: rgba(217, 119, 66, 0.4); margin: 16px auto;"></div>
 
-          <div class="rule-quote">
-            <strong>Харизматичный оратор Люсьен Арто</strong>, бывший социальный работник, стал лицом и голосом Ордена. Его голос, впервые прозвучавший на взломанных городских радиочастотах, люди узнавали мгновенно. Простые лозунги Арто — «Лживое лекарство в прошлом», «Берегись пустой смерти!», «Долой обнулителей!» — повторяли даже те, кто ещё вчера верил в панацею.<br><br>
-            <strong>Доктор Северин Бланше</strong>, клинический психолог и специалист по травмам, стала архитектором души. Она создала систему ритуалов Ордена: в частности, ввела практики «Бдения» — ежедневных медитаций на боль и холод. Ей также принадлежит система внутреннего контроля — доносов «Забота».<br><br>
-            <strong>Марсель Дюваль</strong>, нейропсихолог, взял на себя роль организатора внешнего контроля. Он превратил разрозненных добровольцев с УФ-фонарями в дисциплинированных «Стражей Рассвета», ведал ресурсами и распределял продовольствие да оружие, а также организовал тайное хранение Нексы для верхушки.
-          </div>
+    <!-- Пункт 3 -->
+    <p style="margin: 0; color: #f1e5de; font-size: 0.98rem; line-height: 1.5;">
+      3. <strong>«Серые камни»</strong> приближают человека к очищению, избавляя от оков материального счастья и мирских удовольствий. Это естественно, что уход от телесных увлечений сопровождается телесным дискомфортом, и тем ближе возвышение, чем он сильнее.
+    </p>
+    <div style="width: 40px; height: 1px; background: rgba(217, 119, 66, 0.4); margin: 16px auto;"></div>
 
-          <p style="margin-top: 16px;"><a href="#lore-order" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem;">[Вернуться к содержанию]</a></p>
-        </div>
+    <!-- Пункт 4 -->
+    <p style="margin: 0; color: #f1e5de; font-size: 0.98rem; line-height: 1.5;">
+      4. <strong>Триумвират Освободителей</strong> — пример тех, кто прошёл через каждую стадию боли и, достигнув истинного знания, избавил мир от лжи.
+    </p>
+    <div style="width: 40px; height: 1px; background: rgba(217, 119, 66, 0.4); margin: 16px auto;"></div>
 
-        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 30px 0;">
+    <!-- Пункт 5 -->
+    <p style="margin: 0; color: #f1e5de; font-size: 0.98rem; line-height: 1.5;">
+      5. <strong>Настоящее бессмертие обретается</strong>, когда новые поколения, взращённые в Ясности, пронесут веру сквозь века.
+    </p>
 
-        <div id="order-ierarchy">
-          <h3 class="card-title"><i class="fa-solid fa-layer-group"></i> Иерархия</h3>
-          <p>В рамках целого города и большой численности людей не каждый станет интересоваться Орденом — но этого он и не требует, покуда соблюдается закон. В целом Орден — это не столько про «странное поведение» и локальные ритуалы, сколько про коллектив, совместную деятельность и сплочённость на пути к отказу от «Нексы» и от поиска соулмейта. Всего в иерархии восемь ступеней:</p>
+  </div>
 
-          <div class="rule-quote">
-            <strong>1. Пробуждённые</strong><br>
-            Первая и самая многочисленная ступень. Новоприбывшие, кто только вступил в Орден или присматривается. У большинства Пробуждённых только начинается первая стадия «серых камней». Выполняют простейшую работу, участвуют в Бдениях.<br><br>
-            <strong>2. Ясные</strong><br>
-            Те, чьё тело перешло во вторую стадию «серых камней»: пропало ощущение сладкого, краски поблекли до серого. Составляют основу повседневной жизни, обучают Пробуждённых, следят за порядком.<br><br>
-            <strong>3. Стражи Рассвета</strong><br>
-            Боевое крыло Ордена. Патрулируют опасные зоны, охотятся на Нексатов, вооружены УФ-осветителями и оружием против хрусталя. Подчиняются Марселю Дювалю.<br><br>
-            <strong>4. Вершители Истины</strong><br>
-            Инквизиторы. Проводят трибуналы над лжецами и обнулителями, разыскивают искателей родственных душ, ведут расследования.<br><br>
-            <strong>5. Старшие (Мудрейшие)</strong><br>
-            Достигшие третьей стадии «серых камней» (падение температуры тела, жажда уединения). Живут в отдельных покоях, к ним ходят за советом. Их тела почти не принадлежат этому миру.<br><br>
-            <strong>6. Служители Благоденствия</strong><br>
-            Административный слой. Обеспечивают работу Ордена и города (учёт продовольствия, архивы, школы). Не носят оружия, подчиняются Северин Бланше.<br><br>
-            <strong>7. Хранители Прозрения</strong><br>
-            Высшая ступень (командующие Стражами, советники). Единственные, кто знает о материальной причине долголетия верхушки и пользуется очищенной Нексой.<br><br>
-            <strong>8. Триумвират Освободителей</strong><br>
-            Вершина Ордена (Арто, Бланше, Дюваль).
-          </div>
+  <p style="margin-bottom: 16px; font-size: 1rem;">
+    Помимо Доктрины действуют прочие законы, дополняющие основной. Ими руководствуются инквизиторы и патрульные для выявления нарушителей. В числе таких законов есть запрет на поцелуи и на несанкционированные собрания — неподчинение будет разумным поводом для задержания, в первую очередь для устранения сообществ соулмейтов. В связи с тем, что у родственных душ, в отличие от больных «серыми камнями», нет аллергии на солнце и они могут свободно перемещаться днём, в Миррэле установлен комендантский час, подстраивающийся под часы рассвета и заката. Членам Ордена разрешено выходить в дневное время лишь в плащах с отличительной эмблемой.
+  </p>
+  
+  <p style="margin-bottom: 16px; font-size: 1rem;">
+    Иные законы регламентируют трудовой долг каждого и деторождение как гражданскую обязанность, а также установлена необходимость каждого сообщать о нарушениях (система доносов в нормативно-правовом акте называется «Заботой»).
+  </p>
 
-          <p style="margin-top: 16px;"><a href="#lore-order" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem;">[Вернуться к содержанию]</a></p>
-        </div>
+  <!-- Кнопка возврата к навигации (по левому краю) -->
+<div style="text-align: left; margin-top: 32px;">
+    <a href="#order-nav" onclick="document.getElementById('order-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size:0.9rem; cursor: pointer;">К навигации</a>
+  </div>
 
-        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 30px 0;">
+</div>
 
-        <div id="order-rituals">
-          <h3 class="card-title"><i class="fa-solid fa-hands-praying"></i> Ритуалы и практики</h3>
-          <p>Внутренние ритуалы Ордена направлены на укрепление коллективного духа и принятие телесных изменений как части пути к Истине.</p>
-          <div class="rule-quote">
-            • <strong>Бдения:</strong> Ежедневные медитативные практики на боль и холодовые ощущения в кругу братьев и сестер.<br>
-            • <strong>Собрания Рассвета:</strong> Общие встречи с песнопениями и прослушиванием речей Люсьена Арто.
-          </div>
-          <p style="margin-top: 16px;"><a href="#lore-order" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem;">[Вернуться к содержанию]</a></p>
-        </div>
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 32px 0;">
 
-        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 30px 0;">
+<!-- === РАЗДЕЛ 2: ТРИУМВИРАТ ОСВОБОДИТЕЛЕЙ === -->
+<div id="lore-order-2" style="scroll-margin-top: 90px; margin-bottom: 32px;">
+  
+  <div style="text-align: center; margin-bottom: 20px;">
+    <div style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.25rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Триумвират Освободителей</div>
+  </div>
 
-        <div id="order-punishments">
-          <h3 class="card-title"><i class="fa-solid fa-gavel"></i> Наказания</h3>
-          <p>За нарушение Уложения Ясности и попытки утаить связи с соулмейтами нарушителей ждет трибунал Вершителей Истины.</p>
-          <div class="rule-quote">
-            • Публичное порицание и исправительные работы в опасных зонах.<br>
-            • Изгнание из общины или передача в руки правосудия Ордена как «обнулителей».
-          </div>
-          <p style="margin-top: 16px;"><a href="#lore-order" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem;">[Вернуться к содержанию]</a></p>
-        </div>
+  <p style="margin-bottom: 16px; font-size: 1rem;">
+    Лидеры Ордена Серого Рассвета, объединённые общим делом — их биографии обросли мифами. Двое бывших психологов и один некогда социальный работник в период эпидемии «серых камней» увидели в болезни способ управлять массами, ведь люди так или иначе нуждались в тех, кто успокоит, всё решит и заверит в лучшем. Когда новое лекарство стало отбирать людей у коммуникативных групп, будущий Триумвират Освободителей собрал все силы на то, чтобы уничтожить репутацию «Нексы». Помимо её страшных побочных эффектов, которые разрушили благоговейный образ панацеи, Триумвирату очень сыграли на руку СМИ, молчащие до последнего, ведь это направило народ к новым лидерам. Кульминация власти Ордена Серого Рассвета наступила с завоеванием морального права на управление Миррэлем и последующим взятием мэрии.
+  </p>
+  
+  <p style="margin-bottom: 24px; font-size: 1rem;">
+    Не один мессия, а идеальное трио собственноручно создало полноценный культ: каждый вложил свою душу в это дело и взял под контроль одну из ветвей власти.
+  </p>
 
-        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 30px 0;">
+  <!-- Люсьен Арто -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      Люсьен Арто
+    </h4>
+    <p style="margin: 0; font-size: 1rem; line-height: 1.5;">
+      Харизматичный оратор, бывший социальный работник, стал лицом и голосом Ордена. Он говорил с народом на том языке, которого требовал момент: когда нужно — утешал, обещая лучшие времена, а если необходимо было обвинить, звучал твёрдо и решительно. Его голос, впервые прозвучавший на взломанных городских радиочастотах, люди узнавали мгновенно. Простые лозунги Арто — «Лживое лекарство в прошлом», «Берегись пустой смерти!», «Долой обнулителей!» — повторяли даже те, кто ещё вчера верил в панацею. Именно ему было доверено зачитывать Уложение Ясности с балкона бывшей мэрии в день, когда Орден объявил себя властью. Впоследствии именно Люсьен подменил многие понятия, апеллируя либо к символической праведности — «Истина», «Ясность», — либо к приписыванию неугодным власти вещам самые плохие качества: изуродованные безумцы с хрустальными наростами стали «стекляшками», соулмейты — «обнулителями», а все прочие инакомыслящие чаще всего звались «лжецами».
+    </p>
+  </div>
 
-        <div id="order-symbols">
-          <h3 class="card-title"><i class="fa-solid fa-certificate"></i> Символика</h3>
-          <p>Символом Ордена является восходящее солнце серого оттенка, пробивающееся сквозь покровы лжи. Обязательный элемент одежды Стражей — длинные плащи-мантии, защищающие от дневного света.</p>
-          <p style="margin-top: 16px;"><a href="#lore-order" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem;">[Вернуться к содержанию]</a></p>
-        </div>
+  <!-- Доктор Северин Бланше -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      Доктор Северин Бланше
+    </h4>
+    <p style="margin: 0; font-size: 1rem; line-height: 1.5;">
+      Клинический психолог и специалист по травмам, стала архитектором души. Если Арто вдохновлял толпы, то Бланше к каждому находила индивидуальный подход. Она создала систему ритуалов Ордена: в частности, ввела практики «Бдения» — ежедневных медитаций на боль и холод, приучивших людей искать в «серых камнях» подлинную суть, а не страдание. Её руке также принадлежало создание иерархии культа и системы внутреннего контроля — доносов, которую она назвала «Заботой», переименовав предательство ближнего в духовную привязанность.
+    </p>
+  </div>
 
-        <div class="author-credit-box" style="margin-top: 30px;">
-          <div><strong style="color: var(--text-main);">Автор:</strong> @K1W1T0 (Администратор BdM:RS)</div>
-          <div style="margin-top: 4px;"><strong style="color: var(--text-main);">Редактор:</strong> @snaillanum (Владелец BdM:RS)</div>
-        </div>
+  <!-- Марсель Дюваль -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      Марсель Дюваль
+    </h4>
+    <p style="margin: 0; font-size: 1rem; line-height: 1.5;">
+      Нейропсихолог, взял на себя роль организатора внешнего контроля. Свой цинизм он не скрывал в узком кругу, и пока Арто витийствовал о правде, а Бланше — о высшем смысле, Дюваль считал, что цель оправдывает средства. Он превратил разрозненных добровольцев с УФ-фонарями в дисциплинированных «Стражей Рассвета», ведал ресурсами и распределял продовольствие да оружие. И он же — первое время даже втайне от собственного Триумвирата — организовал хранение Нексы для её использования верхушками. То самое долгожительство, которое массы приписывали чуду и духовной силе Освободителей, имело вполне материальную причину.
+    </p>
+  </div>
 
-        <div class="copyright-footer">
-          Все материалы, размещенные в статьях, а также в пределах каналов и чатов, принадлежат ролевой «Bisous de Mirelle». Использование сторонними проектами запрещено.
+  <!-- Кнопка возврата к навигации -->
+  <div style="text-align: left; margin-top: 32px;">
+    <a href="#order-nav" onclick="document.getElementById('order-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+  </div>
+
+</div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 32px 0;">
+
+<!-- === РАЗДЕЛ 3: ИЕРАРХИЯ === -->
+<div id="lore-order-3" style="scroll-margin-top: 90px; margin-bottom: 32px;">
+  
+  <div style="text-align: center; margin-bottom: 20px;">
+    <div style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.25rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Иерархия</div>
+  </div>
+
+  <p style="margin-bottom: 16px; font-size: 1rem;">
+    В рамках целого города и большой численности людей не каждый станет интересоваться Орденом — но этого он и не требует, покуда соблюдается закон. В целом Орден — это не столько про «странное поведение» и локальные ритуалы, сколько про коллектив, совместную деятельность и сплочённость на пути к отказу от «Нексы» и от поиска соулмейта. Когда «серые камни» застают своим холодом и жаждой к отшельничеству, Орден предлагает помощь. По своей сути, он сохранил ту дружескую атмосферу коммуникативных групп: люди могут выходить на природу, петь песни и угощать друг друга выпечкой. Ну а то, что всякая невольная улыбка не доходит до глаз, на улицу нельзя выходить до заката солнца, а сладость едва ощущается, — лишь нюансы, несопоставимые с реальным счастьем быть в коллективе. Ритуалы вплетены в повседневную жизнь членов Ордена, изолированных от разбавок, и последователи действительно находят счастье проходить путь к Истине бок о бок с «братьями» и «сёстрами».
+  </p>
+  
+  <p style="margin-bottom: 16px; font-size: 1rem;">
+    Помимо желания быть принятым в новое общество, всегда есть и будет стремление жить дольше. Истина — это в первую очередь не смерть, а мудрость, которую надо заслужить силой воли и решительностью, как это сделал Триумвират Освободителей, одаренный долголетием после избавления народа от лжи. Принято верить, что чем ближе ты к Триумвирату, тем ближе и к долголетию, что, конечно, не разрешено оспаривать, да и при постоянной конкуренции мало кого будет заботить конспирология. Чтобы заработать статус и доказать свою преданность Ордену, его последователи отдаются общему делу: набирая новых людей, помогая им влиться, одни способствуют распространению идеи, а другие защищают её, либо вступая в отряды Стражей Рассвета, либо вычисляя и выдавая тех, кто пытается нарушить правила. Действия, направленные на усиление влияния Ордена, способствуют переходу на новую ступень иерархии. Всего их восемь.
+  </p>
+
+  <p style="margin-bottom: 24px; font-size: 1rem;">
+    Большинство переходов тесно связано с развитием «серых камней», так как болезнь считается материальным очищением, и оттого продвижение вверх по лестнице Ордена напоминает естественный ход самой жизни, в течение которой каждый должен проявить свою силу воли, продемонстрировать убеждённость и внести свой вклад в общее дело.
+  </p>
+
+  <div style="margin: 16px 0; text-align: center;">
+    <img src="https://img1.teletype.in/files/0d/b4/0db46538-7531-413b-a9dc-78f5289ab0d6.jpeg" alt="Иерархия Ордена" style="max-width: 100%; border-radius: 8px; border: 1px solid var(--glass-border);">
+  </div>
+
+  <!-- 1. Пробуждённые -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      1. Пробуждённые
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Первая и самая многочисленная ступень иерархии. Так называют новоприбывших: тех, кто только вступил в Орден, пройдя ритуал, или даже тех, кто пока лишь присматривается, посещает открытые собрания и так или иначе интересуется внутренними делами. Члены Ордена никому не отказывают в ритуале вступления, чтобы успешно влиться в коллектив. О чём и говорит название: Пробуждённые уже не спят в иллюзиях старого мира, ведь они узнали правду — осталось в ней окрепнуть. У большинства Пробуждённых только начинается первая стадия «серых камней», но в кругах Ордена характерная для болезни бледность — это отблеск Серого Рассвета, начало пути к Истине и очищению от лишнего. Именно на начальных стадиях «серых камней» люди социально мобильны и, что важно, особенно восприимчивы к влиянию идеологии, поэтому так важно пользоваться этим и распространять учение Ордена.
+      </li>
+      <li style="margin-bottom: 0; font-style: normal;">
+        Пробуждённые в основном выполняют простейшую работу: разносят продовольствие, помогают на кухнях, участвуют в обязательных Бдениях (<a href="#lore-order-4" onclick="document.getElementById('lore-order-4').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; cursor: pointer;">см. «Ритуалы и практики»</a>) и посещают многочисленные лекции. Подняться выше можно двумя путями: либо с терпением и смирением принимать развитие второй стадии, либо проявлять исключительное рвение в служении — и тогда наставник (как правило, человек ступенью выше) может ходатайствовать о досрочном переходе. Усердный труд особенно поощряется, в то время как пассивность и бездействие могут вызвать рознь в коллективе.
+      </li>
+    </ul>
+  </div>
+
+  <!-- 2. Ясные -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      2. Ясные
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Те, чьё тело уже перешло во вторую стадию «серых камней»: пропало ощущение сладкого, притупилась боль, краски мира поблёкли до серого. В Ордене это зовётся не утратой, а обретением Ясности — того душевного состояния, где мир наконец перестаёт отвлекать человека ложными сигналами. Ясные составляют основу повседневной жизни культа: они надзирают за порядком внутри коллектива, обучают Пробуждённых, следят за соблюдением ритуалов и пополняют ряды агитаторов, вербуя новых членов.
+      </li>
+      <li style="margin-bottom: 0; font-style: normal;">
+        Их нечувствительность к осязанию — а следовательно, и к боли — делает Ясных незаменимыми там, где требуется выдержка. Многие добровольно вступают в патрульные отряды, как правило, охраняющие главные улицы или сопровождающие собратьев в походах. Но высшая честь для Ясных — быть замеченными и приглашёнными в ряды Стражей Рассвета.
+      </li>
+    </ul>
+  </div>
+
+  <!-- 3. Стражи Рассвета -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      3. Стражи Рассвета
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Боевое крыло Ордена, которое можно по праву выделить в отдельную третью ступень. Одетые в длинные плащи-мантии, оберегающие их от солнца, Стражи Рассвета беспрерывно патрулируют опасные зоны, охотятся на Нексатов, а иногда и несут пограничную службу. Помимо спортивной подготовки, их обучают обращению с УФ-осветителями, которые отпугивают бледных безумцев, а также огнестрельному оружию, способному пробить хрусталь. Кроме того, им дано право задерживать подозрительных лиц без ордера.
+      </li>
+      <li style="margin-bottom: 0; font-style: normal;">
+        Внутри Стражей существует собственная градация — от рядового до командира патруля — но все они подчиняются напрямую Марселю Дювалю.
+      </li>
+    </ul>
+  </div>
+
+  <!-- 4. Вершители Истины -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      4. Вершители Истины
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 0; font-style: normal;">
+        Формируются из числа самых убеждённых Стражей. Также зовутся инквизиторами. Это особые отряды, которые проводят трибуналы над лжецами, обнулителями и теми, кто взаимодействует с кровавым лекарством. Они целенаправленно и с особой подготовкой разыскивают искателей родственных душ, проводят специальные расследования, чтобы изучить повадки и составить психологический портрет оппозиционно настроенных групп — бывает, что некоторые Вершители становятся шпионами. Попасть в отряд Вершителей Истины считается пиком военной карьеры внутри Ордена, и немногие удостаиваются этой чести.
+      </li>
+    </ul>
+  </div>
+
+  <!-- 5. Старшие (Мудрейшие) -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      5. Старшие (Мудрейшие)
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 0; font-style: normal;">
+        Пятая ступень, которую нельзя заслужить рвением или выслугой, потому что на неё поднимает сама болезнь. Это те, кто достиг третьей стадии «серых камней», при которой температура тела падает и человека одолевают постоянные холод и жажда уединения. В Ордене их возводят в достоинство, в контраст со старым миром, где таких запирали в квартирах до конца их дней. Старшие живут в отдельных покоях при общинных домах, их обслуживают Ясные и Пробуждённые, к ним приходят за советом Стражи Рассвета. Считается, что Мудрейшие находятся ближе всех к Истине, потому что их тела уже почти не принадлежат этому миру, и их остаётся лишь поддерживать на финальном этапе. Некоторые представители этой ступени ещё проводят лекции для коллектива, но в целом в свои последние дни Старшие говорят мало и не находят сил на публичные выступления. Само их присутствие служит живым доказательством доктрины, что «серые камни» — не гибель, а путь. Когда пятна соулмейта на теле Мудрейшего начинают гаснуть, это означает скорый исход — смерть, которую в Ордене встречают не слезами, а торжественным молчанием (<a href="#lore-order-4" onclick="document.getElementById('lore-order-4').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; cursor: pointer;">см. «Ритуалы и практики»</a>). Однако особо убеждённые Мудрейшие, которых Триумвират заметил, могут неуловимо миновать близкую смерть — и конечно, это избранность, дар долголетия, подтверждающий истину идеологии, а не особый состав в рационе.
+      </li>
+    </ul>
+  </div>
+
+  <!-- 6. Служители Благоденствия -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      6. Служители Благоденствия
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 0; font-style: normal;">
+        Административный слой, обособленный от цепочки стадий. Чтобы стать им, не обязательно быть покрытым камнем или иметь цветовую слепоту, ведь сюда попадают за ум: работа заключается в обеспечении бесперебойной работы Ордена и как культа, и как власти Миррэля. Служители ведут учёт продовольствия, переписывают население, преподают в школах и готовят новые учебные материалы, составляют архивы и протоколы. Их готовят отдельно, через наставников и экзамены, и их преданность проверяется годами. Служители свободны от обязательных ритуалов, они не носят оружия, но обладают огромной властью — в конце концов, кем ещё рассматривается вопрос распределения ресурсов? Северин Бланше, главным образом влияющая на внутренний строй города и Ордена, непосредственно руководит работой Служителей.
+      </li>
+    </ul>
+  </div>
+
+  <!-- 7. Хранители Прозрения -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      7. Хранители Прозрения
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 0; font-style: normal;">
+        Высшая ступень иерархии, ближайшая Триумвирату. Их не больше двух-трёх десятков на весь Миррэль. Это командующие Стражами, главы районных советов и советники, лично назначенные Арто, Бланше или Дювалем. Хранители — единственные, кому позволено знать о том, что долголетие верхушки имеет материальную причину, и единственные, кто пользуется им же: очищенная Некса распределяется среди них в строжайшей тайне. Для остального Ордена Хранители — реальные примеры того, что высшая преданность вознаграждается долгой жизнью, и их появление на публичных ритуалах всегда вызывает трепет. Их слово может оспорить только другой Хранитель или лидерская тройка.
+      </li>
+    </ul>
+  </div>
+
+  <!-- 8. Триумвират Освободителей -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      8. Триумвират Освободителей
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 0; font-style: normal;">
+        Вершина, к которой безоговорочно выстраиваются все семь ступеней (<a href="#lore-order-2" onclick="document.getElementById('lore-order-2').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; cursor: pointer;">см. «Триумвират Освободителей»</a>).
+      </li>
+    </ul>
+  </div>
+
+  <!-- Кнопка возврата к навигации -->
+  <div style="text-align: left; margin-top: 32px;">
+    <a href="#order-nav" onclick="document.getElementById('order-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+  </div>
+
+</div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 32px 0;">
+
+<!-- === РАЗДЕЛ 4: РИТУАЛЫ И ПРАКТИКИ === -->
+<div id="lore-order-4" style="scroll-margin-top: 90px; margin-bottom: 32px;">
+  
+  <div style="text-align: center; margin-bottom: 20px;">
+    <div style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.25rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Ритуалы и практики</div>
+  </div>
+
+  <!-- 1. Инициация -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      1. Инициация
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Ритуал принятия в Орден Серого Рассвета. В знак перехода из старого, небезопасного мира в новый, новоприбывший отказывается от прошлого образа жизни, разбавления Ясности и угроз пустой кончины. Суть ритуала заключается в отказе от привязанностей старой жизни ради нового, свободного пути к истинному счастью.
+      </li>
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Новоиспечённый заходит в пустую комнату с закрытыми окнами, в руках — ручка и лист бумаги. Наедине с собой он пишет о всём том, что позже отпустит: от мелких проблем до детских грёз, ежедневных радостей и подростковой любви. Быть может, в прошлом он мечтал найти родственную душу, сбежать из Миррэля и самостоятельно найти смысл жизни. Но сейчас, написав о своих душевных переживаниях, что отвлекают от истинного пути, новобранец зачитывает написанное перед группой собратьев — окна распахиваются, впуская отрезвляющий холод, ветер вздувает ревущее пламя жаровни, в которую в конце речи упадёт записка, как простая салфетка. В этот момент произойдёт сожжение иллюзий, и откроется трудный путь к возвышению, ясный и ощутимый всем телом и духом.
+      </li>
+      <li style="margin-bottom: 0; font-style: normal;">
+        Чтобы доказать свою решительность и проявить силу воли, в той же комнате Пробуждённый должен встретить рассвет — холод и тишина будут первыми его спутниками в дороге к Истине. После ритуала Пробуждённый может присоединиться к коллективу.
+      </li>
+    </ul>
+  </div>
+
+  <!-- 2. Возвышение -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      2. Возвышение
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Ритуал перехода на новую ступень, как правило, за исключением ступени Служителей Благоденствия, ведь она не связана с развитием «серых камней».
+      </li>
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Каждый переход на новую ступень может разниться в месте, в окружающих людях и в целом обстановке, которая с углублением в Орден будет всё больше походить на то, что характеризует «серые камни». Ритуал Возвышения подразумевает переход в новую группу людей, что иногда может сепарировать от уже знакомых собратьев и закономерно вызывать лёгкую тоску — и когда «серые камни» блокируют радость, негатив ощущается вдвое сильнее. Северин Бланше изменила подход к факту расставания: суть этого ритуала заключается в приглашении всех собратьев и выражении глубокой благодарности каждому, кто был опорой на пути к Истине. Возвышающийся может поведать об усвоенных уроках или поделиться воспоминаниями, прежде чем коллектив сменится на новый.
+      </li>
+      <li style="margin-bottom: 0; font-style: normal;">
+        Представитель незнакомой группы (чаще всего наставник) в конце ритуала протягивает определённый элемент одежды — отличительный знак той или иной ступени (<a href="#lore-order-6" onclick="document.getElementById('lore-order-7').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; cursor: pointer;">см. «Символика»</a>).
+      </li>
+    </ul>
+  </div>
+
+  <!-- 3. Бдение -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      3. Бдение
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Аналог молитвы в культе без религии — медитация, которая проходит ежедневно, когда на небе сияют звёзды. С тех пор как образ жизни стал скорее ночным, звёзды выступают как символ Ордена Серого Рассвета — они не слепят, как солнце, и ведут путников из тьмы своим светом. Чем яснее ты видишь звезду, тем легче тебе идти.
+      </li>
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Практика длится час: в уединении или среди единомышленников члены Ордена замирают и концентрируются на физических ощущениях: холод, онемение, боль. Цель не в том, чтобы обмануть себя и полюбить страдание, а в том, чтобы перестать воспринимать его как врага. Орден учит больше не бояться боли, найти в ней смысл посредством постоянной медитации. Боль — это голос Истины, пробивающийся сквозь привычку тела к комфорту. Оно сопротивляется Ясности, потому что старый мир приучил его искать разбавляющее, убивающее удовольствие, — и каждый приступ холода обличает эту закоренелую ложь. Боль есть не симптом распада, а свидетельство, что ты на верном пути.
+      </li>
+      <li style="margin-bottom: 0; font-style: normal;">
+        В коллективном Бдении физическое ощущение становится общим и десятки молчащих собратьев, находясь под одними звёздами, только укрепляют собственный дух, так как чужое присутствие чётче позволяет осознать, что ты не один.
+      </li>
+    </ul>
+  </div>
+
+  <!-- 4. Пять прикосновений -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      4. Пять прикосновений
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Поскольку в Ордене действуют скорее коллективные ценности, нежели индивидуальные, поощряются практически все средства для упрочнения взаимоотношений. В обществе, где «серые камни» могут разделить людей, особенно важно помнить о ближнем, поэтому жизнь и деятельность каждого тесно связана с общим трудом. Кроме того, немал шанс встретить человека, который станет особенным — и жест Пяти прикосновений создан для выражения своей преданности такому лицу.
+      </li>
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Хотя членам Ордена положено вести себя дружелюбно и гостеприимно даже с теми, кто и не является единомышленником, принадлежность к культу никого не обделила чувством элитарности. Это заведомо создаёт границу между не желающими вставать на путь к Истине и теми, кого этот путь духовно развил и освободил, изолировал от рисков разбавления Ясности. В таком трезвом и честном состоянии любовь есть самое чистое проявление человеческого сердца, и она не отвлекает от цели, а только укрепляет дух. Пять прикосновений — это аналог поцелуя в том мире, где он был под строжайшим запретом. В отличие от Печати обнулителя (поцелуя родственной души), новый жест не ставит ближайшего под всякий риск — это искренний момент выражения своих чувств, который направлен только на благополучие другого.
+      </li>
+      <li style="margin-bottom: 0; font-style: normal;">
+        В состоянии постоянного холода двое сердец делятся сокровенным теплом. Они касаются друг друга запястьями, где вены ближе к коже, а значит, и тепло проявляется сильнее. «Пять» в названии означает, сколько ударов сердца будет длиться этот контакт. Желательно, чтобы во время прикосновения люди были спокойны, продлевая этот короткий момент. Жест принято использовать исключительно между парами, ведь нельзя не назвать несколько интимным процесс осознания влюблённости и привязанности, о котором человек даёт знать невербально, через концентрацию на чужом пульсе, как на собственном. Также возможен вариант касания шеи запястьем.
+      </li>
+    </ul>
+  </div>
+
+  <!-- 5. Исход -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      5. Исход
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Похороны умершего от «серых камней». Долголетие — порой не единственный подарок Истины, а путь к ней недаром назван трудным. Смерть в Ясности — это не трагический распад, а естественное завершение пути, в отличие от пустой и бессмысленной гибели людей старого мира. Все встретившие Исход почитаются как те, кто дошел до абсолютного покоя и избавился от боли.
+      </li>
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Тело облачают в особые одежды с символикой Ордена, и гроб при свете луны приносят на место захоронения. В Ордене нет веры в загробную жизнь или бессмертную душу, ведь здесь ценят материю и оставленный след. Захоронение — это акт передачи коллективу памяти о почившем. Собираясь в круг над могилой, товарищи проводят финальное Бдение, и в состоянии духовной Ясности они разделяют последнюю тишину с ушедшим собратом. Чем больше приближенных обрел почивший при жизни, тем глубже и прочнее память о его верности Доктрине останется в коллективе.
+      </li>
+      <li style="margin-bottom: 0; font-style: normal;">
+        Вместо религиозных молитв доверенное лицо читает ключевые главы Доктрины Ордена, как напоминания живым о том, ради чего был пройден этот путь. Надгробия умерших от Исхода не должны быть цветными, а вместо живых или искусственных цветов разрешены лишь выточенные из серого камня: такие выделяют могилу среди остальных и символизируют монументальность, нерушимость убеждений.
+      </li>
+    </ul>
+  </div>
+
+  <!-- ПРОЧЕЕ -->
+  <div style="margin-top: 32px; margin-bottom: 24px;">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.15rem; letter-spacing: 0.5px; margin-bottom: 12px;">
+      Прочее
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Помимо основных ритуалов, в Ордене часто практикуются вылазки на природу, организованные для групп той или иной ступени, обычно по вечерам и в сопровождении патрульных, которые могут обеспечить безопасность. На свежем воздухе гораздо легче очистить разум, найти тишину и медитировать. Но лучше не расставаться со своей группой и тем более не заходить глубоко в лес — это чревато встречей с Нексатами.
+      </li>
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Также существуют праздники, распространяющиеся на весь Миррэль: хотя не каждый житель города — член идеологического культа, но каждый некогда следовал за Триумвиратом и взамен на помощь признавал его власть и закон. Таким образом, январский праздник <strong>Дня Разоблачения</strong> считается важным для всех. Это годовщина обнародования Доктрины «Правды», во время которой один из лидеров Люсьен Арто публично читает архивные документы о «Nexus Biomed», как некогда он зачитывал их через взломанные радиочастоты. В самую полночь по всему Миррэлю проходят шествия со светильниками, излучающими холодный белый свет.
+      </li>
+      <li style="margin-bottom: 0; font-style: normal;">
+        Иное празднование — <strong>День Освобождения</strong> — проходит в честь взятия власти в Миррэле. После выступления Триумвирата на главных улицах и во дворах от лица Ордена щедро накрываются столы, с которых любой желающий может есть — это благодарность за доверие Триумвирату, а также повторение старой тактики: люди признают власть Ордена Серого Рассвета за защиту и продовольствие. И хотя праздник называется «Днём», он обычно растянут на неделю, чтобы в этом время угостилась большая часть горожан, в то время как Стражи Рассвета и Вершители Истины особенно активно ловят нарушителей порядка.
+      </li>
+    </ul>
+  </div>
+
+  <!-- Кнопка возврата к навигации -->
+  <div style="text-align: left; margin-top: 32px;">
+    <a href="#order-nav" onclick="document.getElementById('order-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+  </div>
+
+</div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 32px 0;">
+
+<!-- === РАЗДЕЛ 5: НАКАЗАНИЯ === -->
+<div id="lore-order-5" style="scroll-margin-top: 90px; margin-bottom: 32px;">
+  
+  <div style="text-align: center; margin-bottom: 20px;">
+    <div style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.25rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Наказания</div>
+  </div>
+
+  <p style="margin-bottom: 24px; font-size: 1rem;">
+    Для поддержания дисциплины в Ордене и безопасности в Миррэле существуют законы, подкреплённые угрозой физического принуждения. В городе практически нет мест лишения свободы: наоборот, провинившемуся могут дать даже больше воли — за пределами Миррэля. При этом существует ряд наказаний, которые особенно эффективно оказывают давление на жителей ввиду частой публичности.
+  </p>
+
+  <!-- 1. Молчание -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      1. Молчание
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Первое и самое мягкое взыскание затрагивает в основном болеющих «серыми камнями», включая членов Ордена: люди в таком состоянии особенно тяжело переносят одиночество, а общество культа порой остаётся единственным для последователя. С тех пор как в коллективе начали цениться дружеская обстановка и крепкие отношения, стали наказуемы действия, способные вызвать разногласия: грубость, праздные разговоры о старом мире, небрежность в исполнении своих обязанностей или пропуск Бдения без уважительной причины.
+      </li>
+      <li style="margin-bottom: 0; font-style: normal;">
+        Поскольку обычные горожане не состоят в общинах Ордена, «Молчание» в отношении них принимает форму социального и экономического бойкота. За проявление неуважения к идеалам Ордена, публичные капризы или мелкую брань в присутствии Стражей Рассвета или выше по ступени, гражданин получает официальную метку в реестре Служителей. На срок от трех дней до недели ему запрещается вступать в сделки: частным лавкам, аптекам и заведениям досуга предписывается полностью игнорировать нарушителя, а соседям — прекратить с ним любые бытовые разговоры. Человеку отказываются продавать даже элементарные товары, наглядно демонстрируя, что без заботы Ордена он далеко не уйдет.
+      </li>
+    </ul>
+  </div>
+
+  <!-- 2. Лишение Бдения -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      2. Лишение Бдения
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Ровно как и первое наказание, «Лишение Бдения» направлено на изоляцию, более эффективную её форму: провинившегося отстраняют от коллектива полностью, в том числе и от обязательных ритуалов, оставляя в одиночной комнате. Путь к Ясности долг и тяжёл, а нарушителям порядка будет ещё труднее подниматься туда, откуда они упали: получится ли у них вообще найти дорогу? «Лишение Бдения» можно понести из-за повторного пропуска обязательной медитации, сокрытия мелкого нарушения (неповиновение системе доносов) или спора с наставником при свидетелях. Выбор длительности «Лишения» стоит за наставником, но это не должно длиться дольше месяца.
+      </li>
+      <li style="margin-bottom: 0; font-style: normal;">
+        В мире Миррэля гражданские не участвуют в закрытых ритуалах, поэтому эквивалентом этого наказания становится «Изоляция» — домашний арест. За сокрытие или имитацию симптомов «серых камней», саботаж общественной работы или споры с патрульной службой жилье гражданина опечатывается на срок до одного месяца. На этот период ему блокируют доступ к общественным зонам и магазинам оранжевого сектора, а также аннулируют право покидать жилище даже после заката. Сухой паек под дверь раз в сутки доставляют патрульные. Наказание полностью лишает человека любой социальной жизни.
+      </li>
+    </ul>
+  </div>
+
+  <!-- 3. Понижение -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      3. Понижение
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Применяется в ответ на систематическое уклонение от обязанностей, ложный донос (клевета искажает образ «Заботы») и несанкционированный контакт с изгнанным или изолированным. Понижение ступени в основном касается тех, кто поднялся через заслуги, а не «серые камни», но это не обязательно: закон равен для всех. Знак отличия изымается у провинившегося публично на глазах у единомышленников.
+      </li>
+      <li style="margin-bottom: 0; font-style: normal;">
+        Не имея ступеней Ордена, обычные горожане расплачиваются своим уровнем жизни через понижение социального статуса, которое применяется за клевету, уклонение от налогов или торговлю с сомнительными лицами. Нарушителя публично лишают имеющихся привилегий: его выселяют из комфортного жилья в более глубокие, сырые и опасные кварталы на границе с Промышленной зоной, урезают предпринимательскую лицензию или вводят повышенную ставку налогообложения. Кроме того, информация о его «неблагонадежности» заносится в открытую картотеку, из-за чего ни одно солидное заведение или работодатель из сектора Обслуживаемых районов больше не рискнут иметь с ним дело.
+      </li>
+    </ul>
+  </div><br>
+
+  <p style="margin-bottom: 24px; font-size: 1rem;">
+    Если относительно мягкие наказания подразумевают отстранение человека от общества, то более суровые прямо делают упор на то, чтобы лицо провинившегося узнавали все.
+  </p>
+
+  <!-- 4. Публичное Покаяние -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      4. Публичное Покаяние
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 0; font-style: normal;">
+        Одно из жестоких наказаний, которое, впрочем, не заканчивается ссылкой человека из Миррэля, хотя, безусловно, повышает риски. Как следует из названия, обвинённый стоит перед собранием всех желающих послушать и зачитывает перечень своих проступков, рассказывая всю правду до тех пор, пока не покается в совершённом и не будет прощён наставником. Чаще всего это раскаяние в сокрытом: в обмане систем иерархии через имитацию развития СПАДа, тайных контактах с соулмейтами или производителями и дилерами «Нексы». Рядом с наказуемым всегда стоят пара-тройка Вершителей Истины, готовые прервать публичное покаяние, если оно вдруг пойдёт не по плану и человек, например, воспользуется моментом для противоречащих Уложению агитаций.
+      </li>
+    </ul>
+  </div>
+
+  <!-- 5. Изгнание -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      5. Изгнание
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 0; font-style: normal;">
+        Сравнимо со смертью, но даже так не самое суровое наказание. Применяется к тем, кто доказанно искал соулмейта, хранил «Нексу», подстрекал к мятежам, устраивал дебош или драки либо уже троекратно был наказан Публичным Покаянием. Не всегда таких нарушителей показывают свету, если это потенциальные инспираторы. Провинившегося выводят за стены закрытого города без знаков отличия и без права на возвращение. Ему не причиняют вреда, но и не помогают спастись от медленной смерти среди Нексатов, налётчиков и голода. Имя изгнанного вычёркивают из архивов, будто бы никогда и не было такого человека.
+      </li>
+    </ul>
+  </div>
+
+  <!-- 6. Последняя Капля -->
+  <div style="margin-bottom: 24px; padding-left: 16px; border-left: 2px solid var(--accent-orange);">
+    <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px; margin-top: 0; margin-bottom: 8px;">
+      6. Последняя Капля
+    </h4>
+    <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+      <li style="margin-bottom: 10px; font-style: normal;">
+        Высшая мера — применяется довольно редко, когда преступник действовал особенно неаккуратно и вызывал много внимания: человек являлся распространителем кровавого лекарства или обнулителем, повлёкшим чью-то гибель; устраивал шпионаж в пользу внешних сил или прямо покушался на лидера Триумвирата либо представителя Хранителей Прозрения.
+      </li>
+      <li style="margin-bottom: 0; font-style: normal;">
+        Вершители Истины прилюдно на главной улице дают видоизменённую крупицу «Нексы», которая вызывает эйфорию. Под её действием человек видит свои самые счастливые фантазии, и его публичный допрос в этом состоянии — «что ты видишь?», «кого ты ищешь?» — это страшное зрелище, доказывающее членам Ордена «мерзость» и «заразность» стремления к разбавлению Ясности. После допроса следует изгнание из города.
+      </li>
+    </ul>
+  </div>
+
+  <!-- Кнопка возврата к навигации -->
+  <div style="text-align: left; margin-top: 32px;">
+    <a href="#order-nav" onclick="document.getElementById('order-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+  </div>
+
+</div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 32px 0;">
+
+<!-- === РАЗДЕЛ 6: СИМВОЛИКА === -->
+<div id="lore-order-6" style="scroll-margin-top: 90px; margin-bottom: 32px;">
+  
+  <div style="text-align: center; margin-bottom: 20px;">
+    <div style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.25rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px;">Символика</div>
+  </div>
+
+  <div style="margin: 16px 0; text-align: center;">
+    <img src="https://img1.teletype.in/files/05/21/052134b9-062c-4a7c-9e92-c31059ae7164.png" alt="Символика Ордена" style="max-width: 100%; border-radius: 8px; border: 1px solid var(--glass-border);">
+  </div>
+
+  <p style="margin-bottom: 16px; font-size: 1rem;">
+    Культ, будучи чисто идеологическим, никак не связан с религией, а вся его символика не имеет ничего общего с мировыми верованиями.
+  </p>
+
+  <ul style="padding-left: 20px; margin-bottom: 16px; font-size: 1rem;">
+    <li style="margin-bottom: 10px; font-style: normal;">
+      <strong>Герб Ордена</strong> — восьмиконечная звезда белого или серого цвета, как знак пути к Истине в ночной тьме. Гербы развешены у главных штабов Ордена и у стен города, а эмблема присутствует на многих отличительных элементах одежды. <strong>Не сравнивать с созвездиями Судьбы</strong> — у тех четыре луча!
+    </li>
+    <li style="margin-bottom: 10px; font-style: normal;">
+      Кроме звезды существуют <strong>знак Ясности</strong> — всевидящее око, где зрачок направлен строго прямо — и <strong>символ защиты Рассвета</strong>, где на фоне лучей, выглядывающих из-за горизонта, вертикально стоит меч.
+    </li>
+    <li style="margin-bottom: 10px; font-style: normal;">
+      Символ коллектива — <strong>вытянутая ладонь</strong>: как предложение помощи при «серых камнях» и как просьба остановиться, прислушаться к происходящему и бдеть. Если на ладони изображено око, то это <strong>символ «Заботы»</strong>, особенно распространённый среди членов Ордена.
+    </li>
+    <li style="margin-bottom: 10px; font-style: normal;">
+      <strong>Знак Исхода</strong> заменяет собой созвездие Судьбы на той стадии «серых камней», когда звёзды начинают исчезать — эти линии выглядят скромно, минималистично и совершенно не ассоциируются с пугающими скелетами, косами или другими атрибутами образа смерти из старого мира.
+    </li>
+    <li style="margin-bottom: 10px; font-style: normal;">
+      <strong>Символ полумесяца</strong>, обрамлённый острыми лучами, означает новую жизнь или долголетие; он не так распространён и используется в основном Служителями Благоденствия, которые напрямую воздействуют на жизнь всего города.
+    </li>
+  </ul>
+
+<div class="rule-quote" style="margin-top: 24px; margin-bottom: 24px;">
+  <p style="font-style: normal; font-size: 0.88rem; color: var(--text-muted); margin-bottom: 10px;">
+    Основные цвета никогда не яркие и не всегда красивы по общим меркам — но и правда не всегда сладка, а Орден учит её принимать любой. Основной используемый цвет — серый, а вторичные — черный и белый, в то время как серебристый или бледно-голубой используются крайне скупо, исключительно для представителей верхушки. Иные цвета, конечно, не запрещены, но никакого смысла не несут, так как у большинства последователей черно-белая слепота.</p>
+</div>
+
+<p style="margin-bottom: 16px; font-size: 1rem;">
+    Каждая ступень имеет свой отличительный элемент одежды. Все члены Ордена обязаны носить знак своей ступени; вдобавок это помогает найти своего в толпе остальных.
+  </p>
+
+  <ul style="padding-left: 20px; margin: 0; font-size: 1rem;">
+    <li style="margin-bottom: 12px; font-style: normal;">
+      <strong>Пробуждённый</strong> получает свой первый отличительный элемент сразу после ритуала Инициации — плотную светло-серую повязку на плечо, на которой ещё нет никакой нашивки.
+    </li>
+    <li style="margin-bottom: 12px; font-style: normal;">
+      У <strong>Ясных</strong> уже появляется всевидящее око, и если те становятся патрульными, повязку обрамляют чёрные нити по краям.
+    </li>
+    <li style="margin-bottom: 12px; font-style: normal;">
+      <strong>Стражи Рассвета</strong> получают первые мантии чёрного цвета, на которых у сердца располагается звезда-эмблема, а на нашивке изображается символ защиты Рассвета.
+    </li>
+    <li style="margin-bottom: 12px; font-style: normal;">
+      <strong>Вершители Истины</strong>, являясь элитным отрядом, могут себе позволить более светлый плащ с декоративным серебряным орнаментом по краям рукавов, подола и капюшона. На повязке сохраняется символ, как у Стражей, но цвет ткани меняется на белый.
+    </li>
+    <li style="margin-bottom: 12px; font-style: normal;">
+      <strong>Старшие</strong>, вне зависимости от того, кем они были раньше, носят лёгкую тёмную мантию, где на спине сосуществуют символы Исхода и Жизни. Повязка чёрного цвета с символом Ясности.
+    </li>
+    <li style="margin-bottom: 12px; font-style: normal;">
+      <strong>Служители Благоденствия</strong> почти не выходят на главные улицы и управляют всем издалека, а аллергия на солнце имеется не у всех. Поэтому они носят только белые повязки на плече с изображением знака Жизни.
+    </li>
+    <li style="margin-bottom: 12px; font-style: normal;">
+      <strong>Хранители Прозрения</strong> — крайне малочисленная группа, узнаваемая и без повязок. Они облачены в закрывающие лица белоснежные мантии, украшенные серебристыми окантовками. Символы на спине зависят от конкретной должности лица: у командира знак защиты Рассвета, у судьи — знак «Заботы», а у советников — очи Ясности.
+    </li>
+    <li style="margin-bottom: 0; font-style: normal;">
+      <strong>Триумвират Освободителей</strong> не носит повязок. На серебряной мантии изображена белая восьмиконечная звезда, излучающая бледно-голубой свет. Когда один из лидеров выходит, он точно сияет в ночном небе и притягивает всё внимание. Должны ли лидеры скрываться под капюшонами, не регламентировано: Люсьен Арто, как главное лицо, никогда не скрывается, пока Дюваль и Бланше предпочитают лишний раз не светиться. В конце концов, белые одеяния особенно хорошо подчёркивают недостаточно бледную для «серых камней» кожу.
+    </li>
+  </ul>
+
+  <!-- Кнопка возврата к навигации -->
+  <div style="text-align: left; margin-top: 32px;">
+    <a href="#order-nav" onclick="document.getElementById('order-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+  </div>
+
+</div>
+
+    <!-- Авторы -->
+    <div class="rule-quote" style="margin-top: 32px;">
+      <strong>Автор:</strong> @snaillanum (Владелец 𝐁𝐝𝐌:𝐑𝐒)<br>
+      <strong>Редактор:</strong> @K1W1T0 (Администратор 𝐁𝐝𝐌:𝐑𝐒)
+    </div>
+
+  </div>
+
+  <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 40px auto 24px auto; opacity: 0.5;">
+
+  <div style="font-size: 0.85rem; color: var(--text-muted); text-align: center; line-height: 1.5; max-width: 800px; margin: 0 auto 32px auto;">
+    Все материалы, размещенные в статьях, а также в пределах каналов и чатов, принадлежат ролевой «Bisous de Mirelle». Использование сторонними проектами запрещено.
+  </div>
+</section>
+
+    <!-- ЛАГЕРЯ СОУЛМЕЙТОВ -->
+<section id="lore-camps" class="content-section" data-title="Лагеря соулмейтов" style="scroll-margin-top: 90px; margin-bottom: 32px;">
+  <h2>Лагеря соулмейтов</h2>
+  
+<div class="card" style="padding: 24px;">
+    
+    <div style="text-align: center; margin-bottom: 24px;">
+      <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 4px;">SOULMATE REFUGES</h3>
+      <p style="color: var(--text-muted); font-weight: 600; margin: 0;">Информация о лагерях</p>
+    </div>
+
+    <!-- Изображение 1 -->
+    <div style="margin: 16px 0 24px 0; text-align: center;">
+      <img src="https://img3.teletype.in/files/6d/52/6d523548-b762-471f-92f1-207c79a3203f.jpeg" alt="Лагеря соулмейтов" style="max-width: 100%; border-radius: 8px; border: 1px solid var(--glass-border);">
+    </div>
+
+    <!-- Текст части 1 -->
+    <p style="margin-bottom: 16px; font-size: 1rem; line-height: 1.6;">
+      Запрет на поиск родственной души, а впоследствии и возникшие наказания за личное счастье дались тяжко абсолютно всем. Но особенно сильно это ударило по уже нашедшим свою судьбу или до последнего отказывающимся идти на поводу у идеи самодостаточности. Часть из них еще на первых порах успела покинуть страну и найти убежище там, где по-прежнему действовали старые привычные законы, не принижающие их права. Но, конечно, не каждый мог себе это позволить. По мере усугубления обстановки некоторые все же изменяли своим принципам и медленно угасали, через силу приняв чужую «веру»; некоторые выбирали смерть, так как попытки убедить их в разумности новых положений лишь усиливали их депрессивное состояние и враждебное отношение к новой идеологии. При этом все-таки нашлись люди, решившие пойти на огромные риски ради помощи другим.
+    </p>
+    
+    <p style="margin-bottom: 16px; font-size: 1rem; line-height: 1.6;">
+      Поначалу именно пары соулмейтов в собственных домах тайно укрывали отказавшихся от новых правил Ордена людей. Однако жить долго так близко к центру было неоправданно опасно, из-за чего точки помощи переместились подальше — на границу между все еще обслуживаемой частью города и уже заброшенной местностью. Там риск быть обнаруженными значительно снизился, поэтому принимать новых людей стало гораздо проще.
+    </p>
+
+    <p style="margin-bottom: 16px; font-size: 1rem; line-height: 1.6;">
+      Чаще всего о таких домах узнают с помощью Проводников. Люди, взявшие на себя эту роль, обычно по собственному желанию выбираются на вылазки по Миррэлю и заходят в неприметные места, где часто можно встретить тех, кто по-прежнему предан старой системе. Но и без помощи Проводников различные жители города находили дома помощи, и, естественно, владельцы никогда не признаются сразу в желании спасти как можно больше соулмейтов.
+    </p>
+
+    <p style="margin-bottom: 16px; font-size: 1rem; line-height: 1.6;">
+      На таких точках имеются свет и вода, а сами дома смахивают на общежития, где в одной комнате иногда приходится ютиться и шестерым людям. Подобные спасительные островки имеются не в каждом районе, но в некоторых их может находиться даже два. Доступ к работе в городе остается открытым, рядом функционируют какие-никакие магазинчики, что говорит об облегченных условиях выживания, где главным страхом остаются внезапные облавы Стражей Рассвета, к которым необходимо быть готовыми в любой момент. Большинство убежищ существует достаточно долго, однако никто не мог быть уверен, что очередной донос или случайная ошибка не станут для них последними. Одной из весомых проблем были больные второй и третьей стадией СПАДа, так как найти лечение в виде соулмейтов в таких условиях — то еще везение, а чтобы добыть «Нексу» и облегчить чужую жизнь, было необходимо очень и очень постараться.
+    </p>
+
+    <!-- Изображение 2 -->
+    <div style="margin: 24px 0; text-align: center;">
+      <img src="https://img3.teletype.in/files/a8/e5/a8e5d98f-63b1-4643-8570-13104562821e.jpeg" alt="Убежища в заброшенной местности" style="max-width: 100%; border-radius: 8px; border: 1px solid var(--glass-border);">
+    </div>
+
+    <!-- Текст части 2 -->
+    <p style="margin-bottom: 16px; font-size: 1rem; line-height: 1.6;">
+      Окрепнув, люди либо остаются помогать владельцам домов, если еще имеются свободные места, либо уходят из этих домов дальше в заброшенную местность, где располагаются лагеря, практически полностью изолированные от городской системы. Образовывались и расселялись такие группы хаотично, и сейчас они редко знают координаты друг друга: некоторые лидеры намеренно выбирают не связываться в целях безопасности, а некоторые просто не имеют достаточно средств для связи. Поэтому даже им самим неизвестно, насколько их много в заброшенной части города. Их основными местами пребывания являются брошенные промышленные зоны, предприятия и другие крупные здания, пригодные для укрытия. Численность жителей лагерей обычно не превышает двадцати пяти человек, однако исключительные группы, хорошо выстроившие свою внутреннюю систему, могут расширяться и до сорока человек. Большее количество людей вызывает трудности с обеспечением всех продовольствием, а также снижает мобильность группы. В отличие от домов помощи, лагеря тщательнее заботятся о своей маскировке и путях отступления, вынуждены наперед продумывать планы побега и, в крайнем случае, переезда, а также сталкиваться с редко встречающимися на окраинах Нексатами. Что немаловажно, они стараются собирать материалы для создания оборудования, необходимого как для выживания, так и для проведения хотя бы минимальной исследовательской работы. Каждый участник такой группы выполняет определенную роль: кто-то совершает вылазки в поисках ресурсов, некоторых обязывают всегда находиться в укрытии — для защиты или же ухода за больными и выполнения других работ.
+    </p>
+
+    <p style="margin-bottom: 0; font-size: 1rem; line-height: 1.6;">
+      Разные лидеры этих группировок могут придерживаться противоположных мировоззрений, хотя зачастую в группе находятся представители обеих сторон. Одни стремятся поддерживать тех, кто отчаянно борется за жизнь, помогая практически каждому, оказавшемуся в тяжелой ситуации. Их главная цель — продление и так кратких жизненных сроков. Другие придерживаются более жестких взглядов, так как делают выбор в сторону сопротивления Ордену, устанавливая серьезный фейс-контроль при вступлении в отряды, делая упор на поиск вооружения и создание средств, что в будущем могли бы помочь свергнуть антисоулмейт-систему. Все они хоть и представляют различные взгляды, все равно объединены одной чертой — верой в то, что удастся вернуть мир на круги своя и жить так, как изначально заложено Судьбой.
+    </p>
+
+    <!-- Авторы -->
+    <div class="rule-quote" style="margin-top: 32px;">
+      <strong>Автор:</strong> @snaillanum (Владелец 𝐁𝐝𝐌:𝐑𝐒)<br>
+      <strong>Редактор:</strong> @K1W1T0 (Администратор 𝐁𝐝𝐌:𝐑𝐒)
+    </div>
+
+  </div>
+
+  <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 40px auto 24px auto; opacity: 0.5;">
+
+  <div style="font-size: 0.85rem; color: var(--text-muted); text-align: center; line-height: 1.5; max-width: 800px; margin: 0 auto 32px auto;">
+    Все материалы, размещенные в статьях, а также в пределах каналов и чатов, принадлежат ролевой «Bisous de Mirelle». Использование сторонними проектами запрещено.
+  </div>
+</section>
+
+    <!-- БИОХИМИЯ СОУЛМЕЙТОВ -->
+<section id="lore-bio" class="content-section" data-title="Биохимия соулмейтов" style="scroll-margin-top: 90px; margin-bottom: 32px;">
+  <h2>Биохимия соулмейтов</h2>
+  
+  <div class="card" style="padding: 24px;">
+    
+    <!-- Двойной заголовок статьи -->
+    <div style="text-align: center; margin-bottom: 24px;">
+      <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 4px;">BIOCHEMISTRY OF SOULMATES</h3>
+      <p style="color: var(--text-muted); font-weight: 600; margin: 0;">Биохимия соулмейтов</p>
+    </div>
+
+    <!-- Обложка статьи -->
+    <div style="margin: 16px 0 24px 0; text-align: center;">
+      <img src="https://img2.teletype.in/files/d0/a9/d0a9ae61-8492-43c3-bdf7-2272e767637d.jpeg" alt="Биохимия соулмейтов" style="max-width: 100%; border-radius: 8px; border: 1px solid var(--glass-border);">
+    </div>
+
+    <!-- Внимание / Дисклеймер (Блок-цитата) -->
+    <div class="rule-quote" style="margin-top: 24px; margin-bottom: 24px; background: rgba(15, 12, 10, 0.7); border-left: 3px solid var(--accent-orange); padding: 20px; border-radius: 0 8px 8px 0; box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);">
+      <p style="font-style: normal; font-size: 0.95rem; color: #f1e5de; line-height: 1.6; margin: 0;">
+        <strong>ВНИМАНИЕ!</strong> Данная информация в подробностях известна только ученым, работавшим/работающим непосредственно с явлением соулмейтства. Обычные люди могут знать это либо исходя из опыта, либо не знать вовсе.
+      </p>
+    </div>
+
+    <!-- НАВИГАЦИЯ ПО РАЗДЕЛУ -->
+    <div id="bio-nav" style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--glass-border); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
+      <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-weight: bold;">Главные моменты:</div>
+      <ol style="padding-left: 20px; margin: 0; line-height: 1.8;">
+        <li style="margin-bottom: 6px;">
+          <a href="#bio-1" onclick="document.getElementById('bio-1').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: none;">Что такое созвездие Судьбы?</a>
+          <span style="display: block; font-size: 0.85rem; color: var(--text-muted);">метки, биохимический центр, биомаркеры, слюнная жидкость</span>
+        </li>
+        <li style="margin-bottom: 6px;">
+          <a href="#bio-2" onclick="document.getElementById('bio-2').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: none;">Почему взаимные чувства важны?</a>
+          <span style="display: block; font-size: 0.85rem; color: var(--text-muted);">принцип обмена, невзаимность, страх/стресс, условия проверки</span>
+        </li>
+        <li style="margin-bottom: 6px;">
+          <a href="#bio-3" onclick="document.getElementById('bio-3').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: none;">Как и почему гаснут метки?</a>
+          <span style="display: block; font-size: 0.85rem; color: var(--text-muted);">механизм проверки, поцелуй между соул'ами и несоул'ами</span>
+        </li>
+        <li style="margin-bottom: 6px;">
+          <a href="#bio-4" onclick="document.getElementById('bio-4').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: none;">Подавители биохимического центра</a>
+          <span style="display: block; font-size: 0.85rem; color: var(--text-muted);">гормоны, алкоголь, наркотические средства, степень опьянения</span>
+        </li>
+        <li style="margin-bottom: 0;">
+          <a href="#bio-5" onclick="document.getElementById('bio-5').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: none;">...</a>
+          <span style="display: block; font-size: 0.85rem; color: var(--text-muted);">...</span>
+        </li>
+      </ol>
+    </div>
+
+    <!-- РАЗДЕЛ 1 -->
+    <div id="bio-1" style="scroll-margin-top: 90px;">
+      <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.2rem; margin-bottom: 12px; font-weight: bold;">1. Что такое созвездие Судьбы?</h4>
+      
+      <p style="margin-bottom: 12px; font-size: 1rem; line-height: 1.6;">
+        Созвездие Судьбы — жизненно важный человеческий орган, который состоит из:
+      </p>
+
+      <ol style="padding-left: 20px; margin-bottom: 16px; line-height: 1.6;">
+        <li style="margin-bottom: 8px; font-style: normal;">
+          пяти меток, проявляющихся на поверхности кожи и по виду схожих с родимыми пятнами;
+        </li>
+        <li style="margin-bottom: 8px; font-style: normal;">
+          биохимического центра, располагающегося под эпидермисом и отвечающего за регулирование связи между соулмейтами.
+        </li>
+      </ol>
+
+      <p style="margin-bottom: 16px; font-size: 1rem; line-height: 1.6;">
+        Метки, представленные четырёхконечными звёздочками, можно сравнить с индикаторами, отображающими количество имеющихся попыток на поиск родственной души. Они имеют свою структуру, свой механизм работы, из-за чего при проверке совместимости двух людей способны реагировать «угасанием» или же «закреплением цвета».
+      </p>
+
+      <p style="margin-bottom: 16px; font-size: 1rem; line-height: 1.6;">
+        Гораздо более сложным строением, а также своими функциями отличается так называемый биохимический центр созвездия. Его клетки способны вырабатывать специальные биомаркеры — вещества с уникальной, до конца не исследованной структурой, совпадение которой возможно лишь у соулмейтов (чем и обосновывается совместимость). Помимо синтеза собственных биомаркеров центр также отвечает за начало анализа поступающих маркеров извне – от другого человека.
+      </p>
+
+      <p style="margin-bottom: 16px; font-size: 1rem; line-height: 1.6;">
+        Вырабатываясь, индивидуальные молекулы перемещаются по организму через кровоток и лимфатическую систему. Таким образом, они достигают всех биологических жидкостей человека, что вызывает логичный вопрос: почему проверка на совместимость возможна только через поцелуй? Ответ весьма прост: всё дело в концентрации. Именно в слюне она достаточна для того, чтобы: во-первых, обеспечить обмен биомаркерами, а не их одностороннее перемещение; во-вторых, довести поступившие биомаркеры до биохимического центра, который впоследствии допустит их к анализу.
+      </p>
+
+      <div style="text-align: left; margin-top: 16px;">
+        <a href="#bio-nav" onclick="document.getElementById('bio-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">[К навигации]</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 32px 0;">
+
+    <!-- РАЗДЕЛ 2 -->
+    <div id="bio-2" style="scroll-margin-top: 90px;">
+      <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.2rem; margin-bottom: 12px; font-weight: bold;">2. Почему взаимные чувства так важны?</h4>
+      
+      <p style="margin-bottom: 12px; font-size: 1rem; line-height: 1.6;">
+        Как известно, не каждый поцелуй срабатывает в качестве проверки. Обуславливается это принципом, который касается как обмена биомаркерами, так и обмена чувствами. Принцип носит название «обменного», иногда – «взаимного» (также: П. обмена/П. взаимности), и суть его заключается в следующем:
+      </p>
+
+      <ol style="padding-left: 20px; margin-bottom: 16px; line-height: 1.6;">
+        <li style="margin-bottom: 8px; font-style: normal;">
+          Поцелуй, необходимый для проверки, должен обеспечить попадание слюнной жидкости в оба организма. В ином случае биомаркеры не смогут подвергнуться анализу ввиду их отсутствия.
+        </li>
+        <li style="margin-bottom: 8px; font-style: normal;">
+          При проверке оба организма должны испытывать взаимные чувства к друг другу, так как максимальная концентрация индивидуальных молекул достигается при низком уровне гормонов стресса и страха, а также высоком уровне гормонов счастья, радости и удовольствия.
+        </li>
+      </ol>
+
+      <p style="margin-bottom: 16px; font-size: 1rem; line-height: 1.6;">
+        Исходя из первого пункта можно сделать первый вывод: краткие касания губ не запустят процесс проверки. Исходя из второго пункта, можно сделать второй вывод: анализ биомаркеров не начнется, если один из пары испытывает неуверенность, страх и/или стресс перед поцелуем, так как: во-первых, кортизол, вырабатывающийся при стрессе, снижает работу биохимического центра, вследствие чего тот замедляет синтез биомаркеров; во-вторых, кортизол также ингибирует аналитическую функцию центра, из-за чего даже при попадании биомаркеров более «вдохновлённого» субъекта в организм «стрессующего» проверка не состоится – метки каждого останутся на месте. По всей видимости, таким образом созвездие Судьбы обеспечивает безопасность и некоторую справедливость проверки.
+      </p>
+
+      <div style="text-align: left; margin-top: 16px;">
+        <a href="#bio-nav" onclick="document.getElementById('bio-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">[К навигации]</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 32px 0;">
+
+    <!-- РАЗДЕЛ 3 -->
+    <div id="bio-3" style="scroll-margin-top: 90px;">
+      <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.2rem; margin-bottom: 12px; font-weight: bold;">3. Как и почему происходит угасание меток?</h4>
+      
+      <p style="margin-bottom: 16px; font-size: 1rem; line-height: 1.6;">
+        Так как структура всей соулмейт-системы не до конца изучена, информация о её механизмах формируется на основе научных теорий. Одна из таковых объясняет угасание звёзд. Вероятнее всего, метки (звёзды) — это не просто индикаторы оставшихся попыток, а часть органа, в которой и происходит распознавание чужих биомаркеров. Биохимический центр служит пропускным пунктом, чувствительным к гормональному и эмоциональному фону своего хозяина. Гормоны, вырабатывающиеся при переживаниях, вызванных фактом предстоящей проверки, блокируют пропускную способность центра, из-за чего биомаркеры не могут поступить в метку и запустить процесс проверки.
+      </p>
+
+      <p style="margin-bottom: 12px; font-size: 1rem; line-height: 1.6;">
+        Когда принцип обмена, описанный ранее, полностью соблюдается, и ничего больше не препятствует проверке, маркеры в считанные секунды достигают биохимического центра и отправляются в первую доступную метку, после встраиваясь в её структуру. Далее сценарий развивается в зависимости от соулмейтства:
+      </p>
+
+      <ol style="padding-left: 20px; margin-bottom: 16px; line-height: 1.6;">
+        <li style="margin-bottom: 12px; font-style: normal;">
+          <strong>Родственные души:</strong> биокоды двух людей оказались одинаковы. В таком случае в обоих организмах запускаются реакции, усиливающие ощущение влюбленности к друг другу, и все оставшиеся метки заполняются чужими биомаркерами. Созвездие запоминает родственную душу и фиксирует её молекулы во всех звёздах, затемняя цвет пятен. При этом уже угасшие метки не восстанавливаются.
+        </li>
+        <li style="margin-bottom: 12px; font-style: normal;">
+          <strong>Не родственные души:</strong> биокоды двух людей не совпали. В этом случае биомаркер не может встроиться в свободную метку, и соулмейт-система распознаёт её как ошибочную: изолирует в звезде и запускает реакцию, вследствие которой метка разрушается, вызывая покалывание, жжение или другие неприятные ощущения на коже обоих. На месте угасшей звезды (обычно первой гаснет одна из крайних) остаётся небольшой рубец, схожий с теми, что появляются после ожогов. Биохимический центр запоминает код ошибочной молекулы и впоследствии больше не допускает биомаркеры с тем же кодом в метки, то есть последующие поцелуи с тем же человеком теряют свою опасность.
+        </li>
+      </ol>
+
+      <div style="text-align: left; margin-top: 16px;">
+        <a href="#bio-nav" onclick="document.getElementById('bio-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">[К навигации]</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 32px 0;">
+
+<!-- РАЗДЕЛ 4 -->
+    <div id="bio-4" style="scroll-margin-top: 90px;">
+      <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.2rem; margin-bottom: 12px; font-weight: bold;">4. Подавители биохимического центра</h4>
+      
+      <p style="margin-bottom: 16px; font-size: 1rem; line-height: 1.6;">
+        Работа центра напрямую зависит от когнитивной активности мозга, то есть от способности человека рационально мыслить, осознавать происходящее, воспринимать и обрабатывать информацию. Следовательно, ряд веществ, подавляющих нейронную активность и помутняющих сознание (например: алкоголь, наркотические вещества, транквилизаторы), могут помешать проверке свершиться. Однако значительную роль здесь играет <em>степень помутнённости</em>.
+      </p>
+
+      <p style="margin-bottom: 12px; font-size: 1rem; font-weight: bold; color: #fff;">
+        Разберём на примере алкоголя:
+      </p>
+
+      <div style="margin-bottom: 16px;">
+        <p style="margin-bottom: 6px; font-size: 1rem; line-height: 1.6;">
+          1) В состоянии <strong>лёгкого опьянения</strong>, когда человек ещё полностью вменяем, биохимический центр лишь немного затормаживается, но всё так же сохраняет способность синтезировать и анализировать молекулы.
+        </p>
+        <div style="margin-left: 8px; padding-left: 12px; border-left: 2px solid var(--accent-orange); font-size: 0.95rem; color: #ccc; font-style: italic;">
+          Условно, 1-2 порции спиртного*
         </div>
       </div>
-    </section>
 
-    <!-- ОСТАЛЬНЫЕ СТАТЬИ -->
-    <section id="lore-camps" class="content-section" data-title="Лагеря соулмейтов">
-      <h2>Лагеря соулмейтов</h2>
-      <div class="card">
-        <div class="card-title"><i class="fa-solid fa-campground"></i> Лагеря соулмейтов</div>
-        <p style="color: var(--text-muted);">[Текст статьи будет добавлен]</p>
+      <div style="margin-bottom: 16px;">
+        <p style="margin-bottom: 6px; font-size: 1rem; line-height: 1.6;">
+          2) При <strong>средней степени опьянения</strong> происходит притупление восприятия, центр созвездия работает хаотично, и вероятность проведения проверки снижается, но всё ещё не блокируется полностью. Наиболее рискованное состояние, так как целенаправленная проверка может не сработать, а случайный поцелуй имеет небольшую возможность забрать одну из попыток.
+        </p>
+        <div style="margin-left: 8px; padding-left: 12px; border-left: 2px solid var(--accent-orange); font-size: 0.95rem; color: #ccc; font-style: italic;">
+          Условно, 3-5 порций спиртного*
+        </div>
       </div>
-    </section>
 
-    <section id="lore-bio" class="content-section" data-title="Биохимия соулмейтов">
-      <h2>Биохимия соулмейтов</h2>
-      <div class="card">
-        <div class="card-title"><i class="fa-solid fa-dna"></i> Биохимия соулмейтов</div>
-        <p style="color: var(--text-muted);">[Текст статьи будет добавлен]</p>
+      <div style="margin-bottom: 16px;">
+        <p style="margin-bottom: 6px; font-size: 1rem; line-height: 1.6;">
+          3) <strong>Тяжёлое опьянение</strong>, в симптомы которого входят спутанность сознания, нарушение координации и прочее, влечёт за собой полное отключение аналитической функции созвездия Судьбы и снижение синтеза биомаркеров до минимума. Вследствие чего трата попыток в таком состоянии становится невозможной.
+        </p>
+        <div style="margin-left: 8px; padding-left: 12px; border-left: 2px solid var(--accent-orange); font-size: 0.95rem; color: #ccc; font-style: italic;">
+          Условно, больше 6 порций спиртного*
+        </div>
       </div>
-    </section>
+
+      <!-- Исходная сноска по алкоголю -->
+      <div style="margin-left: 8px; padding-left: 12px; border-left: 2px solid #555; font-size: 0.95rem; color: #ccc; font-style: italic; margin-bottom: 24px;">
+        *Зависит от индивидуальной переносимости персонажа.
+      </div>
+
+      <p style="margin-bottom: 12px; font-size: 1rem; line-height: 1.6;">
+        Помимо того, уже неоднократно упоминалось о влиянии различных гормонов на работу биохимического центра. И здесь гормоны делятся на два вида:
+      </p>
+
+      <!-- Пункт 1 с оранжевой полосой -->
+      <div style="margin-bottom: 16px;">
+        <p style="margin-bottom: 6px; font-size: 1rem; line-height: 1.6;">
+          1) <strong>Гормоны-ингибиторы</strong> – подавляют работу центра. В первую очередь, к ним причисляют <em>кортизол и адреналин</em>. Механизм подавления схож с описанным выше – тоже зависит от концентрации веществ и степени стресса или страха.
+        </p>
+        <div style="margin-left: 8px; padding-left: 12px; border-left: 2px solid var(--accent-orange); font-size: 0.95rem; color: #ccc; font-style: italic;">
+          Важно вспомнить, что биохимический центр чувствителен не только к гормональному, но и к эмоциональному фону. Поэтому блокировка центра происходит только при нежелании/страхе целовать человека. <strong>Обычный стресс, вызванный, например, проблемами на работе, не влияет на трату попыток.</strong>
+        </div>
+      </div>
+
+      <!-- Пункт 2 с оранжевой полосой -->
+      <div style="margin-bottom: 16px;">
+        <p style="margin-bottom: 6px; font-size: 1rem; line-height: 1.6;">
+          2) <strong>Гормоны-стимуляторы</strong> – их содержание в крови обязательно для выявления совместимости и обычно повышается само по себе при ощущении взаимности. К ним в основном причисляют четыре «гормона счастья»: <em>окситоцин, дофамин, серотонин и эндорфин</em>.
+        </p>
+        <div style="margin-left: 8px; padding-left: 12px; border-left: 2px solid var(--accent-orange); font-size: 0.95rem; color: #ccc; font-style: italic;">
+          Интересным выходит то, что трата попытки не требует запредельной концентрации гормонов счастья: достаточно умеренного повышения их содержания в крови – <strong>главное, чтобы их уровень превышал уровень гормонов-ингибиторов</strong>. А вот <strong>искусственные способы</strong> повысить их содержание (например, через употребление наркотических веществ) ведут к перегрузке биохимического центра, вследствие чего он может приостановить свою работу.
+        </div>
+      </div>
+
+      <div style="text-align: left; margin-top: 16px;">
+        <a href="#bio-nav" onclick="document.getElementById('bio-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">[К навигации]</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 32px 0;">
+
+    <!-- РАЗДЕЛ 5 -->
+    <div id="bio-5" style="scroll-margin-top: 90px;">
+      <h4 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.2rem; margin-bottom: 12px; font-weight: bold;">5. ???</h4>
+      
+      <p style="margin-bottom: 16px; font-size: 1rem; color: var(--text-muted); font-style: italic;">
+        В разработке...
+      </p>
+
+      <p style="margin-bottom: 16px; font-size: 0.95rem; line-height: 1.6;">
+        Если вы хотите подробнее узнать о том, чего не было раскрыто в данной статье, либо задать уточняющие вопросы по прочитанному материалу, то следует обратиться к владельцу (до одобрения вступительной анкеты только через бот).
+      </p>
+
+      <div style="text-align: left; margin-top: 16px;">
+        <a href="#bio-nav" onclick="document.getElementById('bio-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">[К навигации]</a>
+      </div>
+  
+    <!-- Авторы -->
+    <div class="rule-quote" style="margin-top: 32px;">
+      <strong>Автор:</strong> @snaillanum (Владелец 𝐁𝐝𝐌:𝐑𝐒)<br>
+      <strong>Редактор:</strong> @K1W1T0 (Администратор 𝐁𝐝𝐌:𝐑𝐒)
+    </div>
+
+  </div>
+  </div>
+
+  <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 40px auto 24px auto; opacity: 0.5;">
+
+  <div style="font-size: 0.85rem; color: var(--text-muted); text-align: center; line-height: 1.5; max-width: 800px; margin: 0 auto 32px auto;">
+    Все материалы, размещенные в статьях, а также в пределах каналов и чатов, принадлежат ролевой «Bisous de Mirelle». Использование сторонними проектами запрещено.
+  </div>
+</section>
+
 
     <section id="lore-locations" class="content-section" data-title="Локации Миррэля">
       <h2>Локации Миррэля</h2>
