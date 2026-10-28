@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f0c0a'/><path d='M50 15 L58 42 L85 50 L58 58 L50 85 L42 58 L15 50 L42 42 Z' fill='%23ff6b00'/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f0c0a'/><path d='M50 15 L58 42 L85 50 L58 58 L50 85 L42 58 L15 50 L42 42 Z' fill='%23ff6b00'/></svg>">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bisous de Mirelle: Ruined Souls</title>
@@ -704,7 +704,6 @@
         <a class="sub-link" onclick="navigateTo('rules-norm')">О норме и рестах</a>
         <a class="sub-link" onclick="navigateTo('rules-flood')">Правила поведения во флуде</a>
         <a class="sub-link" onclick="navigateTo('rules-rp')">Правила поведения в ролевой</a>
-        <a class="sub-link" onclick="navigateTo('rules-rating')">О рейтинге ролевой</a>
       </div>
 
       <a class="nav-link dropdown-btn" onclick="toggleDropdown('lore-drop')">
@@ -748,7 +747,7 @@
       </div>
       <div class="status-badge">
         <div class="dot-orange"></div>
-        <span>Забронировано мест: <strong>3</strong></span>
+        <span>Забронировано мест: <strong>2</strong></span>
       </div>
     </div>
   </aside>
@@ -983,6 +982,7 @@
     </div>
   </div>
 </section>
+
 
     <!-- ПРАВИЛА ПОВЕДЕНИЯ ВО ФЛУДЕ -->
 <section id="rules-flood" class="content-section" data-title="Правила поведения во флуде">
@@ -1562,22 +1562,392 @@
 
     </section>
 
-    <!-- ПРАВИЛА ОФОРМЛЕНИЯ АНКЕТ -->
-    <section id="extra-forms" class="content-section" data-title="Правила оформления анкет">
-      <h2>Правила оформления анкет</h2>
-      <div class="card">
-        <div class="card-title"><i class="fa-solid fa-id-card"></i> Правила оформления анкет</div>
-        <p style="color: var(--text-muted);">[Раздел наполняется]</p>
+<!-- ПРАВИЛА ОФОРМЛЕНИЯ АНКЕТ -->
+<section id="extra-forms" class="content-section" data-title="Правила оформления анкет" style="scroll-margin-top: 90px; margin-bottom: 32px;">
+  <h2>Правила оформления анкет</h2>
+  
+  <div class="card" style="padding: 24px;">
+    
+    <!-- Двойной заголовок -->
+    <div style="text-align: center; margin-bottom: 24px;" id="forms-top">
+      <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 4px;">CHARACTER FORMATTING RULES</h3>
+      <p style="color: var(--text-muted); font-weight: 600; margin: 0;">«Bisous de Mirelle: Ruined Souls»</p>
+    </div>
+
+<!-- Навигация по разделам -->
+    <div style="display: flex; flex-direction: column; gap: 8px; margin: 24px 0 32px 0; padding: 18px; background: rgba(15, 12, 10, 0.7); border: 1px solid var(--glass-border); border-radius: 10px;">
+      <span style="color: var(--text-muted); font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px;">Навигация по разделам:</span>
+      <a href="#forms-template" onclick="document.getElementById('forms-template').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">1.1. Шаблон анкеты с пояснениями</a>
+      <a href="#rules-1-2" onclick="document.getElementById('rules-1-2').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">1.2. Требования к оформлению</a>
+      <a href="#forms-details" onclick="document.getElementById('forms-details').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">1.3. Частые замечания</a>
+    </div>
+
+<!-- РАЗДЕЛ 1.1 -->
+    <div id="forms-template" style="margin-top: 30px; scroll-margin-top: 30px;">
+      <div class="card-title" style="margin-bottom: 20px;">1.1. Шаблон анкеты с пояснениями</div>
+      
+      <!-- Пункт 1 -->
+      <p><strong>1. Имя, Фамилия</strong></p>
+      <div class="rule-quote">
+        Фамилия не обязательна к указанию, но, при желании, персонажу, не имеющему её по канону, вы можете подобрать любую созвучную.
       </div>
+
+      <!-- Пункт 2 -->
+      <p style="margin-top: 16px;"><strong>2. Возраст, Рост</strong></p>
+      <div class="rule-quote">
+        Поиск соулмейта можно начать только с 18-ти лет, отсюда и минимальный допустимый возраст для анкеты. Максимальная продолжительность жизни людей со СПАДом – 50 лет.
+      </div>
+
+      <!-- Пункт 3 -->
+      <p style="margin-top: 16px;"><strong>3. Род деятельности</strong></p>
+      <div class="rule-quote">
+        Основные занятия персонажа на момент начала ролевой: работа и/или обучение, другие виды деятельности, положение в обществе.
+      </div>
+
+      <!-- Пункт 4 -->
+      <p style="margin-top: 16px;"><strong>4. Внешность</strong></p>
+      <div class="rule-quote">
+        Помимо описания базы внешнего вида, при желании можете указать расположение созвездия судьбы на теле персонажа, другие отличия от канона и признаки заболевания или последствий употребления Нексы.
+      </div>
+
+      <!-- Пункт 5 -->
+      <p style="margin-top: 16px;"><strong>5. Характер</strong></p>
+      <div class="rule-quote">
+        Для фандомных персонажей необходимо придерживаться каноничного поведения хотя бы на 70% (остаются ценности персонажа, основные паттерны поведения, темперамент, каноничная мотивация и прочее). В некоторых случаях анкетолог может задать уточняющие вопросы.
+      </div>
+
+      <!-- Пункт 6 -->
+      <p style="margin-top: 16px;"><strong>6. Биография/Предыстория</strong></p>
+      <div class="rule-quote">
+        Повествуете о том, что было с вашим персонажем до начала отыгрыша. По желанию описываете то, как вся система повлияла на жизнь персонажа.<br>
+        Если хочется сохранить интригу в истории для описания ее в постах, то необязательно сильно расписывать пункт, достаточно указать, что всё будет раскрыто по ходу истории.
+      </div>
+
+      <!-- Пункт 7 -->
+      <p style="margin-top: 16px;"><strong>7. Дополнительная информация</strong></p>
+      <div class="rule-quote">
+        Помещаете сюда то, что не подошло ни к одному из пунктов, или же информацию, которую хочется выделить для других.
+      </div>
+
+      <!-- Пункт 8 -->
+      <p style="margin-top: 16px;"><strong>8. Родственная душа</strong></p>
+      <div class="rule-quote">
+        Если известна, указываете имя персонажа-соулмейта (соролевика). Если неизвестна, можете оставить пустым или же вписать что-то своё (не более одного предложения).
+      </div>
+
+      <!-- Пункт 9 -->
+      <p style="margin-top: 16px;"><strong>9. Ваш юзернейм</strong></p>
+
+      <div style="margin-top: 10px;">
+        <a href="#extra-forms" onclick="document.getElementById('forms-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 32px 0;">
+
+<!-- РАЗДЕЛ 1.2 -->
+    <div id="rules-1-2" style="scroll-margin-top: 90px;">
+      <div class="card-title" style="margin-bottom: 16px;">1.2. Правила оформления анкеты:</div>
+      
+      <p style="margin-bottom: 16px;">
+        Ролевая анкета помогает другим лучше узнать вашего персонажа с помощью заготовленного и структурированного определенным образом шаблона. Следовательно, для обеспечения более удобного ознакомления с ролями наших игроков анкеты должны быть приведены примерно под один вид.
+      </p>
+
+      <p style="margin-bottom: 12px;"><strong>Критерии оформления:</strong></p>
+
+      <!-- Пункт 1 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        1. Используйте стандартный шрифт, не применяя ботов или сторонние сайты для его изменения.<br>
+        1.1. Приветствуется форматирование с помощью инструментов, предоставленных телеграмом (курсив, жирный и прочее), но не переусердствуйте. Нежелательно (но не запрещено) цитировать целые пункты.<br>
+        1.2. Использование премиум-эмодзи разрешено только для вставки непримечательных разделителей.
+      </div>
+
+      <!-- Пункт 2 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        2. Главные пункты, а также основные элементы оформления «FORM», «Bisous de Mirelle» и разделительные линии должны оставаться такими, как были предоставлены изначально.<br>
+        2.1. Менять пункты местами или убирать их запрещено.<br>
+        2.2. Информацию о своем персонаже вписывайте под названия пунктов с новой строки (вместо «[Ваш ответ]»).
+      </div>
+
+      <!-- Пункт 3 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        3. Анкета не должна содержать подробных неприятных росписей, для которых могут потребоваться предупреждения или спойлер. Если ограничения для постов соответствуют рейтингу NC-17, то для ролевой анкеты – рейтингу R.
+      </div>
+
+      <!-- Пункт 4 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        4. Ваша анкета обязательно должна укладываться в 2 лимита (сообщения) телеграма ради более удобной проверки и быстрого ознакомления. <strong>Исключений нет</strong>.
+      </div>
+
+      <!-- Пункт 5 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        5. Текст ролевой анкеты должен быть написан вами, а не скопирован с интернет-ресурсов, нейросетей или чужих анкет.
+      </div>
+
+      <!-- Пункт 6 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        6. Текст ролевой анкеты должен обязательно соответствовать сюжету, как бы очевидно то ни звучало.<br>
+        6.1. Если в тексте отсутствует упоминание созвездия Судьбы, влияния СПАДа/Нексы или миррэльских событий – будут заданы уточняющие вопросы.
+      </div>
+
+      <!-- Пункт 7 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        7. Запрещено вписывание имен других фандомных персонажей – только их безымянные упоминания, чтобы избежать несостыковок при отыгрыше.
+      </div>
+
+      <!-- Пункт 8 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        8. Количество ошибок и опечаток должно быть минимальным – грамотность и внимательность остаются основными критериями по приему.<br>
+        После проверки анкетолог укажет вам на встретившиеся ошибки, опечатки и логические несостыковки в тексте. Если тех окажется слишком много (9-15), вам будет выдан один шанс на перепись/самостоятельную перепроверку анкеты.
+      </div>
+
+      <!-- Пункт 9 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        9. Не забывайте прикреплять до 3-х артов с вашим персонажем. Допускается использование коллажей и/или картинок, отражающих эстетику персонажа.<br>
+        Приветствуется прикрепление до трех музыкальных файлов под атмосферу персонажа.
+      </div>
+
+      <!-- Пункт 10 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        10. Рекомендуем пользоваться сайтами для проверки орфографии и пунктуации, но будьте внимательны: иногда после таких проверок меняется смысл ваших текстов, не копируйте бездумно! Также учитывайте то, что сайты не гарантируют 100% правильности.<br>
+        <div style="margin-top: 8px;">
+          Нажмите для перехода на сайты: 
+          <a href="https://textovod.com" target="_blank" rel="noopener" style="color: var(--accent-orange); text-decoration: underline;">[Textovod.com]</a> | 
+          <a href="https://text.ru" target="_blank" rel="noopener" style="color: var(--accent-orange); text-decoration: underline;">[Text.ru]</a> | 
+          <a href="https://chatgpt.com" target="_blank" rel="noopener" style="color: var(--accent-orange); text-decoration: underline;">[ChatGPT]</a>
+        </div>
+      </div>
+
+      <div style="margin-top: 10px;">
+        <a href="#extra-forms" onclick="document.getElementById('forms-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 32px 0;">
+
+<!-- РАЗДЕЛ 1.3 -->
+    <div id="forms-details" style="margin-top: 30px; scroll-margin-top: 30px;">
+      <div class="card-title" style="margin-bottom: 20px;">1.3. Частые замечания при проверке анкет</div>
+      
+      <!-- Замечание 1: Диалоги и тире -->
+      <p><strong>1.3.1.</strong> Диалоги оформляются только с помощью длинного или обычного тире. В целом нежелательно использовать дефисы не по назначению (вместо тире).</p>
+      
+      <div class="rule-quote" style="margin-bottom: 12px;">
+        <strong>Некорректно:</strong><br>
+        - Ты должен стать сильнее, сын мой, - сказал ему в тот день родной отец.<br>
+        А ТАКЖЕ<br>
+        Его родители - среднестатистические соулмейты.
+      </div>
+
+<div class="rule-quote" style="margin-bottom: 4px !important;">
+        <strong>Корректно:</strong><br>
+        — Ты должен стать сильнее, сын мой, — сказал ему в тот день родной отец.<br>
+        ИЛИ<br>
+        – Ты должен стать сильнее, сын мой, – сказал ему в тот день родной отец.
+      </div>
+
+      <div class="rule-quote" style="margin-top: 0px !important; margin-bottom: 16px;">
+        Его родители — среднестатистические соулмейты.<br>
+        ИЛИ<br>
+        Его родители – среднестатистические соулмейты.
+      </div>
+
+      <!-- Замечание 2: Отступы -->
+      <p style="margin-top: 16px;"><strong>1.3.2.</strong> Отступы между названиями пунктов и содержанием пунктов должны быть такими, как задано в шаблоне. Анкетолог может помочь с поправкой отступов. И лишь в крайнем случае подправит сам при публикации анкеты.</p>
+
+<div style="margin-top: 16px; margin-bottom: 24px; padding: 16px 20px; background: rgba(15, 12, 10, 0.7); border: 1px solid var(--glass-border); border-radius: 8px;">
+        <p style="font-size: 0.9rem; font-style: italic; color: #ccc; line-height: 1.6; margin-bottom: 12px;">
+          Список может быть дополнен или изменен в будущем. Если у вас имеются вопросы по поводу чего-либо еще, то смело обращайтесь к владельцу – лучше лишний раз спросить и быть уверенным на 100%, нежели потом переписывать всю анкету. На написание анкеты дается три дня, и за это время вы можете спрашивать всё, что вам не понятно.
+        </p>
+        <p style="font-size: 0.95rem; font-style: italic; color: #fff; margin: 0;">
+          Желаем удачи!
+        </p>
+      </div>
+
+      <div style="margin-top: 10px;">
+        <a href="#extra-forms" onclick="document.getElementById('forms-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+  </div>
+
+<hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 40px auto 24px auto; opacity: 0.5;">
+
+      <div style="font-size: 0.85rem; color: var(--text-muted); text-align: center; line-height: 1.5; max-width: 800px; margin: 0 auto 32px auto;">
+        Все материалы, размещенные в статьях, а также в пределах каналов и чатов, принадлежат ролевой «Bisous de Mirelle». Использование сторонними проектами запрещено.
+      </div>
+
     </section>
 
-    <!-- ПРАВИЛА ОФОРМЛЕНИЯ ЛОКАЦИЙ -->
-    <section id="extra-locations" class="content-section" data-title="Правила оформления локаций">
-      <h2>Правила оформления локаций</h2>
-      <div class="card">
-        <div class="card-title"><i class="fa-solid fa-map"></i> Правила оформления локаций</div>
-        <p style="color: var(--text-muted);">[Раздел наполняется]</p>
+
+<!-- ПРАВИЛА ОФОРМЛЕНИЯ ЛОКАЦИЙ -->
+<section id="extra-locations" class="content-section" data-title="Правила оформления локаций">
+  <h2>Правила оформления локаций</h2>
+  
+  <div class="card" style="position: relative;">
+    
+    <!-- Шапка статьи -->
+    <div style="text-align: center; margin-bottom: 24px;" id="loc-top">
+      <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px;">LOCATION FORMATTING RULES</h3>
+      <p style="color: var(--text-muted); margin-top: 4px;">«Bisous de Mirelle: Ruined Souls»</p>
+      <div class="rule-warning" style="display: inline-block; margin-top: 10px;">
+        <strong>Ознакомьтесь со структурой и критериями создания локаций</strong>
       </div>
+    </div>
+
+<!-- Навигация по разделам -->
+    <div style="display: flex; flex-direction: column; gap: 8px; margin: 24px 0 32px 0; padding: 18px; background: rgba(15, 12, 10, 0.7); border: 1px solid var(--glass-border); border-radius: 10px;">
+      <span style="color: var(--text-muted); font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px;">Навигация по разделам:</span>
+      <a href="#locations-template" onclick="document.getElementById('locations-template').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">1.1. Шаблон с пояснениями</a>
+      <a href="#locations-rules" onclick="document.getElementById('locations-rules').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">1.2. Правила оформления</a>
+    </div>
+
+<!-- РАЗДЕЛ 1.1 -->
+    <div id="locations-template" style="margin-top: 30px; scroll-margin-top: 30px;">
+      <div class="card-title" style="margin-bottom: 20px;">1.1. Шаблон с пояснениями</div>
+      
+      <!-- Пункт 1 -->
+      <p><strong>1. Наименование</strong></p>
+      <div class="rule-quote">
+        Указывается только тип места и его название в кавычках.
+      </div>
+
+      <!-- Пункт 2 -->
+      <p style="margin-top: 16px;"><strong>2. Связанный персонаж</strong></p>
+      <div class="rule-quote">
+        Указывается до трёх основных персонажей, которые могут быть встречены в данной локации другими ролевиками. Это может быть как ваш основной персонаж, так и любой придуманный специально для описываемого места.<br>
+        В шаблоне прописываются только их имена и фамилии. При необходимости в скобках можно указать должности.
+      </div>
+
+      <!-- Пункт 3 -->
+      <p style="margin-top: 16px;"><strong>3. Примерное расположение</strong></p>
+      <div class="rule-quote">
+        Здесь не обязательно вдаваться в подробности – главное, обозначить удалённость от центра города. В качестве пояснений можно использовать такие указатели, как «Недалеко от (вокзала/кафе/магазина и т.д.)», «Рядом с ...», «На углу ...» и прочее.
+      </div>
+
+      <!-- Пункт 4 -->
+      <p style="margin-top: 16px;"><strong>4. Главная особенность</strong></p>
+      <div class="rule-quote">
+        В одном-двух кратких предложениях укажите, чем данная локация может быть привлекательна для посетителей.
+      </div>
+
+      <!-- Пункт 5 -->
+      <p style="margin-top: 16px;"><strong>5. Краткое описание</strong></p>
+      <div class="rule-quote">
+        Основной текст, который поможет участникам понять суть местности. Здесь нужно подробнее раскрыть вышеописанные пункты и дополнить текст другими деталями.<br>
+        Учтите, что весь ваш пост должен уложиться в один лимит (4000 символов).
+      </div>
+
+      <!-- Пункт 6 -->
+      <p style="margin-top: 16px;"><strong>6. Дополнительно</strong></p>
+      <div class="rule-quote">
+        Здесь могут быть указаны важные детали, не вошедшие в основное описание (ограничения, дополнительные особенности, другие примечания).<br>
+        Пункт необязателен.
+      </div>
+
+      <!-- Пункт 7 -->
+      <p style="margin-top: 16px;"><strong>7. История места</strong></p>
+      <div class="rule-quote">
+        Если краткого описания недостаточно для полного ознакомления читателей с локацией, вы можете отдельно отправить развернутое описание со всеми деталями (и фотографиями) после заполненного шаблона.<br>
+        Данный текст будет размещён в комментариях под локацией.
+      </div>
+
+      <!-- Пункт 8 -->
+      <p style="margin-top: 16px;"><strong>8. Галерея</strong></p>
+      <div class="rule-quote">
+        Если вы хотите точнее показать вид локации и имеете достаточное количество материала, можете прислать до десяти фотографий отдельно от основной.<br>
+        Все изображения будут размещены в комментариях под локацией.<br>
+        Между фотографиями должна ощущаться связь.<br>
+        Учтите, что каждое фото будет приведено к формату 2:1 (длина:ширина), а их качество будет улучшено с помощью стороннего приложения. Допускается использование коллажей в качестве маленькой хитрости для размещения большего количества фотографий.
+      </div>
+
+      <div style="margin-top: 16px;">
+        <a href="#extra-locations" onclick="document.getElementById('locations-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 32px 0;">
+
+    <!-- РАЗДЕЛ 1.2 -->
+    <div id="locations-rules" style="scroll-margin-top: 90px;">
+      <div class="card-title" style="margin-bottom: 16px;">1.2. Правила оформления</div>
+      
+      <p style="margin-bottom: 16px;">
+        Так как с написанным вами материалом в будущем будут ознакомляться другие участники, текст должен быть приведен в соответствие со следующими критериями:
+      </p>
+
+      <!-- Критерий 1 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        1. Используйте стандартный шрифт, не применяя ботов или сторонние сайты для его изменения.<br>
+        1.1. Разрешается применять форматирование с помощью инструментов, предоставленных телеграмом (курсив, жирный, подчеркивание), однако учитывайте, что пост с кратким описанием будет полностью оформлен в курсиве, как и другие.<br>
+        1.2. Текст не должен содержать эмодзи.
+      </div>
+
+      <!-- Критерий 2 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        2. Названия обязательных пунктов, а также основные элементы оформления «LOCATION», «Bisous de Mirelle» и разделительные линии должны оставаться такими, как были предоставлены изначально.<br>
+        2.1. Информацию вписываете по примеру других локаций.
+      </div>
+
+      <!-- Критерий 3 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        3. Максимальный размер поста с кратким описанием – 4000 символов.
+      </div>
+
+      <!-- Критерий 4 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        4. Локации обязательно должны вписываться в сеттинг французского города, подвластного Ордену. Все несоответствия должны быть обоснованы автором.
+      </div>
+
+      <!-- Критерий 5 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        5. Не забывайте прикреплять основное фото (реальная фотография/арт/изображение, сгенерированное нейросетью) с соотношением сторон 2:1.<br>
+        Пожалуйста, следите за тем, чтобы прикладываемые изображения логично вписывались в ролевой мир, а генерации не содержали ляпов.
+      </div>
+
+      <!-- Критерий 6 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        6. Количество ошибок и опечаток должно быть минимальным. Пожалуйста, проверяйте свои тексты перед отправкой. В случае наличия большого количества ошибок и несостыковок администрация будет вынуждена отправить вас на перепись/самостоятельную перепроверку анкеты.
+      </div>
+
+      <!-- Критерий 7 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        7. Рекомендуем пользоваться сайтами для проверки орфографии и пунктуации, но будьте внимательны: иногда после таких проверок меняется смысл ваших текстов, не копируйте бездумно!<br>
+        <div style="margin-top: 8px;">
+          Нажмите для перехода на сайты: 
+          <a href="https://textovod.com" target="_blank" rel="noopener" style="color: var(--accent-orange); text-decoration: underline;">[Textovod.com]</a> | 
+          <a href="https://text.ru" target="_blank" rel="noopener" style="color: var(--accent-orange); text-decoration: underline;">[Text.ru]</a> | 
+          <a href="https://chatgpt.com" target="_blank" rel="noopener" style="color: var(--accent-orange); text-decoration: underline;">[ChatGPT]</a>
+        </div>
+      </div>
+
+      <!-- Критерий 8 -->
+      <div class="rule-quote" style="margin-bottom: 16px;">
+        8. Временных ограничений нет, однако те участники, чья локация будет одобрена и размещена на канале ролевой, могут получить отсрочку в написании поста до пяти дней по собственному желанию.
+      </div>
+
+      <!-- Заключительное примечание в виде мягкой карточки -->
+      <div style="margin-top: 24px; margin-bottom: 16px; padding: 16px 20px; background: rgba(15, 12, 10, 0.7); border: 1px solid var(--glass-border); border-radius: 8px;">
+        <p style="font-size: 0.9rem; font-style: italic; color: #ccc; line-height: 1.6; margin-bottom: 12px;">
+          Список может быть дополнен или изменен в будущем. Если у вас имеются вопросы по поводу чего-либо еще, то смело обращайтесь к владельцу – лучше лишний раз спросить и быть уверенным на 100%, нежели потом переписывать весь текст.<br><br>
+          <strong>Готовый материал необходимо отправить в личные сообщения владельцу!</strong>
+        </p>
+        <p style="font-size: 0.95rem; font-style: italic; color: #fff; margin: 0;">
+          Желаем удачи!
+        </p>
+      </div>
+
+      <div style="margin-top: 16px;">
+        <a href="#extra-locations" onclick="document.getElementById('locations-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+      </div>
+    </div>
+
+  </div>
+<hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 40px auto 24px auto; opacity: 0.5;">
+
+      <div style="font-size: 0.85rem; color: var(--text-muted); text-align: center; line-height: 1.5; max-width: 800px; margin: 0 auto 32px auto;">
+        Все материалы, размещенные в статьях, а также в пределах каналов и чатов, принадлежат ролевой «Bisous de Mirelle». Использование сторонними проектами запрещено.
+      </div>
+
     </section>
 
     <!-- СЮЖЕТНЫЕ СТАТЬИ -->
@@ -2956,31 +3326,29 @@
       </p>
     </div>
 
-    <!-- НАВИГАЦИЯ ПО РАЗДЕЛУ -->
-    <div id="bio-nav" style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--glass-border); border-radius: 8px; padding: 20px; margin-bottom: 32px;">
-      <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-weight: bold;">Главные моменты:</div>
-      <ol style="padding-left: 20px; margin: 0; line-height: 1.8;">
-        <li style="margin-bottom: 6px;">
-          <a href="#bio-1" onclick="document.getElementById('bio-1').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: none;">Что такое созвездие Судьбы?</a>
-          <span style="display: block; font-size: 0.85rem; color: var(--text-muted);">метки, биохимический центр, биомаркеры, слюнная жидкость</span>
-        </li>
-        <li style="margin-bottom: 6px;">
-          <a href="#bio-2" onclick="document.getElementById('bio-2').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: none;">Почему взаимные чувства важны?</a>
-          <span style="display: block; font-size: 0.85rem; color: var(--text-muted);">принцип обмена, невзаимность, страх/стресс, условия проверки</span>
-        </li>
-        <li style="margin-bottom: 6px;">
-          <a href="#bio-3" onclick="document.getElementById('bio-3').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: none;">Как и почему гаснут метки?</a>
-          <span style="display: block; font-size: 0.85rem; color: var(--text-muted);">механизм проверки, поцелуй между соул'ами и несоул'ами</span>
-        </li>
-        <li style="margin-bottom: 6px;">
-          <a href="#bio-4" onclick="document.getElementById('bio-4').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: none;">Подавители биохимического центра</a>
-          <span style="display: block; font-size: 0.85rem; color: var(--text-muted);">гормоны, алкоголь, наркотические средства, степень опьянения</span>
-        </li>
-        <li style="margin-bottom: 0;">
-          <a href="#bio-5" onclick="document.getElementById('bio-5').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: none;">...</a>
-          <span style="display: block; font-size: 0.85rem; color: var(--text-muted);">...</span>
-        </li>
-      </ol>
+<!-- НАВИГАЦИЯ ПО РАЗДЕЛУ -->
+    <div id="bio-nav" style="display: flex; flex-direction: column; gap: 8px; margin: 24px 0 32px 0; padding: 18px; background: rgba(15, 12, 10, 0.7); border: 1px solid var(--glass-border); border-radius: 10px;">
+      <span style="color: var(--text-muted); font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px;">Навигация по разделам:</span>
+      
+      <a href="#bio-1" onclick="document.getElementById('bio-1').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">
+        1. Что такое созвездие Судьбы? <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">метки, биохимический центр, биомаркеры, слюнная жидкость</span>
+      </a>
+      
+      <a href="#bio-2" onclick="document.getElementById('bio-2').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">
+        2. Почему взаимные чувства важны? <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">принцип обмена, невзаимность, страх/стресс, условия проверки</span>
+      </a>
+      
+      <a href="#bio-3" onclick="document.getElementById('bio-3').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">
+        3. Как и почему гаснут метки? <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">механизм проверки, поцелуй между соул'ами и несоул'ами</span>
+      </a>
+      
+      <a href="#bio-4" onclick="document.getElementById('bio-4').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">
+        4. Подавители биохимического центра <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">гормоны, алкоголь, наркотические средства, степень опьянения</span>
+      </a>
+      
+      <a href="#bio-5" onclick="document.getElementById('bio-5').scrollIntoView({behavior: 'smooth'}); return false;" style="display: block; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-orange); color: var(--text-main); text-decoration: none; font-size: 0.9rem; border-radius: 0 6px 6px 0;">
+        5. [...] <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">...</span>
+      </a>
     </div>
 
     <!-- РАЗДЕЛ 1 -->
@@ -3013,7 +3381,7 @@
       </p>
 
       <div style="text-align: left; margin-top: 16px;">
-        <a href="#bio-nav" onclick="document.getElementById('bio-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">[К навигации]</a>
+        <a href="#bio-nav" onclick="document.getElementById('bio-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;"> К навигации</a>
       </div>
     </div>
 
@@ -3041,7 +3409,7 @@
       </p>
 
       <div style="text-align: left; margin-top: 16px;">
-        <a href="#bio-nav" onclick="document.getElementById('bio-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">[К навигации]</a>
+        <a href="#bio-nav" onclick="document.getElementById('bio-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;"> К навигации</a>
       </div>
     </div>
 
@@ -3069,7 +3437,7 @@
       </ol>
 
       <div style="text-align: left; margin-top: 16px;">
-        <a href="#bio-nav" onclick="document.getElementById('bio-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">[К навигации]</a>
+        <a href="#bio-nav" onclick="document.getElementById('bio-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;"> К навигации</a>
       </div>
     </div>
 
@@ -3144,7 +3512,7 @@
       </div>
 
       <div style="text-align: left; margin-top: 16px;">
-        <a href="#bio-nav" onclick="document.getElementById('bio-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">[К навигации]</a>
+        <a href="#bio-nav" onclick="document.getElementById('bio-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;"> К навигации</a>
       </div>
     </div>
 
@@ -3163,7 +3531,7 @@
       </p>
 
       <div style="text-align: left; margin-top: 16px;">
-        <a href="#bio-nav" onclick="document.getElementById('bio-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;">[К навигации]</a>
+        <a href="#bio-nav" onclick="document.getElementById('bio-nav').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange); text-decoration: underline; font-size: 0.9rem; cursor: pointer;"> К навигации</a>
       </div>
   
     <!-- Авторы -->
@@ -3186,7 +3554,6 @@
     <section id="lore-locations" class="content-section" data-title="Локации Миррэля">
       <h2>Локации Миррэля</h2>
       <div class="card">
-        <div class="card-title"><i class="fa-solid fa-map-location-dot"></i> Локации и карты мира</div>
         <p>Все актуальные локации, описания мест и карты нашего мира собраны в специализированном Telegram-канале.</p>
         <div class="rule-disclaimer" style="margin-top: 20px; text-align: center;">
           <p style="margin-bottom: 14px;">Нажав на кнопку ниже, вы будете перенаправлены в наш Telegram-канал с локациями:</p>
@@ -3197,24 +3564,722 @@
       </div>
     </section>
 
-    <section id="faq" class="content-section" data-title="Часто задаваемые вопросы (FAQ)">
+<!-- ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ (FAQ) -->
+    <section id="faq" class="content-section" data-title="Часто задаваемые вопросы (FAQ)" style="scroll-margin-top: 90px; margin-bottom: 32px;">
       <h2>Часто задаваемые вопросы (FAQ)</h2>
-      <div class="card">
-        <div class="card-title"><i class="fa-solid fa-circle-info"></i> Часто задаваемые вопросы</div>
-        <p>Здесь будут размещены ключевые ответы на вопросы игроков по проекту и механикам.</p>
+      
+      <div class="card" style="padding: 24px;">
+        
+        <!-- Двойной заголовок -->
+        <div style="text-align: center; margin-bottom: 24px;" id="faq-top">
+          <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 4px;">𝐐𝐔𝐄𝐒𝐓𝐈𝐎𝐍𝐒 & 𝐀𝐍𝐒𝐖𝐄𝐑𝐒</h3>
+          <p style="color: var(--text-muted); font-weight: 600; margin: 0;">Вопросы — Ответы</p>
+        </div>
+
+<!-- НАВИГАЦИЯ (СОДЕРЖАНИЕ СО ВСЕМИ ВОПРОСАМИ) -->
+        <div style="display: flex; flex-direction: column; gap: 14px; margin: 24px 0 32px 0; padding: 20px; background: rgba(15, 12, 10, 0.7); border: 1px solid var(--glass-border); border-radius: 10px;">
+          <span style="color: var(--text-muted); font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: -4px;">Содержание:</span>
+          
+          <!-- 1. Правописание -->
+          <div>
+            <a href="#q1-1" onclick="document.getElementById('q1-1').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-weight: 600; font-size: 0.95rem; cursor: pointer;">1. Правописание</a>
+          </div>
+
+          <!-- 2. Устройство Миррэля -->
+          <div>
+            <span style="color: var(--text-main); font-weight: 600; font-size: 0.95rem; display: block; margin-bottom: 8px;">2. Устройство Миррэля</span>
+            <div style="display: flex; flex-direction: column; gap: 8px; padding-left: 14px; border-left: 2px solid var(--accent-orange);">
+              <a href="#q2-1" onclick="document.getElementById('q2-1').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">1. Что стало со школьной программой и как работает система образования?</a>
+              <a href="#q2-2" onclick="document.getElementById('q2-2').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">2. Что такое Ясность, почему Орден именно «Серого Рассвета» и что за путь к Истине?</a>
+              <a href="#q2-3" onclick="document.getElementById('q2-3').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">3. Каков суточный режим людей в Миррэле?</a>
+              <a href="#q2-4" onclick="document.getElementById('q2-4').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">4. Как члены Ордена зарабатывают на еду? Им выдают зарплату? Какая валюта действует?</a>
+              <a href="#q2-5" onclick="document.getElementById('q2-5').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">5. Как выглядит миррэльский франк ₣?</a>
+              <a href="#q2-6" onclick="document.getElementById('q2-6').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">6. Какие цены в Миррэле и какой заработок у жителей?</a>
+              <a href="#q2-7" onclick="document.getElementById('q2-7').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">7. Какова хронология событий?</a>
+              <a href="#q2-8" onclick="document.getElementById('q2-8').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">8. Служители Благоденствия (учителя, ученые) принимают Нексу или нет?</a>
+              <a href="#q2-9" onclick="document.getElementById('q2-9').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">9. Информация про внешний мир</a>
+              <a href="#q2-10" onclick="document.getElementById('q2-10').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">10. Как в Миррэле обстоят дела с интернетом и связью?</a>
+              <a href="#q2-10-sub" onclick="document.getElementById('q2-10-sub').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.83rem; padding-left: 12px; cursor: pointer;">↳ Про государственные мессенджеры и социальные сети, прошивку</a>
+              <a href="#q2-11" onclick="document.getElementById('q2-11').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">11. Подполье и чёрный рынок</a>
+            </div>
+          </div>
+
+          <!-- 3. Соулмейты -->
+          <div>
+            <span style="color: var(--text-main); font-weight: 600; font-size: 0.95rem; display: block; margin-bottom: 8px;">3. Соулмейты</span>
+            <div style="display: flex; flex-direction: column; gap: 8px; padding-left: 14px; border-left: 2px solid var(--accent-orange);">
+              <a href="#q3-1" onclick="document.getElementById('q3-1').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">1. В каком месте находится родимое пятно?</a>
+              <a href="#q3-2" onclick="document.getElementById('q3-2').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">2. Какие ограничения в личности соулмейта?</a>
+              <a href="#q3-3" onclick="document.getElementById('q3-3').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">3. Что, если мой соулмейт умер?</a>
+              <a href="#q3-4" onclick="document.getElementById('q3-4').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">4. Могут ли физические и психологические ощущения передаваться моему соулмейту?</a>
+              <a href="#q3-5" onclick="document.getElementById('q3-5').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">5. Соулмейтство — чисто биологическое или здесь замешаны высшие силы?</a>
+              <a href="#q3-6" onclick="document.getElementById('q3-6').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">6. Может ли человек не иметь соулмейта вообще?</a>
+            </div>
+          </div>
+
+          <!-- 4. Другое -->
+          <div>
+            <span style="color: var(--text-main); font-weight: 600; font-size: 0.95rem; display: block; margin-bottom: 8px;">4. Другое</span>
+            <div style="display: flex; flex-direction: column; gap: 8px; padding-left: 14px; border-left: 2px solid var(--accent-orange);">
+              <a href="#q4-1" onclick="document.getElementById('q4-1').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">1. Мой персонаж в каноне принадлежит какой-либо организации, что с этим делать?</a>
+            </div>
+          </div>
+        </div>
+
+<!-- РАЗДЕЛ 1: ПРАВОПИСАНИЕ -->
+<div id="q1-1" style="scroll-margin-top: 90px; margin-bottom: 30px;">
+          <div class="card-title" style="display: flex !important; justify-content: center !important; text-align: center !important; margin-left: auto !important; margin-right: auto !important; margin-bottom: 16px;">Правописание</div>
+         
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+<!-- Главный тезис -->
+            <div style="padding: 12px 16px; background: rgba(255, 255, 255, 0.03); border-radius: 6px; border: 1px solid var(--glass-border); text-align: center;">
+              <span style="color: var(--accent-orange); font-weight: bold;">✦</span> <strong style="color: var(--accent-orange); font-size: 1.05rem; letter-spacing: 0.5px;">Миррэль</strong> пишется с удвоенной «р» и через «э».
+            </div>
+
+            <!-- С заглавной буквы -->
+            <div style="padding: 16px; background: rgba(0, 0, 0, 0.3); border-radius: 6px; border: 1px solid var(--glass-border);">
+              <span style="background: rgba(230, 126, 34, 0.2); color: var(--accent-orange); padding: 3px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; letter-spacing: 1px; display: inline-block; margin-bottom: 12px;">С ЗАГЛАВНОЙ БУКВЫ ПИШУТСЯ</span>
+              
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; gap: 10px; line-height: 1.5;">
+                  <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                  <div><strong>Орден Серого Рассвета</strong>; Сокращение <strong>Орден</strong>.</div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; line-height: 1.5;">
+                  <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                  <div>
+                    Названия <strong>ступеней Ордена</strong> и их <strong>представителей</strong>, а также <strong>ритуалов</strong>, <strong>наказаний</strong> и <strong>праздников</strong>.<br>
+                    <span style="color: var(--text-muted); font-size: 0.88rem;">Например: Служитель Благоденствия, День Разоблачения, ритуал Пяти прикосновений.</span>
+                  </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; line-height: 1.5;">
+                  <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                  <div>О терминологии Ордена можно прочитать               <a href="#q2-2" onclick="document.getElementById('q2-2').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.88rem; cursor: pointer;">ниже</a>. Эти слова желательно тоже писать <strong>с заглавной</strong> буквы.</div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; line-height: 1.5;">
+                  <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                  <div><strong>Нексат.</strong></div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; line-height: 1.5;">
+                  <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                  <div>Вся <strong>терминология Ордена</strong>, которая пишется с заглавной буквы (ритуалы, наказания, «Истина», «Ясность» и др.), в анкете тоже пишется с заглавной.</div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; line-height: 1.5;">
+                  <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                  <div>В названии «созвездие <strong>Судьбы</strong>» именно Судьба пишется с заглавной буквы.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Кавычки -->
+            <div style="padding: 16px; background: rgba(0, 0, 0, 0.3); border-radius: 6px; border: 1px solid var(--glass-border);">
+              <span style="background: rgba(230, 126, 34, 0.2); color: var(--accent-orange); padding: 3px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; letter-spacing: 1px; display: inline-block; margin-bottom: 12px;">КАВЫЧКИ</span>
+              
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; gap: 10px; line-height: 1.5;">
+                  <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                  <div><strong>«Некса»</strong> берется в кавычки по желанию.</div>
+                </div>
+                
+                <div style="display: flex; gap: 10px; line-height: 1.5;">
+                  <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                  <div><strong>Наказания</strong>, аналогично «Нексе», берутся в кавычки по желанию: <em>«Лишение Бдения»</em> или <em>Молчание</em>.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 16px;">
+            <a href="#faq-top" onclick="document.getElementById('faq-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+          </div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+<!-- РАЗДЕЛ 2: УСТРОЙСТВО МИРРЭЛЯ -->
+        <div id="faq-2" style="scroll-margin-top: 90px; margin-bottom: 40px;">
+          <div class="card-title" style="display: flex !important; justify-content: center !important; text-align: center !important; margin-left: auto !important; margin-right: auto !important; margin-bottom: 24px;">Устройство Миррэля</div>
+
+          <div style="display: flex; flex-direction: column; gap: 28px;">
+
+            <!-- Вопрос 1 -->
+            <div id="q2-1" style="scroll-margin-top: 90px;">
+              <p style="font-weight: bold; color: var(--text-main); margin-bottom: 10px; font-size: 1.2rem;">1. Что конкретно изменилось в сфере образования?</p>
+              <div style="color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; gap: 12px;">
+                <p style="margin: 0;">Система образования сохранила французскую структуру — начальные школы, коллежи и лицеи, — но полностью адаптировалась под ценности Ордена. С ранних лет естественные науки подаются с идеологическим уклоном: феномен соулмейтов изучается не как романтический союз, а как физиологическая патология, вызывающая такое отвращение, что учащиеся норовят закрыть уши, лишь бы не слышать, как люди умирали от безобидных поцелуев, а «Некса» губила тысячи жизней. Гуманитарный блок и история переписаны под доктрину Ордена, в которой «старый мир», где нормализован поиск соулмейтов, показан не в лучшем свете. В новых школах людям не оставляют выбора в будущем, кроме как остаться с «серыми камнями». Это достигается не замалчиванием о других путях и не избавлением от понятия соулмейтов, а, наоборот, исчерпывающими подробностями — через судебные архивы, закрытые дела, где люди либо умирали в поисках соулмейта, либо подписывали себе смертный приговор, выбирая кровавое лекарство.</p>
+                <p style="margin: 0;">На этапе старших классов (лицеев) происходит строгое разделение на профили, но сейчас классическая политология и свободные государственные науки упразднены. Вместо них под контролем Северин Бланше действуют специализированные административные лицеи и высшие учебные заведения Ордена, куда зачисляют за аналитический ум для подготовки будущих Служителей Благоденствия. Для остальных доступны лишь прикладные направления: техническое, медицинское, художественное, аграрно-технологическое и ремесленное.</p>
+                <p style="margin: 0;">Кроме того:</p>
+                <div style="display: flex; flex-direction: column; gap: 8px; padding-left: 8px;">
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div>Изучение «Нексы» и соулмейтов выведено из общей биологии в отдельный дисциплинарный раздел патопсихологии, акцентированный на «очищении». Учебники изобилуют вставками из судебных архивов, некогда собранными будущим Триумвиратом для уничтожения «Нексы», либо прессой во времена ограничений соулмейтов.</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div>Высшее политологическое и юридическое образование замещено единственной государственной аккредитацией — Службой Благоденствию. Там подготавливаются кадры для работы в Ордене и особенно изучается его идеология.</div>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top: 12px;">
+                <a href="#faq-top" onclick="document.getElementById('faq-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+              </div>
+            </div>
+
+            <hr style="border: none; height: 1px; background: linear-gradient(90deg, transparent, rgba(230, 126, 34, 0.4), transparent); margin: 8px 0;">
+
+            <!-- Вопрос 2 -->
+            <div id="q2-2" style="scroll-margin-top: 90px;">
+              <p style="font-weight: bold; color: var(--text-main); margin-bottom: 10px; font-size: 1.2rem;">2. Что такое Ясность, почему Орден именно «Серого Рассвета» и что за путь к Истине?</p>
+              <div style="color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; gap: 12px;">
+                <p style="margin: 0;">Всё это понятия абстрактные и не обязательно связанные с изначальным смыслом слова. Иногда они используются в слишком разных ситуациях, чтобы строго обозначить трактовку. Так как термины напрямую связаны с Орденом Серого Рассвета, необходимо ознакомиться с понятиями именно через призму идеологии культа. Культ нацелен на отказ от поиска родственной души и использования «Нексы»; «серые камни», как последний оставшийся вариант, символизируют честность с самим собой, даже если неприятную.</p>
+                
+                <div style="display: flex; gap: 10px; line-height: 1.6;">
+                  <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                  <div>В названии словосочетание <strong>«Серый Рассвет»</strong> подразумевает избавление от сладкой лжи во имя горькой правды — во имя серого, непривычного для привязанных к сладости рассвета.</div>
+                </div>
+
+                <div style="display: flex; gap: 10px; line-height: 1.6;">
+                  <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                  <div>Лидеры из Триумвирата зовутся <strong>Освободителями</strong>, поскольку именно они открыли людям глаза на правду о «Нексе», став примером для подражания.</div>
+                </div>
+
+                <div style="display: flex; gap: 10px; line-height: 1.6;">
+                  <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                  <div><strong>Ясность</strong> — состояние больного «серыми камнями», при котором человек признает и принимает факт, что чувствует боль, и не убегает от этого; это как трезвость или честность с самим собой. В состоянии Ясности, не отвлечённый тем, чтобы убежать от неприятного ощущения, человек может начать путь к Истине вместе с коллективом.</div>
+                </div>
+
+                <div style="display: flex; gap: 10px; line-height: 1.6;">
+                  <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                  <div><strong>Истина</strong>, к которой Триумвират проложил путь, характеризует кульминацию жизни того человека, кто отказался от лживых путей, заглушающих «серые камни». Чаще всего финишная прямая на пути к Истине — это последняя стадия СПАДа, после которой, разумно, наступает смерть (Исход), но если последователь Ордена становится особенно убеждённым, Истина якобы дарует ему долголетие — ведь «серые камни» сокращают жизнь до пятидесяти или около того. На практике же в рационе избранного тайно появляется «Некса» с изменённым составом, что помогает человеку вновь встать на ноги, но об этом нюансе не узнает даже больной.</div>
+                </div>
+              </div>
+              
+              <div style="margin-top: 12px;">
+                <a href="#faq-top" onclick="document.getElementById('faq-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+              </div>
+            </div>
+
+            <hr style="border: none; height: 1px; background: linear-gradient(90deg, transparent, rgba(230, 126, 34, 0.4), transparent); margin: 8px 0;">
+
+            <!-- Вопрос 3 -->
+            <div id="q2-3" style="scroll-margin-top: 90px;">
+              <p style="font-weight: bold; color: var(--text-main); margin-bottom: 10px; font-size: 1.2rem;">3. Что изменилось с суточным ритмом горожан, в какой конкретно временной интервал люди работают и что насчёт комендантского часа?</p>
+              <div style="color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; gap: 12px;">
+                <p style="margin: 0;">Закат (~18:00-19:00) — время пробуждения населения. В домах включают мягкое искусственное освещение, с улиц снимаются ограничения на перемещение, и они начинают заполняться теми, кто спешит на уроки и пары или на заводы и в офисы. Начинают работать пекарни, частные лавки и некруглосуточные магазины. На улицах не темно: везде есть мягкое белое освещение.</p>
+                <p style="margin: 0;">В интервале от 22:00 до 4:00 наступает пик городской активности. Работают шумные рынки, проводятся собрания членов Ордена, Стражи Рассвета и патрульные обходят территории.</p>
+                <p style="margin: 0;">В рассвет — в 5-6 утра, — начинается комендантский час. О конце «дня» и поднимающемся солнце оповещает радиостанция, и учебные заведения, предприятия закрывают двери, люди расходятся по домам.</p>
+                <p style="margin: 0;">С 7:00 до 17:00 подавляющее большинство жителей спит в затемненных квартирах и общинных домах. Выходить на открытый воздух строго запрещено из-за риска ожогов и аллергических реакций «серых камней», и только одетые в мантии Стражи Рассвета контролируют территорию. В это время выходить могут лишь члены Ордена, которые стопроцентно не являются соулмейтами, а значит верны власти.</p>
+                <p style="margin: 0;">Круглосуточные предприятия, в частности, подземные фермы и заводские цеха, становятся исключением, если у них нет окон.</p>
+                <p style="margin: 0;">Часы могут меняться в зависимости от сезона.</p>
+              </div>
+              <div style="margin-top: 12px;">
+                <a href="#faq-top" onclick="document.getElementById('faq-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+              </div>
+            </div>
+
+            <hr style="border: none; height: 1px; background: linear-gradient(90deg, transparent, rgba(230, 126, 34, 0.4), transparent); margin: 8px 0;">
+
+            <!-- Вопрос 4 -->
+            <div id="q2-4" style="scroll-margin-top: 90px;">
+              <p style="font-weight: bold; color: var(--text-main); margin-bottom: 10px; font-size: 1.2rem;">4. Как члены Ордена зарабатывают на еду? Им выдают зарплату? Какая валюта действует?</p>
+              <div style="color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; gap: 12px;">
+                <p style="margin: 0;">В Миррэле действует смешанная экономическая система, что позволяет и рыночные отношения, и государственное регулирование.</p>
+                <p style="margin: 0;">Официальным расчетным средством в городе остается <strong>миррэльский франк (₣)</strong>, который используют обычные граждане для торговли, покупок и оплаты услуг. Однако у рядовых членов Ордена практически нет денег на руках, да и нужды в них они не испытывают: Орден полностью берет их на полное <strong>централизованное обеспечение</strong>. Жильем последователей снабжают общинные дома, стандартизированная одежда выдается по мере необходимости, а продовольствие распределяется через систему <strong>персональных талонов</strong>, которые можно обменять на питание в столовых при общинах. <strong>Единственным исключением</strong> среди последователей является ступень Служителей Благоденствия: помимо талонов они получают полноценное денежное жалование во франках, так как именно они взаимодействуют с финансовым сектором, закупают сырье у частных предприятий и ведут все экономические дела города.</p>
+              </div>
+              <div style="margin-top: 12px;">
+                <a href="#faq-top" onclick="document.getElementById('faq-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+              </div>
+            </div>
+
+            <hr style="border: none; height: 1px; background: linear-gradient(90deg, transparent, rgba(230, 126, 34, 0.4), transparent); margin: 8px 0;">
+
+            <!-- Вопрос 5 -->
+            <div id="q2-5" style="scroll-margin-top: 90px;">
+              <p style="font-weight: bold; color: var(--text-main); margin-bottom: 10px; font-size: 1.2rem;">5. Как выглядит миррэльский франк?</p>
+              
+              <div style="color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; gap: 12px;">
+                <p style="margin: 0;"><strong>Мелкие стальные монеты:</strong> 50 сантимов (0,5 ₣), 1 ₣, 2 ₣, 5 ₣.</p>
+                <p style="margin: 0;"><strong>Банкноты:</strong> Номиналы по 10 ₣, 20, 50, 100, 200 и 500 ₣.</p>
+
+                <!-- Блок с цитированием (вертикальная оранжевая линия слева) -->
+                <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+                  <div style="padding: 8px 14px; border-left: 3px solid var(--accent-orange); background: rgba(255, 255, 255, 0.02); color: var(--text-main);">
+                    Носят изображения исторических персон (Наполеон Бонапарт, Жанна Д'Арк, Максимильен Робеспьер, Виктор Гюго и др.).
+                  </div>
+                  
+                  <div style="padding: 8px 14px; border-left: 3px solid var(--accent-orange); background: rgba(255, 255, 255, 0.02); color: var(--text-main);">
+                    Последний высший номинал встречается довольно редко.
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-top: 12px;">
+                <a href="#faq-top" onclick="document.getElementById('faq-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+              </div>
+            </div>
+
+            <hr style="border: none; height: 1px; background: linear-gradient(90deg, transparent, rgba(230, 126, 34, 0.4), transparent); margin: 8px 0;">
+
+            <!-- Вопрос 6 -->
+            <div id="q2-6" style="scroll-margin-top: 90px;">
+              <p style="font-weight: bold; color: var(--text-main); margin-bottom: 10px; font-size: 1.2rem;">6. Какие цены в Миррэле и какой заработок у жителей?</p>
+              <div style="color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; gap: 12px;">
+                <p style="margin: 0; font-weight: 600; color: var(--accent-orange);">Стоимость натуральных продуктов</p>
+                <p style="margin: 0;">Сельское хозяйство сосредоточено внутри изолированных гидропонных комплексов и агро-ярусов промзон. Продукты остаются натуральными, но всё делится на базовое доступное и первосортное.</p>
+                <div style="display: flex; flex-direction: column; gap: 6px; padding-left: 8px;">
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>Выпечка:</strong> Свежий багет или буханка хрустящего пшеничного хлеба — 4 ₣. Ремесленный хлеб на закваске из элитных пекарен Оранжевой зоны — 12 ₣.</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>Молочные продукты:</strong> Литр свежего молока — 6 ₣. Качественный французский сыр — от 25 до 40 ₣.</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>Мясо и овощи:</strong> Набор свежих овощей и зелени на неделю (гидропонные комп.) — 50–70 ₣. Пакет натурального мяса (птица/говядина скрытых ферм, 1 кг) — 35–60 ₣. Рыба не вылавливается из Луары, так как река не считается достаточно чистой.</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>Рестораны и кафе:</strong> В простом кафе чашка хорошего кофе и свежий круассан — 8–12 ₣. Средний чек за ужин в ресторане «Делюкс» на одного — 800–1 500 ₣ (на двоих с бутылкой коллекционного вина — от 2 500 до 4 000 ₣).</div>
+                  </div>
+                </div>
+
+                <p style="margin: 10px 0 0 0; font-weight: 600; color: var(--accent-orange);">Доходы и зарплата</p>
+                <p style="margin: 0;">Средний доход обычного горожанина в оранжевом секторе составляет около 2 200–2 800 ₣ в месяц.</p>
+                <div style="display: flex; flex-direction: column; gap: 6px; padding-left: 8px;">
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>Минимальная оплата</strong> (разнорабочие, уборщики, младшие техники): 1 400 – 1 600 ₣ в месяц.</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>Квалифицированный ремесленник, ювелир, чеканщик:</strong> 2 800 – 4 000 ₣ в месяц.</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>Врач-терапевт, инженер гидропонных систем:</strong> 3 500 – 4 800 ₣ в месяц.</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>Ведущий архитектор, старший научный сотрудник, хирург:</strong> 5 500 – 7 500 ₣ в месяц.</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>Служитель Благоденствия:</strong> 8 000 – 12 000 ₣ в месяц.</div>
+                  </div>
+                </div>
+
+                <p style="margin: 10px 0 0 0; font-weight: 600; color: var(--accent-orange);">Аренда и покупка недвижимости</p>
+                <p style="margin: 0;">В обслуживаемых районах недвижимость находится под строгим контролем жилищного учета, но на ней работает регулируемый рынок.</p>
+                <div style="display: flex; flex-direction: column; gap: 6px; padding-left: 8px;">
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>Обычная 2-комнатная квартира</strong> (~50–60 м², средний ярус, вид во двор): 750 – 950 ₣ в месяц (+ коммунальные услуги: 120 – 180 ₣).</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>Улучшенная квартира</strong> (верхний ярус, защитные панорамные УФ-окна, климат-контроль): 1 200 – 1 500 ₣ в месяц.</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>Покупка двушки в собственность</strong> (выкуп прав владения у Жилищного Фонда Ордена): 110 000 – 150 000 ₣.</div>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top: 12px;">
+                <a href="#faq-top" onclick="document.getElementById('faq-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+              </div>
+            </div>
+
+            <hr style="border: none; height: 1px; background: linear-gradient(90deg, transparent, rgba(230, 126, 34, 0.4), transparent); margin: 8px 0;">
+
+            <!-- Вопрос 7 -->
+            <div id="q2-7" style="scroll-margin-top: 90px;">
+              <p style="font-weight: bold; color: var(--text-main); margin-bottom: 10px; font-size: 1.2rem;">7. Какова хронология событий?</p>
+              <div style="color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; gap: 12px;">
+                <p style="margin: 0;">В 2021 году Миррэль был объявлен столицей Франции, сместив Париж. Около 25-ти лет тема соулмейтства медленно, но верно развивалась, пока в 2049 году не умер сын президента Франции.</p>
+                <p style="margin: 0;">К 2050-2051 году данная тема оказалась табуирована, началась эпидемия «серых камней». Семь месяцев спустя, уже в 2052 году запустились продажи Нексы, а через полгода начали появляться первые Нексаты.</p>
+                <p style="margin: 0;">К 2053 году кризис достиг своего пика, вследствие чего правительство начало огораживать город стенами, и Орден, придя к власти к концу января, ускорил и завершил работу по строительство стен.</p>
+              </div>
+              <div style="margin-top: 12px;">
+                <a href="#faq-top" onclick="document.getElementById('faq-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+              </div>
+            </div>
+
+            <hr style="border: none; height: 1px; background: linear-gradient(90deg, transparent, rgba(230, 126, 34, 0.4), transparent); margin: 8px 0;">
+
+            <!-- Вопрос 8 -->
+            <div id="q2-8" style="scroll-margin-top: 90px;">
+              <p style="font-weight: bold; color: var(--text-main); margin-bottom: 10px; font-size: 1.2rem;">8. Служители Благоденствия (учителя, ученые) принимают Нексу или нет?</p>
+              <div style="color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; gap: 12px;">
+                <p style="margin: 0;">Те Служители, которые осознанно работают на благо Ордена и занимают высокие должности в своей сфере деятельности, могут знать о том, что их снабжают Нексой. Такие кадры терять невыгодно, отчего их жизнь стараются продлить.</p>
+                <p style="margin: 0;">Тех, кто еще ничем не выделился и не особо хочет этого, — верхушки и не замечают, поэтому Нексой не обеспечивают.</p>
+              </div>
+              <div style="margin-top: 12px;">
+                <a href="#faq-top" onclick="document.getElementById('faq-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+              </div>
+            </div>
+
+            <hr style="border: none; height: 1px; background: linear-gradient(90deg, transparent, rgba(230, 126, 34, 0.4), transparent); margin: 8px 0;">
+
+            <!-- Вопрос 9 -->
+            <div id="q2-9" style="scroll-margin-top: 90px;">
+              <p style="font-weight: bold; color: var(--text-main); margin-bottom: 10px; font-size: 1.2rem;">9. Информация про внешний мир</p>
+              <div style="color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; gap: 12px;">
+                <p style="margin: 0;">Со времён прихода Ордена мир вне стен совсем перестал заботить простое население. Гражданам с детства внушают, что за пределами закрытого периметра нет ничего стоящего внимания, разве что опасного: очевидно, там Нексаты и банды головорезов, снующих по полуразрушенным пустыням в поисках ресурсов.</p>
+                <p style="margin: 0;">За пределами Миррэля мир действительно не мёртв, но он явно деградировал и стал представлять смертельную опасность.</p>
+                
+                <p style="margin: 8px 0 0 0; font-weight: 600; color: var(--accent-orange);">Про территории</p>
+                <p style="margin: 0;">Сразу за внешним кольцом стен Миррэля начинается многокилометровая зона руин бывших пригородов столицы. Здания разрушены, а почва непригодна для хозяйства. Кое-где на этой территории стоят промышленные объекты, доступ к которым ограничен (например, испытательный полигон «Biomed-II»).</p>
+
+                <p style="margin: 8px 0 0 0; font-weight: 600; color: var(--accent-orange);">Кого можно встретить?</p>
+                <div style="display: flex; flex-direction: column; gap: 6px; padding-left: 8px;">
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div>Определенно есть шанс столкнуться с изгнанными людьми, беглецами или иными выжившими. Они могут жить в подземных бункерах, затопленных туннелях метро и укреплённых заброшенных заводах.</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div>Помимо этого, именно здесь повышен риск встречи с Нексатами, включая саркоматозных.</div>
+                  </div>
+                </div>
+
+                <p style="margin: 8px 0 0 0; font-weight: 600; color: var(--accent-orange);">Соседние регионы и осколки государств</p>
+                <p style="margin: 0;">Миррэль во власти Ордена — не единственная сила в Европе, но одна из самых организованных. За пределами зоны влияния бывшей столицы Европа представляет собой лоскутное одеяло из разрозненных анклавов:</p>
+                <div style="display: flex; flex-direction: column; gap: 6px; padding-left: 8px;">
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>Юг Франции:</strong> Локальные поселения, выживающие за счет ярусных ферм и солнечных коллекторов. Там правит жесткая военная диктатура и идёт борьба за чистую питьевую воду.</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>Альпы (граница с Италией):</strong> Укреплённые города-крепости, где природный рельеф защищает от Нексатов. Горы считаются самым безопасным местом, но приспособиться к условиям непросто.</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>Северное побережье (Ла-Манш):</strong> Портовые базы селений, ведущих торговлю с островными анклавами Британских островов. С ними Миррэль ведёт обмен медикаментами, волокном и фильтрами на натуральное сырье и руду.</div>
+                  </div>
+                </div>
+
+                <p style="margin: 8px 0 0 0; font-weight: 600; color: var(--accent-orange);">Связь с внешним миром</p>
+                <p style="margin: 0;">Для обычного горожанина стены — это край света. Полноценный выезд затруднителен, лишь странствующие торговцы попадают в центр города. В стенах есть несколько охраняемых КПП и шлюзов на Луаре для караванов Стражей Рассвета. Также существуют кротовины контрабандистов — тайные подземные ходы, через которые за огромное состояние выводят людей или ввозят продукцию старого мира.</p>
+              </div>
+              <div style="margin-top: 12px;">
+                <a href="#faq-top" onclick="document.getElementById('faq-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+              </div>
+            </div>
+
+            <hr style="border: none; height: 1px; background: linear-gradient(90deg, transparent, rgba(230, 126, 34, 0.4), transparent); margin: 8px 0;">
+
+            <!-- Вопрос 10 -->
+            <div id="q2-10" style="scroll-margin-top: 90px;">
+              <p style="font-weight: bold; color: var(--text-main); margin-bottom: 10px; font-size: 1.2rem;">10. Интернет, связь и государственные приложения</p>
+              <div style="color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; gap: 12px;">
+                <p style="margin: 0;">Глобальной связи больше нет. В самoм Миррэле действует локальная закрытая сеть. Мобильная связь с другими выжившими анклавами полностью закрыта от обычных граждан и доступна исключительно дипломатам (в числе Служителей Благоденствия) и верхушкам Ордена.</p>
+                <p style="margin: 0;">Граждане могут звонить друг другу под постоянным контролем: в Центре надзор максимальный, в спальных районах чуть мягче, а на окраинах связь работает с перебоями.</p>
+                <p style="margin: 0;">Для общения используется единственный официальный государственный мессенджер <strong>«Étoile»</strong> («Звезда»). Через него получают расписания, директивы, афиши, а также могут отправить анонимный донос («Забота»). Все легальные устройства прошиты алгоритмами Ордена.</p>
+                <p style="margin: 0;">Стримить, вести блог и создавать развлекательный контент разрешено, если это не нарушает закон. У популярных персон стримы идут с задержкой в пару секунд для работы модераторов-цензоров.</p>
+              </div>
+              <div style="margin-top: 12px;">
+                <a href="#faq-top" onclick="document.getElementById('faq-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+              </div>
+            </div>
+
+            <hr style="border: none; height: 1px; background: linear-gradient(90deg, transparent, rgba(230, 126, 34, 0.4), transparent); margin: 8px 0;">
+
+            <!-- Вопрос 11 -->
+            <div id="q2-11" style="scroll-margin-top: 90px;">
+              <p style="font-weight: bold; color: var(--text-main); margin-bottom: 10px; font-size: 1.2rem;">11. Подполье и чёрный рынок</p>
+              <div style="color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; gap: 12px;">
+                <p style="margin: 0;">Строгие государственные ограничения, цензура и дефицит порождают масштабный теневой сектор. У чёрного рынка нет постоянных адресов: в окраинных зонах по утрам открываются тайные базары в заброшенных парковках и тоннелях метро, а в обслуживаемых районах сбыт маскируется под подсобки пекарен и клубов.</p>
+                <p style="margin: 0;"><strong>Валюта:</strong> Наличные франки и бартер (особенно драгоценности).</p>
+                <p style="margin: 0;"><strong>Товары:</strong> Перепрошитые средства связи, раритеты XXI века, фильмотека, провиант, редкие медикаменты, а также поддельные биографии и документы. Особо смелые продают «Нексу» за драгметаллы.</p>
+                <p style="margin: 0;">Власти периодически устраивают рейды на мелких торговцев, но крупные контрабандные артерии не перекрывают полностью, чтобы не спровоцировать острый дефицит и волнения среди населения.</p>
+              </div>
+              <div style="margin-top: 12px;">
+                <a href="#faq-top" onclick="document.getElementById('faq-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+        <!-- РАЗДЕЛ 3: СОУЛМЕЙТЫ -->
+        <div style="scroll-margin-top: 90px; margin-bottom: 30px;">
+          <div class="card-title" style="margin-bottom: 16px;">3. Соулмейты</div>
+          
+          <!-- Вопрос 3.1 -->
+          <p id="q3-1" style="scroll-margin-top: 90px; margin-top: 16px;"><strong>1. В каком месте находится родимое пятно?</strong></p>
+          <div class="rule-quote">
+            В любом понравившемся вам месте на коже (кроме слизистых и волосистой части головы). Пять звездочек могут быть расположены как угодно, но далеко друг от друга находиться они не должны.
+          </div>
+
+          <!-- Вопрос 3.2 -->
+          <p id="q3-2" style="scroll-margin-top: 90px; margin-top: 16px;"><strong>2. Какие ограничения в личности соулмейта?</strong></p>
+          <div class="rule-quote">
+            Родственными душами НЕ могут быть: родственники; несколько человек сразу; люди с разницей в возрасте больше 15 лет.<br><br>
+            В мире не осуждаются однополые отношения, поэтому при желании более уместна гомофобия из каких-либо принципов. Помним, что отношения между соулмейтами запрещены, а связь между людьми регламентируется правилами Ордена.
+          </div>
+
+          <!-- Вопрос 3.3 -->
+          <p id="q3-3" style="scroll-margin-top: 90px; margin-top: 16px;"><strong>3. Что, если мой соулмейт умер?</strong></p>
+          <div class="rule-quote">
+            В таком случае у человека гаснут все звезды, кроме последней, которая приобретает тёмно-серый цвет вместо светло-коричневого. Именно так люди и понимают, что остались одни.<br><br>
+            Оставшаяся звезда может посчитаться последним шансом, так как даже у того, кто потерял свою родственную душу, есть небольшая возможность обрести новую связь с человеком, который столкнулся с той же бедой.<br><br>
+            У людей, оставшихся и так с одной звездой, просто меняется цвет пятна.
+          </div>
+
+          <!-- Вопрос 3.4 -->
+          <p id="q3-4" style="scroll-margin-top: 90px; margin-top: 16px;"><strong>4. Могут ли физические и психологические ощущения передаваться моему соулмейту?</strong></p>
+          <div class="rule-quote">
+            Некоторые старые исследования сообщали о том, что соулмейты могут зависеть от состояния друг друга, однако точно это так и не подтвердилось. Разрешено прописывать нечто вроде «парной головной боли», но только вы (игрок) будете точно знать, что это случилось из-за родственной души вашего персонажа.<br><br>
+            Если вы вступаете в ролевую без сорола, учитывайте, что вы не можете решать за еще неизвестного персонажа, какие чувства тот испытывает.<br><br>
+            При этом телесные повреждения, надписи на коже передаваться не могут.
+          </div>
+
+          <!-- Вопрос 3.5 -->
+          <p id="q3-5" style="scroll-margin-top: 90px; margin-top: 16px;"><strong>5. Соулмейтство — чисто биологическое или здесь замешаны высшие силы?</strong></p>
+          <div class="rule-quote">
+            На самом деле — это больше биологическое, биохимическое явление, нежели магическое. Среди обычных людей ходят россказни про Судьбу, красные нити и волшебство любви, однако научно все объясняется теориями, отсылками на квантовую физику и работой гормонов.
+          </div>
+
+          <!-- Вопрос 3.6 -->
+          <p id="q3-6" style="scroll-margin-top: 90px; margin-top: 16px;"><strong>6. Может ли человек не иметь соулмейта вообще?</strong></p>
+          <div class="rule-quote">
+            Нет. Абсолютно все люди в данной вселенной рождаются с метками, а соответственно, и с соулмейтами.<br><br>
+            Если поискать объяснение с научной точки зрения, то созвездие Судьбы является жизненно важным органом, поэтому эмбрион, у которого не начала развиваться соулмейт-система, погибает еще до рождения.
+          </div>
+
+          <div style="margin-top: 12px;">
+            <a href="#faq-top" onclick="document.getElementById('faq-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+          </div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px dashed var(--glass-border); margin: 24px 0;">
+
+        <!-- РАЗДЕЛ 4: ДРУГОЕ -->
+        <div style="scroll-margin-top: 90px; margin-bottom: 24px;">
+          <div class="card-title" style="margin-bottom: 16px;">4. Другое</div>
+          
+          <!-- Вопрос 4.1 -->
+          <p id="q4-1" style="scroll-margin-top: 90px; margin-top: 16px;"><strong>1. Мой персонаж в каноне принадлежит какой-либо организации, что с этим делать?</strong></p>
+          <div class="rule-quote">
+            В нашем сюжете не предусмотрено включение каноничных организаций (напр., Ордо Фавониус, КММ и др.), поэтому адаптируйте персонажа под прописанную вселенную.
+          </div>
+
+          <div style="margin-top: 12px;">
+            <a href="#faq-top" onclick="document.getElementById('faq-top').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+          </div>
+        </div>
+
+        <!-- Заключительное примечание / Копирайт в виде мягкой карточки -->
+        <div style="margin-top: 32px; padding: 16px 20px; background: rgba(15, 12, 10, 0.7); border: 1px solid var(--glass-border); border-radius: 8px;">
+          <p style="font-size: 0.9rem; font-style: italic; color: #ccc; line-height: 1.6; margin-bottom: 12px;">
+            Статья будет дополняться.<br>
+            Все материалы, размещенные в статьях, а также в пределах каналов и чатов, принадлежат ролевой «Bisous de Mirelle». Использование сторонними проектами запрещено.
+          </p>
+          <p style="font-size: 0.9rem; font-style: normal; color: var(--text-muted); margin: 0; line-height: 1.5;">
+            Авторы: @snaillanum (Владелец 𝐁𝐝𝐌:𝐑𝐒)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@K1W1T0 (Администратор 𝐁𝐝𝐌:𝐑𝐒)
+          </p>
+        </div>
+
       </div>
     </section>
 
-    <section id="rules-joining" class="content-section" data-title="О вступлении в ролевую">
-      <h2>О вступлении</h2>
+<section id="rules-joining" class="content-section" data-title="О вступлении в ролевую">
       <div class="card">
+        
+        <!-- Шапка блока -->
         <div style="text-align: center; margin-bottom: 24px;">
-          <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px;">ABOUT JOINING</h3>
-          <p style="color: var(--text-muted); margin-top: 4px;">«Bisous de Mirelle: Ruined Souls»</p>
+          <h3 style="font-family: 'Cinzel', serif; color: var(--accent-orange); font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 4px;">ABOUT JOINING</h3>
+          <p style="color: var(--text-muted); font-size: 1.05rem; margin-top: 0;">«Bisous de Mirelle: Ruined Souls»</p>
+          <p style="color: var(--accent-orange); font-style: italic; font-size: 0.95rem; margin-top: 6px;">Незнание не освобождает от ответственности</p>
         </div>
-        <p>Информация о вступлении в проект...</p>
+
+        <!-- Мини-оглавление -->
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); border-radius: 8px; padding: 16px; margin-bottom: 32px;">
+          <div style="font-weight: bold; color: var(--accent-orange); margin-bottom: 10px;">Навигация:</div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; gap: 10px;">
+              <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+              <a href="#join-about" onclick="document.getElementById('join-about').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--text-main); text-decoration: none;">1. О вступлении</a>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+              <a href="#join-literacy" onclick="document.getElementById('join-literacy').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--text-main); text-decoration: none;">2. Требования к грамотности</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 32px;">
+
+          <!-- ПОДРАЗДЕЛ 1: О ВСТУПЛЕНИИ -->
+          <div id="join-about" style="scroll-margin-top: 90px;">
+            <div class="card-title" style="display: flex !important; justify-content: center !important; text-align: center !important; margin-left: auto !important; margin-right: auto !important; margin-bottom: 20px;">О вступлении</div>
+
+            <div style="color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; gap: 16px;">
+              <div>
+                <p style="font-weight: bold; margin-bottom: 6px; font-size: 1.2rem;">1.1. Порядок приёма</p>
+                <p style="margin: 0;">Приём в ролевую осуществляется через администратора (Люмин) согласно инструкции, размещенной на инфо-канале. На вступительной беседе:</p>
+                <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 8px; padding-left: 8px;">
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div>Вам будет отправлен список из нескольких простых вопросов (роль, правила, сюжет и др.);</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div>Далее вам будет необходимо прикрепить любой свой пост для нашего ознакомления с вашим письмом.</div>
+                  </div>
+                </div>
+                <p style="margin-top: 10px; font-weight: 500;">Пожалуйста, будьте вежливы! Информационный канал обязателен к подписке.</p>
+                <p style="margin-top: 6px; color: var(--text-muted); font-size: 0.95rem;">При возникновении подозрений в использовании ИИ администрация может задать вам дополнительные вопросы.</p>
+              </div>
+
+              <div>
+                <p style="font-weight: bold; margin-bottom: 6px; font-size: 1.2rem;">1.2. Причины отклонения заявки</p>
+                <p style="margin: 0 0 8px 0;">Несоблюдение требований с высокой вероятностью может спровоцировать отклонение вашей заявки. Причиной отклонения может также послужить:</p>
+                <div style="display: flex; flex-direction: column; gap: 8px; padding-left: 8px;">
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div>Наличие в профиле подозрительных, агрессивных, аморальных и других неприемлемых нашими правилами хэштегов, подписей.</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div>Обладатели аватаров и публичных каналов с нарушающим наши правила контентом (особенно триггерным, токсичным, депрессивным, агрессивным, пропагандирующим нездоровое отношение к чему-либо/между кем-либо и др.) также попадают в список отклоненных.</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div>Сухо расписанные анкеты отклоняются, если содержат действительно мало информации о подающем заявку.</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div>Несоответствие уровня грамотности требованиям проекта или потенциального соролевика.</div>
+                  </div>
+                </div>
+                <p style="margin-top: 10px;">Анкета может быть отклонена, если по ответам станет понятно, что атмосфера внутри нашего проекта не соответствует той, которую вы ищете (например, в ролевой присутствуют моменты, которые не устраивали вас в других проектах).</p>
+              </div>
+
+              <div>
+                <p style="font-weight: bold; margin-bottom: 6px; font-size: 1.2rem;">1.3. Вступление парой или приглашение друзей</p>
+                <p style="margin: 0 0 8px 0;">Если вы хотите пригласить в ролевую своего друга или вступить с кем-то в паре, то:</p>
+                <div style="display: flex; flex-direction: column; gap: 8px; padding-left: 8px;">
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div>Предупредите владельца о том, что вы кого-либо пригласили (упомяните на вступительной беседе, что нацелены вступить парой);</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div>Учитывайте, что если анкета приглашенного человека не будет соответствовать критериям заполнения, то ему, как полагается, будет отказано во вступлении.</div>
+                  </div>
+                </div>
+                <p style="margin-top: 10px; font-weight: bold; color: var(--accent-orange);">Вы ответственны за того, кого пригласили! Не приводите в чат тех, чье отношение к нашим принципам и правилам может быть сомнительным.</p>
+              </div>
+
+              <div>
+                <p style="font-weight: bold; margin-bottom: 6px; font-size: 1.2rem;">1.4. Черный список</p>
+                <p style="margin: 0;">Если отклонение заявки повлекло агрессию со стороны вступающего, администратор может занести того в черный список (личный или ЧС всего проекта).</p>
+              </div>
+            </div>
+
+            <div style="margin-top: 16px;">
+              <a href="#rules-joining" onclick="document.getElementById('rules-joining').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+            </div>
+          </div>
+
+          <hr style="border: none; height: 1px; background: linear-gradient(90deg, transparent, rgba(230, 126, 34, 0.4), transparent); margin: 8px 0;">
+
+          <!-- ПОДРАЗДЕЛ 2: ТРЕБОВАНИЯ К ГРАМОТНОСТИ -->
+          <div id="join-literacy" style="scroll-margin-top: 90px;">
+            <div class="card-title" style="display: flex !important; justify-content: center !important; text-align: center !important; margin-left: auto !important; margin-right: auto !important; margin-bottom: 20px;">Требования к грамотности</div>
+
+            <div style="color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; gap: 16px;">
+              <div>
+                <p style="font-weight: bold; margin-bottom: 6px; font-size: 1.2rem;">2.1. Базовый критерий</p>
+                <p style="margin: 0;">Грамотность является одним из основных критериев приёма участников. Минимальный уровень грамотности, предъявляемый к ролевикам, — <strong>7/10</strong> (6/10, если ролевик показывает готовность к работе над ошибками) по принятой в проекте системе оценки.</p>
+                <p style="margin-top: 8px; color: var(--text-muted);">Если написание «чтобы/что бы; также/так же; ничего/нечего», выделение оборотов с «который» и др. вызывает у вас затруднения, то, пожалуйста, будьте особенно внимательны.</p>
+              </div>
+
+              <div>
+                <p style="font-weight: bold; margin-bottom: 6px; font-size: 1.2rem;">2.2. Этапы анализа</p>
+                <p style="margin: 0;">Анализ уровня грамотности проводится на двух этапах: при ознакомлении с примером поста и при проверке ролевой анкеты.</p>
+              </div>
+
+              <div>
+                <p style="font-weight: bold; margin-bottom: 6px; font-size: 1.2rem;">2.3. Десятибалльная шкала оценивания</p>
+                <div style="display: flex; flex-direction: column; gap: 6px; padding-left: 8px; margin-bottom: 8px;">
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>11/10</strong> — 0–1 ошибка</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>10/10</strong> — 2–3 ошибки</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>9/10</strong> — 4–6 ошибок</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>8/10</strong> — 7–9 ошибок</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>6–7/10</strong> — 9+ ошибок</div>
+                  </div>
+                </div>
+                <p style="margin: 0;">Расчет идет на текст в 2 лимита Телеграма. Если вы прикрепляете пост или анкету меньшего размера, соответственно, количество допускаемых ошибок должно быть меньше.</p>
+                <p style="margin-top: 6px; color: var(--text-muted); font-size: 0.95rem;">Данная шкала служит больше ориентиром для определения масштаба работы и не имеет ничего общего с оцениванием грамотности в образовательных учреждениях!</p>
+              </div>
+
+              <div>
+                <p style="font-weight: bold; margin-bottom: 6px; font-size: 1.2rem;">2.4. Ход проверки ролевой анкеты (РА)</p>
+                <div style="display: flex; flex-direction: column; gap: 8px; padding-left: 8px;">
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>До 9 ошибок:</strong> проверяющий направляет вам список с точными правками, после внесения которых вы становитесь участником проекта.</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>От 10 до 15 ошибок:</strong> вы получаете второй шанс — проверяющий направляет вам список с общими рекомендациями (на что следует обратить внимание при доработке текста). Если после исправлений ошибок становится менее 10 — получаете точные правки; если все еще слишком много — возможен отказ.</div>
+                  </div>
+                  <div style="display: flex; gap: 10px;">
+                    <span style="color: var(--accent-orange); font-weight: bold;">—</span>
+                    <div><strong>16 и более ошибок:</strong> вы с высокой вероятностью получите отказ во вступлении.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <p style="font-weight: bold; margin-bottom: 6px; font-size: 1.2rem;">2.5. Нюансы проверки РА</p>
+                <p style="margin: 0 0 8px 0;">При возникновении желания оспорить решение администрации просьба делать это вежливо с приведением аргументации своей точки зрения. Мы открыты к обсуждению!</p>
+                <p style="margin: 0 0 8px 0;">Мы стараемся максимально сохранять авторский слог, однако он не должен нарушать правил русского языка, а также логики повествования.</p>
+                <p style="margin: 0 0 8px 0;">Пожалуйста, не принижайте себя, если количество ошибок в вашем тексте оказалось больше ожидаемого. Навыки письма не характеризуют вас, а оценочная шкала нашего проекта служит в первую очередь инструментом подбора ролевиков со схожим уровнем.</p>
+                <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem;">При проверке администрация ссылается на <a href="https://gramota.ru/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-orange); text-decoration: underline;">gramota.ru</a>.</p>
+              </div>
+            </div>
+
+            <div style="margin-top: 16px;">
+              <a href="#rules-joining" onclick="document.getElementById('rules-joining').scrollIntoView({behavior: 'smooth'}); return false;" style="color: var(--accent-orange) !important; text-decoration: underline; font-size: 0.9rem; cursor: pointer;">К навигации</a>
+            </div>
+          </div>
+
+        </div>
+
+        <p style="margin-top: 32px; text-align: center; color: var(--text-muted); font-style: italic; font-size: 0.9rem;">Статья может быть изменена в будущем...</p>
+
       </div>
     </section>
+
   </main>
 
   <script>
